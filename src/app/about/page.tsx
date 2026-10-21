@@ -117,8 +117,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Subnavigation Bar (Screenshots 1 & 2) */}
-      <div className="w-full bg-[#0808a3] text-white sticky top-[80px] z-30 shadow-md">
+      {/* 4. Subnavigation Bar (Sticks seamlessly directly below the 84px Navbar) */}
+      <div className="w-full bg-[#0808a3] text-white sticky top-[84px] z-30 shadow-md">
         <div className="max-w-[1540px] mx-auto px-6 md:px-12 flex items-center gap-6 sm:gap-10 overflow-x-auto">
           {subNavLinks.map((tab) => {
             const isActive = activeSubTab === tab.id;
@@ -577,12 +577,6 @@ export default function AboutPage() {
           </div>
         )}
       </AnimatePresence>
-
-      {/* Search Modal */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
 
       {/* Story Drawer */}
       <StoryDrawer

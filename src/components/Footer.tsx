@@ -147,9 +147,9 @@ export default function Footer() {
             {/* Left: Rolls-Royce Monogram & Wordmark */}
             <div className="flex items-center gap-4">
               <img
-                src="/lavender-logo.png"
+                src="/rolls-royce-blue-crest.png"
                 alt="Rolls-Royce Crest"
-                className="h-10 w-auto object-contain brightness-110 drop-shadow-sm"
+                className="h-14 sm:h-16 w-auto object-contain brightness-110 drop-shadow-md"
               />
               <span className="text-[20px] font-serif tracking-wider font-semibold text-white">
                 Rolls-Royce<span className="text-[10px] font-sans font-normal align-top">&reg;</span>

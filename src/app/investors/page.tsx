@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
@@ -17,6 +17,14 @@ import {
   Tag,
   Check,
   ExternalLink,
+  TrendingUp,
+  FileText,
+  BarChart3,
+  Bell,
+  Clock,
+  Building2,
+  Users,
+  ArrowUpRight,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,7 +32,6 @@ interface PressRelease {
   id: number;
   image: string;
   title: string;
-  shortTitle?: string;
   type: string;
   date: string;
   summary: string;
@@ -32,13 +39,97 @@ interface PressRelease {
   initialActive?: boolean;
 }
 
+interface UsefulResource {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  isSvgGraphic?: boolean;
+  isAnnualReportGraphic?: boolean;
+  defaultBlue?: boolean;
+  modalTitle: string;
+  modalCategory: string;
+}
+
 export default function InvestorsPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccessibilityOpen, setIsAccessibilityOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const [hoveredCardId, setHoveredCardId] = useState<number | null>(2); // Default to card 2 matching screenshot
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+  const [hoveredResourceId, setHoveredResourceId] = useState<string | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<PressRelease | null>(null);
+  const [selectedResource, setSelectedResource] = useState<UsefulResource | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [timeframe, setTimeframe] = useState<"1D" | "1W" | "1M" | "1Y" | "5Y">("1M");
+
+  // 7 Useful Resources
+  const usefulResources: UsefulResource[] = [
+    {
+      id: "results",
+      title: "Results, reports and presentations",
+      description: "View all of our presentations and webcasts here",
+      image: "/assets/images/investor-halfyear.svg",
+      isSvgGraphic: true,
+      defaultBlue: false,
+      modalTitle: "Half Year 2026 Results & Presentations",
+      modalCategory: "FINANCIAL RESULTS",
+    },
+    {
+      id: "consensus",
+      title: "Consensus",
+      description: "View our latest analyst consensus",
+      image: "/assets/images/investor-consensus.jpg",
+      defaultBlue: false,
+      modalTitle: "Vara Research Compiled Analyst Consensus",
+      modalCategory: "MARKET CONSENSUS",
+    },
+    {
+      id: "rns",
+      title: "Regulatory News Service (RNS)",
+      description: "Access our regulatory news announcements",
+      image: "/assets/images/investor-rns.jpg",
+      modalTitle: "London Stock Exchange Regulatory News Feed (RNS)",
+      modalCategory: "REGULATORY NOTICES",
+    },
+    {
+      id: "shareprice",
+      title: "Share price",
+      description: "Our latest share price. View stock data, trends and history",
+      image: "/assets/images/investor-shareprice.svg",
+      isSvgGraphic: true,
+      defaultBlue: false,
+      modalTitle: "Rolls-Royce Holdings plc (LSE: RR.) Share Performance",
+      modalCategory: "MARKET DATA",
+    },
+    {
+      id: "calendar",
+      title: "Financial calendar",
+      description: "See our upcoming investor events",
+      image: "/assets/images/investor-calendar.jpg",
+      defaultBlue: false,
+      modalTitle: "2026 / 2027 Financial & Investor Relations Calendar",
+      modalCategory: "EVENT SCHEDULE",
+    },
+    {
+      id: "annualreport",
+      title: "Annual Report 2025",
+      description: "View our recent and historic Annual Reports and supplementary materials",
+      image: "/assets/images/annual-report.jpg",
+      isAnnualReportGraphic: true,
+      defaultBlue: false,
+      modalTitle: "Rolls-Royce Holdings plc Annual Report & Accounts 2025",
+      modalCategory: "STATUTORY REPORT",
+    },
+    {
+      id: "shareholder",
+      title: "Shareholder information",
+      description: "Access important shareholder information",
+      image: "/assets/images/investor-shareholder.jpg",
+      defaultBlue: true, // Matching screenshot
+      modalTitle: "Shareholder Services & Registrar Portal",
+      modalCategory: "INVESTOR SERVICES",
+    },
+  ];
 
   // 12 Press Releases organized in 3 sets of 4 cards
   const allReleases: PressRelease[] = [
@@ -60,7 +151,6 @@ export default function InvestorsPage() {
       id: 2,
       image: "/assets/images/press-airliner.jpg",
       title: "Trent 1000 and Trent 7000 durability enhancements exceed performance milestones",
-      shortTitle: "Trent...",
       type: "PRESS RELEASE",
       date: "13 OCTOBER 2026",
       initialActive: true,
@@ -215,7 +305,7 @@ export default function InvestorsPage() {
     setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
   };
 
-  const handleCopyLink = (title: string) => {
+  const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
@@ -284,7 +374,7 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* 4. Section: Useful resources */}
+      {/* 4. Section: Useful resources (Fully Functional + Interactive Hover Actions) */}
       <section id="useful-resources" className="w-full bg-white py-20 sm:py-28">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           {/* Centered Title */}
@@ -292,224 +382,117 @@ export default function InvestorsPage() {
             Useful resources
           </h2>
 
-          {/* 7 Resource Cards Grid (2-column layout matching screenshots) */}
+          {/* 7 Resource Cards Grid (First 6 cards in 2 columns) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {/* Card 1: Results, reports and presentations */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Graphic Left: Half Year Results 2026 */}
-              <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-[#0055b8] shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/investor-halfyear.svg"
-                  alt="Half Year Results 2026"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] leading-snug group-hover:text-[#0052cc] transition-colors mb-2.5">
-                  Results, reports and presentations
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                  View all of our presentations and webcasts here
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Consensus */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="group flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Image Left */}
-              <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-gray-100 shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/investor-consensus.jpg"
-                  alt="Rolls-Royce analysts reviewing consensus estimates"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] leading-snug group-hover:text-[#0052cc] transition-colors mb-2.5">
-                  Consensus
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                  View our latest analyst consensus
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: Regulatory News Service (RNS) - Solid Blue Content Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group flex flex-col sm:flex-row bg-[#0062ff] border border-[#0062ff] hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Image Left */}
-              <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-gray-900 shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/apprentice.jpg"
-                  alt="Engine technicians in Rolls-Royce manufacturing facility"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Solid Blue Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center bg-[#0062ff] text-white">
-                <h3 className="text-xl sm:text-[22px] font-bold text-white leading-snug mb-2.5">
-                  Regulatory News Service (RNS)
-                </h3>
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed">
-                  Access our regulatory news announcements
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 4: Share price */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="group flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* SVG Stock Chart Left */}
-              <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-slate-50 shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/investor-shareprice.svg"
-                  alt="Rolls-Royce share price chart and trends"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] leading-snug group-hover:text-[#0052cc] transition-colors mb-2.5">
-                  Share price
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                  Our latest share price. View stock data, trends and history
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 5: Financial calendar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Image Left */}
-              <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-gray-100 shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/investor-calendar.jpg"
-                  alt="Financial and investor event calendar"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] leading-snug group-hover:text-[#0052cc] transition-colors mb-2.5">
-                  Financial calendar
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                  See our upcoming investor events
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 6: Annual Report 2025 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="group flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Jet Turbine Cover Left */}
-              <div className="relative sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-[#0a1428] shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/annual-report.jpg"
-                  alt="Rolls-Royce Annual Report 2025 cover"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Monogram Badge & Title Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#000887]/90 via-transparent to-transparent flex flex-col justify-between p-3.5">
-                  <div className="flex justify-end">
-                    <div className="w-5 h-6 border border-white/80 rounded-[2px] flex items-center justify-center text-[10px] font-serif font-bold text-white bg-black/40">
-                      RR
-                    </div>
-                  </div>
-                  <div>
-                    <span className="block text-[11px] font-bold tracking-wider text-white uppercase">
-                      ANNUAL REPORT
-                    </span>
-                    <span className="block text-lg font-light text-white leading-tight">
-                      2025
-                    </span>
-                    <div className="flex gap-[2px] mt-1 opacity-70">
-                      {[...Array(16)].map((_, i) => (
-                        <span
-                          key={i}
-                          className="w-[2px] bg-white"
-                          style={{ height: `${6 + (i % 3) * 3}px` }}
+            {usefulResources.slice(0, 6).map((item) => {
+              return (
+                <motion.div
+                  key={item.id}
+                  onClick={() => setSelectedResource(item)}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  className="group relative flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:border-[#0062ff] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 rounded-sm overflow-hidden cursor-pointer select-none"
+                >
+                  {/* Left Media / Graphic (38-42% width) */}
+                  <div className="sm:w-[42%] aspect-[4/3] sm:aspect-auto bg-slate-900 shrink-0 overflow-hidden relative">
+                    {item.isAnnualReportGraphic ? (
+                      /* Annual Report Cover Graphic */
+                      <div className="relative w-full h-full bg-[#0a1428] overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                         />
-                      ))}
-                    </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#000887]/90 via-transparent to-transparent flex flex-col justify-between p-3.5">
+                          <div className="flex justify-end">
+                            <div className="w-5 h-6 border border-white/80 rounded-[2px] flex items-center justify-center text-[10px] font-serif font-bold text-white bg-black/40">
+                              RR
+                            </div>
+                          </div>
+                          <div>
+                            <span className="block text-[11px] font-bold tracking-wider text-white uppercase">
+                              ANNUAL REPORT
+                            </span>
+                            <span className="block text-lg font-light text-white leading-tight">
+                              2025
+                            </span>
+                            <div className="flex gap-[2px] mt-1 opacity-70">
+                              {[...Array(16)].map((_, i) => (
+                                <span
+                                  key={i}
+                                  className="w-[2px] bg-white"
+                                  style={{ height: `${6 + (i % 3) * 3}px` }}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Standard Photo or SVG Chart */
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                    )}
                   </div>
-                </div>
-              </div>
-              {/* Content Right */}
-              <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] leading-snug group-hover:text-[#0052cc] transition-colors mb-2.5">
-                  Annual Report 2025
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                  View our recent and historic Annual Reports and supplementary materials
-                </p>
-              </div>
-            </motion.div>
+
+                  {/* Right Content Side: White by default, turns Rolls-Royce Electric Blue on hover */}
+                  <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0062ff] transition-colors duration-300">
+                    <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] group-hover:text-white transition-colors duration-300 leading-snug mb-2.5">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 group-hover:text-white/95 transition-colors duration-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* Centered 7th Card: Shareholder information */}
-          <div className="mt-8 lg:mt-10 max-w-[680px] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group flex flex-col sm:flex-row bg-[#0062ff] border border-[#0062ff] hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden cursor-pointer"
-            >
-              {/* Image Left */}
-              <div className="sm:w-[48%] aspect-[4/3] sm:aspect-auto bg-gray-900 shrink-0 overflow-hidden">
-                <img
-                  src="/assets/images/investor-shareholder.jpg"
-                  alt="Business colleagues in discussion"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              {/* Solid Blue Content Right */}
-              <div className="sm:w-[52%] p-6 sm:p-8 flex flex-col justify-center bg-[#0062ff] text-white">
-                <h3 className="text-xl sm:text-[22px] font-bold text-white leading-snug mb-2.5">
-                  Shareholder information
-                </h3>
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed">
-                  Access important shareholder information
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          {/* Centered 7th Card: Shareholder information (Matching same hover-to-blue pattern) */}
+          {usefulResources[6] && (
+            <div className="mt-8 lg:mt-10 max-w-[680px] mx-auto">
+              {(() => {
+                const item = usefulResources[6];
+
+                return (
+                  <motion.div
+                    key={item.id}
+                    onClick={() => setSelectedResource(item)}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
+                    className="group relative flex flex-col sm:flex-row bg-white border border-gray-200/80 hover:border-[#0062ff] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 rounded-sm overflow-hidden cursor-pointer select-none"
+                  >
+                    {/* Image Left */}
+                    <div className="sm:w-[48%] aspect-[4/3] sm:aspect-auto bg-gray-900 shrink-0 overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Content Right: White by default, turns Blue on hover */}
+                    <div className="sm:w-[52%] p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0062ff] transition-colors duration-300">
+                      <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] group-hover:text-white transition-colors duration-300 leading-snug mb-2.5">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 group-hover:text-white/95 transition-colors duration-300 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })()}
+            </div>
+          )}
         </div>
       </section>
 
@@ -570,11 +553,11 @@ export default function InvestorsPage() {
                       >
                         <div className="p-6 pb-4">
                           <h3
-                            className={`text-lg sm:text-[21px] font-bold leading-snug line-clamp-3 transition-colors duration-300 min-h-[58px] ${
+                            className={`text-lg sm:text-[20px] font-bold leading-snug transition-colors duration-300 min-h-[76px] ${
                               isHovered ? "text-white" : "text-[#0808a3]"
                             }`}
                           >
-                            {isHovered && item.shortTitle ? item.shortTitle : item.title}
+                            {item.title}
                           </h3>
                         </div>
 
@@ -651,7 +634,222 @@ export default function InvestorsPage() {
         <UserCheck className="w-6 h-6 stroke-[2.2]" />
       </button>
 
-      {/* 9. Press Release Article Modal (Full functionality for readers) */}
+      {/* 9. Useful Resource Interactive Modal */}
+      <AnimatePresence>
+        {selectedResource && (
+          <div className="fixed inset-0 z-[130] flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-black/75 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-gray-200"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-6 py-4 bg-[#001438] text-white border-b border-white/10">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#00a3e0] bg-white/10 px-2.5 py-1 rounded">
+                    {selectedResource.modalCategory}
+                  </span>
+                  <span className="text-xs text-white/80">Rolls-Royce Investor Centre</span>
+                </div>
+                <button
+                  onClick={() => setSelectedResource(null)}
+                  className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                  aria-label="Close resource modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="overflow-y-auto p-6 sm:p-10">
+                <h2 className="text-2xl sm:text-3xl font-light text-[#0f2942] tracking-tight leading-snug mb-3">
+                  {selectedResource.modalTitle}
+                </h2>
+                <p className="text-gray-600 mb-8">{selectedResource.description}</p>
+
+                {/* Conditional Content by Resource Type */}
+                {selectedResource.id === "results" && (
+                  <div className="space-y-6">
+                    <div className="bg-[#f0f7ff] p-5 rounded-md border border-blue-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <div>
+                        <h4 className="font-bold text-[#001e62] text-lg">Half Year 2026 Results Webcast</h4>
+                        <p className="text-sm text-gray-600">Presented by Chief Executive & Chief Financial Officer</p>
+                      </div>
+                      <button
+                        onClick={() => alert("Launching live webcast replay...")}
+                        className="px-4 py-2 bg-[#0062ff] hover:bg-[#0052cc] text-white font-medium text-sm rounded transition-colors"
+                      >
+                        Watch Webcast
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="p-4 border border-gray-200 rounded-md hover:border-blue-400 transition-colors">
+                        <FileText className="w-5 h-5 text-blue-600 mb-2" />
+                        <h5 className="font-semibold text-gray-900 text-sm">HY 2026 Results Statement (PDF)</h5>
+                        <p className="text-xs text-gray-500 mb-3">Published 01 August 2026 • 1.4 MB</p>
+                        <a href="#" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">Download Document &rarr;</a>
+                      </div>
+                      <div className="p-4 border border-gray-200 rounded-md hover:border-blue-400 transition-colors">
+                        <BarChart3 className="w-5 h-5 text-blue-600 mb-2" />
+                        <h5 className="font-semibold text-gray-900 text-sm">HY 2026 Presentation Slides (PDF)</h5>
+                        <p className="text-xs text-gray-500 mb-3">Published 01 August 2026 • 4.8 MB</p>
+                        <a href="#" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">Download Slides &rarr;</a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {selectedResource.id === "consensus" && (
+                  <div className="space-y-6">
+                    <div className="border border-gray-200 rounded-md overflow-hidden">
+                      <table className="w-full text-left text-sm">
+                        <thead className="bg-gray-50 border-b border-gray-200 text-gray-600 font-semibold">
+                          <tr>
+                            <th className="p-3">Financial Metric</th>
+                            <th className="p-3">Consensus (Mean)</th>
+                            <th className="p-3">High</th>
+                            <th className="p-3">Low</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100 text-gray-800">
+                          <tr>
+                            <td className="p-3 font-medium">Underlying Revenue</td>
+                            <td className="p-3 font-bold text-blue-900">£18,240m</td>
+                            <td className="p-3">£18,900m</td>
+                            <td className="p-3">£17,650m</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-medium">Underlying Operating Profit</td>
+                            <td className="p-3 font-bold text-blue-900">£2,350m</td>
+                            <td className="p-3">£2,520m</td>
+                            <td className="p-3">£2,180m</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-medium">Free Cash Flow</td>
+                            <td className="p-3 font-bold text-blue-900">£2,180m</td>
+                            <td className="p-3">£2,340m</td>
+                            <td className="p-3">£1,980m</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs text-gray-500">Based on projections from 22 sell-side equity analysts covering Rolls-Royce Holdings plc.</p>
+                  </div>
+                )}
+
+                {selectedResource.id === "shareprice" && (
+                  <div className="space-y-6">
+                    <div className="flex flex-wrap items-baseline gap-4 p-5 bg-slate-50 border border-slate-200 rounded-md">
+                      <div>
+                        <span className="text-xs text-gray-500 uppercase tracking-wider block">LSE: RR.</span>
+                        <span className="text-4xl font-light text-[#001e62] font-mono">£5.84</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-emerald-600 font-semibold text-lg">
+                        <TrendingUp className="w-5 h-5" />
+                        <span>+£0.14 (+2.45%)</span>
+                      </div>
+                      <div className="ml-auto flex gap-1 bg-white p-1 border rounded-md text-xs font-semibold">
+                        {(["1D", "1W", "1M", "1Y", "5Y"] as const).map((t) => (
+                          <button
+                            key={t}
+                            onClick={() => setTimeframe(t)}
+                            className={`px-2.5 py-1 rounded transition-colors ${
+                              timeframe === t ? "bg-[#001e62] text-white" : "text-gray-600 hover:bg-gray-100"
+                            }`}
+                          >
+                            {t}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="w-full aspect-[21/9] bg-white border border-gray-200 rounded-md p-2">
+                      <img src="/assets/images/investor-shareprice.svg" alt="Share Price Chart" className="w-full h-full object-contain" />
+                    </div>
+                  </div>
+                )}
+
+                {selectedResource.id === "calendar" && (
+                  <div className="space-y-4">
+                    {[
+                      { date: "12 Nov 2026", event: "Trading Update Announcement", type: "RNS Announcement" },
+                      { date: "25 Feb 2027", event: "Full Year 2026 Financial Results", type: "Webcast & Presentation" },
+                      { date: "06 May 2027", event: "Annual General Meeting (AGM)", type: "Shareholder Meeting" },
+                      { date: "05 Aug 2027", event: "Half Year 2027 Financial Results", type: "Webcast & Presentation" },
+                    ].map((row, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 rounded-md hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-4">
+                          <Calendar className="w-5 h-5 text-blue-600 shrink-0" />
+                          <div>
+                            <span className="text-sm font-bold text-gray-900 block">{row.event}</span>
+                            <span className="text-xs text-gray-500">{row.type}</span>
+                          </div>
+                        </div>
+                        <span className="text-sm font-semibold text-[#001e62] bg-blue-50 px-3 py-1 rounded">{row.date}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {selectedResource.id === "annualreport" && (
+                  <div className="space-y-6">
+                    <div className="p-6 bg-slate-900 text-white rounded-md flex flex-col sm:flex-row items-center gap-6">
+                      <img src="/assets/images/annual-report.jpg" alt="Annual report" className="w-24 h-32 object-cover rounded shadow" />
+                      <div className="flex-1 text-center sm:text-left">
+                        <h4 className="text-xl font-bold text-white mb-2">Annual Report & Accounts 2025</h4>
+                        <p className="text-sm text-gray-300 mb-4">Comprehensive strategic framework, ESG progress, and audited statutory financial statements.</p>
+                        <button
+                          onClick={() => alert("Downloading full Annual Report PDF (14.2 MB)...")}
+                          className="px-5 py-2.5 bg-[#0062ff] hover:bg-[#0052cc] text-white font-medium text-sm rounded inline-flex items-center gap-2"
+                        >
+                          <Download className="w-4 h-4" /> Download Interactive PDF (14.2 MB)
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {(selectedResource.id === "rns" || selectedResource.id === "shareholder") && (
+                  <div className="space-y-4">
+                    <div className="p-5 bg-blue-50/70 border border-blue-200 rounded-md">
+                      <h4 className="font-bold text-[#001e62] mb-1">Registrar & Contact Services</h4>
+                      <p className="text-sm text-gray-600 mb-3">Our share register is managed by Computershare Investor Services PLC.</p>
+                      <p className="text-xs text-gray-500">Helpline: +44 (0)370 703 6029 • Email: web.queries@computershare.co.uk</p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="p-4 border rounded hover:border-blue-500 transition-colors">
+                        <h5 className="font-semibold text-sm text-gray-900 mb-1">Electronic Communications</h5>
+                        <p className="text-xs text-gray-500 mb-3">Sign up for e-tree initiatives and online statements.</p>
+                        <a href="#" className="text-xs font-bold text-blue-600 hover:underline">Manage Preferences &rarr;</a>
+                      </div>
+                      <div className="p-4 border rounded hover:border-blue-500 transition-colors">
+                        <h5 className="font-semibold text-sm text-gray-900 mb-1">ADR Information for US Investors</h5>
+                        <p className="text-xs text-gray-500 mb-3">American Depositary Receipts traded under symbol RYCEY.</p>
+                        <a href="#" className="text-xs font-bold text-blue-600 hover:underline">View ADR Details &rarr;</a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Modal Footer Actions */}
+                <div className="mt-8 pt-6 border-t border-gray-200 flex items-center justify-end gap-3">
+                  <button
+                    onClick={() => setSelectedResource(null)}
+                    className="px-6 py-2 bg-[#001e62] hover:bg-[#0052cc] text-white font-medium text-sm rounded transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* 10. Press Release Article Modal */}
       <AnimatePresence>
         {selectedArticle && (
           <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-black/70 backdrop-blur-sm">
@@ -718,7 +916,7 @@ export default function InvestorsPage() {
                 <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <button
-                      onClick={() => handleCopyLink(selectedArticle.title)}
+                      onClick={handleCopyLink}
                       className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
                     >
                       {copiedLink ? (
@@ -756,8 +954,7 @@ export default function InvestorsPage() {
         )}
       </AnimatePresence>
 
-      {/* Global Search & Accessibility Modals */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {/* Global Accessibility Modal */}
       <AccessibilityModal
         isOpen={isAccessibilityOpen}
         onClose={() => setIsAccessibilityOpen(false)}

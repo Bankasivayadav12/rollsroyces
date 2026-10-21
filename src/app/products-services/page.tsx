@@ -152,14 +152,8 @@ export default function ProductsServicesPage() {
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                 </div>
 
-                {/* Card Content Block (Screenshot 2: Power Systems in Vivid Blue, others in matching clean corporate tone) */}
-                <div
-                  className={`p-8 sm:p-10 flex-1 flex flex-col justify-between transition-colors ${
-                    isBlue
-                      ? "bg-[#0066ff] text-white"
-                      : "bg-[#0808a3] text-white"
-                  }`}
-                >
+                {/* Card Content Block: Default Navy Blue, Electric Blue ONLY after hover */}
+                <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between transition-colors duration-300 bg-[#0808a3] group-hover:bg-[#0066ff] text-white">
                   <div>
                     <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
                       {prod.cardTitle}
@@ -190,12 +184,6 @@ export default function ProductsServicesPage() {
 
       {/* 6. Official Rolls-Royce Footer */}
       <Footer />
-
-      {/* Search Modal */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
 
       {/* Technical Specifications Drawer */}
       <StoryDrawer

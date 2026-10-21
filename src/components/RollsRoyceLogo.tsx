@@ -12,16 +12,20 @@ export default function RollsRoyceLogo({
   size = "md",
 }: RollsRoyceLogoProps) {
   const heightClass =
-    size === "sm" ? "h-11" : size === "lg" ? "h-20" : "h-[64px]";
+    size === "sm"
+      ? "h-[48px]"
+      : size === "lg"
+      ? "h-[88px]"
+      : "h-[64px] sm:h-[72px]";
 
   return (
     <div
-      className={`inline-flex items-center select-none transition-transform duration-300 hover:scale-[1.03] ${className}`}
+      className={`inline-flex items-center justify-center select-none transition-transform duration-300 hover:scale-[1.03] py-0.5 ${className}`}
     >
       <img
-        src="/lavender-logo.png"
-        alt="Rolls-Royce Lavender Crest Logo"
-        className={`${heightClass} w-auto object-contain drop-shadow-[0_2px_10px_rgba(142,124,195,0.22)]`}
+        src="/rolls-royce-blue-crest.png"
+        alt="Rolls-Royce Blue & White Crest Logo"
+        className={`${heightClass} w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,38,130,0.25)]`}
       />
     </div>
   );

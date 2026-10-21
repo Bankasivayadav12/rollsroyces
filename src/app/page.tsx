@@ -54,13 +54,6 @@ export default function HomePage() {
       {/* 7. Rolls-Royce Corporate Official Footer */}
       <Footer />
 
-      {/* Interactive Search Modal */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectStory={(index) => handleSelectStoryByIndex(index)}
-      />
-
       {/* Interactive Story / Technical Specs Drawer */}
       <StoryDrawer
         isOpen={isStoryOpen}
