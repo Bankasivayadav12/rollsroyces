@@ -45,7 +45,7 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
           initial={{ opacity: 0, scale: 0.95, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
-          className="absolute bottom-16 right-0 w-80 bg-white rounded-lg shadow-2xl border border-gray-100 p-5 z-50 text-gray-800"
+          className="absolute bottom-16 right-0 w-[calc(100vw-36px)] max-w-xs sm:w-80 bg-white rounded-lg shadow-2xl border border-gray-100 p-4 sm:p-5 z-50 text-gray-800"
         >
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
             <h3 className="font-bold text-sm text-[#001438]">Accessibility Options</h3>

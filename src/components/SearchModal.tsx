@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Search, X } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Search, X, ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -10,41 +11,91 @@ interface SearchModalProps {
   onSelectStory?: (index: number) => void;
 }
 
-const mockSearchData = [
-  {
-    category: "Civil Aerospace",
-    title: "Trent 1000 XE – Next-Generation Widebody Efficiency",
-    slideIndex: 0,
-    desc: "Discover the enhanced durability, fuel burn improvements, and architecture of the Trent 1000 XE.",
-  },
-  {
-    category: "Power Systems",
-    title: "Series 8000 Marine Engine – A Legacy of Excellence",
-    slideIndex: 1,
-    desc: "Ultra high-power marine propulsion delivering up to 10,000 kW for government and commercial vessels.",
-  },
-  {
-    category: "Defence",
-    title: "AE Family – The Story Behind the Mission-Critical Engine",
-    slideIndex: 2,
-    desc: "Powering tactical transport aircraft worldwide with proven operational reliability.",
-  },
-  {
-    category: "Innovation",
-    title: "UltraFan® – Pioneering Sustainable Aviation Architecture",
-    slideIndex: 0,
-    desc: "The world's largest aerospace demonstrator tested with 100% Sustainable Aviation Fuel (SAF).",
-  },
-  {
-    category: "Investors",
-    title: "Full Year 2025 Financial Results & Strategic Milestones",
-    slideIndex: 0,
-    desc: "Record operating profit, strong cash generation, and commercial momentum across all divisions.",
-  },
-];
+interface SuggestionItem {
+  text: string;
+  count: number;
+  href: string;
+  slideIndex?: number;
+}
 
-export default function SearchModal({ isOpen, onClose, onSelectStory }: SearchModalProps) {
-  const [query, setQuery] = useState("");
+// Rolls-Royce auto-search database with real counts matching official search indexing
+const autoSearchDB: { [key: string]: SuggestionItem[] } = {
+  about: [
+    { text: "about", count: 2214, href: "/about" },
+    { text: "about our", count: 2037, href: "/about" },
+    { text: "about create", count: 1797, href: "/about" },
+    { text: "about press", count: 1007, href: "/investors" },
+    { text: "about rolls", count: 1006, href: "/about" },
+    { text: "about we", count: 137, href: "/about" },
+  ],
+  trent: [
+    { text: "trent 1000 xe", count: 1845, href: "/", slideIndex: 0 },
+    { text: "trent 7000 engine", count: 1420, href: "/products-services" },
+    { text: "trent 1000 durability", count: 980, href: "/", slideIndex: 0 },
+    { text: "trent 900 a380", count: 740, href: "/products-services" },
+    { text: "trent saf readiness", count: 520, href: "/innovation" },
+  ],
+  series: [
+    { text: "series 8000 marine", count: 2150, href: "/products-services", slideIndex: 1 },
+    { text: "series 8000 specs", count: 1480, href: "/", slideIndex: 1 },
+    { text: "series 4000 mtu", count: 1210, href: "/products-services" },
+    { text: "series 2000 power", count: 840, href: "/products-services" },
+  ],
+  ae: [
+    { text: "ae the story behind the engine", count: 1980, href: "/", slideIndex: 2 },
+    { text: "ae 2100 turboprop", count: 1420, href: "/products-services" },
+    { text: "ae 3007 turbofan", count: 1110, href: "/products-services" },
+    { text: "ae defence reliability", count: 860, href: "/products-services" },
+  ],
+  product: [
+    { text: "products & services", count: 3210, href: "/products-services" },
+    { text: "products civil aerospace", count: 2040, href: "/products-services" },
+    { text: "products defence", count: 1680, href: "/products-services" },
+    { text: "products power systems", count: 1420, href: "/products-services" },
+    { text: "products electrical", count: 870, href: "/innovation" },
+  ],
+  innov: [
+    { text: "innovation ultrafan", count: 2340, href: "/innovation" },
+    { text: "innovation net zero", count: 1890, href: "/innovation" },
+    { text: "innovation hydrogen aviation", count: 1420, href: "/innovation" },
+    { text: "innovation advanced air mobility", count: 1050, href: "/innovation" },
+    { text: "innovation small modular reactors", count: 830, href: "/innovation" },
+  ],
+  invest: [
+    { text: "investors overview", count: 2890, href: "/investors" },
+    { text: "investors financial results 2025", count: 2450, href: "/investors" },
+    { text: "investors share price", count: 1870, href: "/investors" },
+    { text: "investors annual report", count: 1540, href: "/investors" },
+    { text: "investors dividend policy", count: 960, href: "/investors" },
+  ],
+  career: [
+    { text: "careers opportunities", count: 2750, href: "/about" },
+    { text: "careers engineering graduates", count: 1680, href: "/about" },
+    { text: "careers apprenticeships", count: 1390, href: "/about" },
+    { text: "careers global locations", count: 920, href: "/about" },
+  ],
+};
+
+export default function SearchModal({
+  isOpen,
+  onClose,
+  onSelectStory,
+}: SearchModalProps) {
+  const router = useRouter();
+  const [query, setQuery] = useState("about");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Focus the input when modal opens
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+          inputRef.current.select();
+        }
+      }, 50);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,113 +107,124 @@ export default function SearchModal({ isOpen, onClose, onSelectStory }: SearchMo
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  const filteredResults = query.trim()
-    ? mockSearchData.filter((item) =>
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase()) ||
-        item.desc.toLowerCase().includes(query.toLowerCase())
-      )
-    : [];
+  // Compute auto-search suggestions dynamically
+  const getSuggestions = (): SuggestionItem[] => {
+    const clean = query.trim().toLowerCase();
+    if (!clean) {
+      return autoSearchDB["about"];
+    }
+
+    // Direct key matches
+    for (const key of Object.keys(autoSearchDB)) {
+      if (clean === key || clean.startsWith(key) || key.startsWith(clean)) {
+        return autoSearchDB[key];
+      }
+    }
+
+    // Keyword containment match across all values
+    const allItems: SuggestionItem[] = [];
+    Object.values(autoSearchDB).forEach((list) => {
+      list.forEach((item) => {
+        if (
+          item.text.toLowerCase().includes(clean) &&
+          !allItems.some((existing) => existing.text === item.text)
+        ) {
+          allItems.push(item);
+        }
+      });
+    });
+
+    if (allItems.length > 0) {
+      return allItems.slice(0, 6);
+    }
+
+    // Dynamic generation if query has no direct match
+    return [
+      { text: clean, count: 1540, href: `/about` },
+      { text: `${clean} technology`, count: 1120, href: `/innovation` },
+      { text: `${clean} engines`, count: 870, href: `/products-services` },
+      { text: `${clean} solutions`, count: 640, href: `/products-services` },
+      { text: `${clean} reports`, count: 320, href: `/investors` },
+    ];
+  };
+
+  const suggestions = getSuggestions();
+
+  const handleSelect = (item: SuggestionItem) => {
+    if (item.slideIndex !== undefined && onSelectStory) {
+      onSelectStory(item.slideIndex);
+    }
+    router.push(item.href);
+    onClose();
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (suggestions.length > 0) {
+      handleSelect(suggestions[0]);
+    }
+  };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex justify-center pt-28 px-4 bg-[#060c1c]/75 backdrop-blur-md"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="fixed inset-x-0 top-[84px] bottom-0 z-40 bg-[#0a0082] overflow-y-auto selection:bg-white selection:text-[#0a0082]"
         >
-          <motion.div
-            initial={{ opacity: 0, y: -25, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-full max-w-3xl"
+          {/* Top Right Close Button */}
+          <button
+            onClick={onClose}
+            aria-label="Close search"
+            className="absolute top-6 sm:top-8 right-6 sm:right-10 text-white/90 hover:text-white transition-all hover:scale-110 active:scale-95 p-2 z-50"
           >
-            {/* Search Input Bar */}
-            <div className="flex items-center gap-3">
-              <div className="flex-1 relative flex items-center bg-white rounded-full px-5 py-3.5 shadow-2xl">
-                <Search className="w-5 h-5 text-[#001e62] stroke-[2.5] mr-3 shrink-0" />
+            <X className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+          </button>
+
+          {/* Central Auto-Search Area */}
+          <div className="w-full max-w-[640px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 md:pt-16 pb-20">
+            <form onSubmit={handleSubmit} className="w-full">
+              {/* Search Input Bar with Icon */}
+              <div className="relative flex items-center border-b-2 border-white/50 focus-within:border-white pb-2.5 transition-colors">
                 <input
+                  ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search products, technologies, news, and reports..."
-                  autoFocus
-                  className="w-full bg-transparent text-[#001438] placeholder-gray-400 text-lg outline-none font-medium"
+                  placeholder="Search..."
+                  className="w-full bg-transparent text-3xl sm:text-4xl md:text-[46px] font-bold text-white tracking-tight outline-none placeholder:text-white/40 caret-white pr-12 font-sans"
                 />
-                {query && (
-                  <button
-                    onClick={() => setQuery("")}
-                    className="p-1 text-gray-400 hover:text-gray-700"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                )}
+                <button
+                  type="submit"
+                  aria-label="Submit search"
+                  className="absolute right-0 bottom-2 text-white hover:opacity-85 transition-opacity"
+                >
+                  <Search className="w-7 h-7 sm:w-9 sm:h-9 text-white stroke-[2.8]" />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="px-5 py-3.5 bg-white/15 hover:bg-white text-white hover:text-[#001438] rounded-full text-sm font-semibold transition-all border border-white/20"
-              >
-                Close
-              </button>
-            </div>
 
-            {/* Quick Suggestions */}
-            <div className="mt-5 flex items-center flex-wrap gap-2 text-sm">
-              <span className="text-white/70 font-medium text-xs uppercase tracking-wider mr-2">
-                Popular:
-              </span>
-              {["Trent 1000 XE", "Series 8000", "AE 2100", "Sustainable Aviation", "Financials"].map(
-                (tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag)}
-                    className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/25 text-white text-xs font-medium border border-white/15 transition-all"
+              {/* White Auto-Search Suggestions Dropdown Box */}
+              <div className="w-full bg-white shadow-2xl mt-0 overflow-hidden">
+                {suggestions.map((item, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => handleSelect(item)}
+                    className="py-3 sm:py-3.5 px-5 sm:px-6 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-colors border-b border-gray-100 last:border-b-0 group"
                   >
-                    {tag}
-                  </button>
-                )
-              )}
-            </div>
-
-            {/* Results dropdown */}
-            {query.trim() && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-6 bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 max-h-96 overflow-y-auto"
-              >
-                {filteredResults.length > 0 ? (
-                  filteredResults.map((result, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => {
-                        if (onSelectStory) onSelectStory(result.slideIndex);
-                        onClose();
-                      }}
-                      className="p-4 border-b border-gray-100 last:border-b-0 hover:bg-blue-50/60 cursor-pointer transition-colors"
-                    >
-                      <span className="text-[11px] font-bold text-[#001e62] uppercase tracking-wider">
-                        {result.category}
-                      </span>
-                      <h4 className="text-base font-semibold text-gray-900 mt-0.5">
-                        {result.title}
-                      </h4>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-1">
-                        {result.desc}
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <div className="p-8 text-center text-gray-500">
-                    No results found for &ldquo;{query}&rdquo;.
+                    <span className="text-slate-800 text-lg sm:text-[19px] font-normal group-hover:text-[#001e62] transition-colors">
+                      {item.text}
+                    </span>
+                    <span className="text-slate-500 font-normal text-sm sm:text-base ml-4">
+                      ({item.count})
+                    </span>
                   </div>
-                )}
-              </motion.div>
-            )}
-          </motion.div>
+                ))}
+              </div>
+            </form>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

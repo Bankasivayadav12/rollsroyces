@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Pause, Play } from "lucide-react";
-import AccessibilityModal from "./AccessibilityModal";
+import { ChevronRight } from "lucide-react";
 import { StoryData } from "./StoryDrawer";
 
 export const slidesData: (StoryData & {
@@ -82,8 +81,9 @@ interface HeroCarouselProps {
 export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isAccModalOpen, setIsAccModalOpen] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const SLIDE_DURATION = 6000;
 
@@ -101,10 +101,28 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
     };
   }, [isPlaying, currentSlide]);
 
+  // When progress completes & slide rotates, automatically smooth-scroll active card to center in mobile view
+  useEffect(() => {
+    if (tabsContainerRef.current && tabRefs.current[currentSlide]) {
+      const container = tabsContainerRef.current;
+      const activeTab = tabRefs.current[currentSlide];
+      if (activeTab) {
+        const tabLeft = activeTab.offsetLeft;
+        const tabWidth = activeTab.offsetWidth;
+        const containerWidth = container.offsetWidth;
+        const targetScroll = tabLeft - (containerWidth - tabWidth) / 2;
+        container.scrollTo({
+          left: Math.max(0, targetScroll),
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [currentSlide]);
+
   const activeData = slidesData[currentSlide];
 
   return (
-    <section className="relative w-full h-[calc(100vh-88px)] min-h-[620px] max-h-[880px] bg-[#070e20] overflow-hidden select-none">
+    <section className="relative w-full h-[calc(100vh-84px)] min-h-[580px] sm:min-h-[620px] max-h-[880px] bg-[#070e20] overflow-hidden select-none">
       {/* Background Slides with AnimatePresence */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -136,7 +154,7 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
       </AnimatePresence>
 
       {/* Slide Text Content */}
-      <div className="relative z-20 w-full h-full max-w-[1540px] mx-auto px-6 md:px-12 flex items-center">
+      <div className="relative z-20 w-full h-full max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-center">
         <div
           className={`w-full flex ${
             activeData.align === "right" ? "justify-end" : "justify-start"
@@ -149,11 +167,11 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="max-w-xl pb-28 md:pb-24"
+              className="max-w-xl pb-24 sm:pb-20 md:pb-16"
             >
               <h1
                 style={{ color: "#ffffff" }}
-                className="text-4xl sm:text-5xl md:text-[54px] font-bold leading-[1.12] tracking-tight mb-5 whitespace-pre-line drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]"
+                className="text-3xl sm:text-4xl md:text-[50px] lg:text-[54px] font-bold leading-[1.14] tracking-tight mb-4 sm:mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]"
               >
                 {activeData.slideTitle}
               </h1>
@@ -161,7 +179,7 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
               {activeData.subtitle && (
                 <p
                   style={{ color: "rgba(255, 255, 255, 0.95)" }}
-                  className="text-base sm:text-lg md:text-[19px] font-normal leading-relaxed mb-7 max-w-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                  className="text-sm sm:text-base md:text-[18px] font-normal leading-relaxed mb-6 sm:mb-7 max-w-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
                 >
                   {activeData.subtitle}
                 </p>
@@ -169,7 +187,7 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
 
               <button
                 onClick={() => onOpenStory(activeData)}
-                className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full glass-pill-btn text-white font-bold text-[13.5px] uppercase tracking-[1.4px] transition-all duration-300 hover:scale-105 group"
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full glass-pill-btn text-white font-bold text-xs sm:text-[13.5px] uppercase tracking-[1.4px] transition-all duration-300 hover:scale-105 group"
                 style={{ color: "#ffffff" }}
               >
                 <span>{activeData.buttonText}</span>
@@ -181,18 +199,25 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
       </div>
 
       {/* Bottom Carousel Navigation Tabs Dock */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 max-w-[1540px] mx-auto px-6 md:px-12 flex items-end justify-between pointer-events-none">
-        <div className="flex items-end gap-3.5 pointer-events-auto overflow-x-auto max-w-[calc(100vw-120px)] pb-0">
+      <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 left-0 right-0 z-30 max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-end justify-between pointer-events-none">
+        <div
+          ref={tabsContainerRef}
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="no-scrollbar scrollbar-none flex items-center gap-2.5 sm:gap-3.5 pointer-events-auto overflow-x-auto max-w-[calc(100vw-32px)] sm:max-w-[calc(100vw-80px)] lg:max-w-none pb-1"
+        >
           {slidesData.map((slide, idx) => {
             const isActive = currentSlide === idx;
             return (
               <button
                 key={slide.id}
+                ref={(el) => {
+                  tabRefs.current[idx] = el;
+                }}
                 onClick={() => setCurrentSlide(idx)}
-                className={`relative w-48 sm:w-56 md:w-64 text-left p-4 sm:p-5 rounded-t-md transition-all duration-300 shrink-0 ${
+                className={`group relative w-44 sm:w-56 md:w-64 h-[66px] sm:h-[72px] md:h-[74px] text-left px-3.5 sm:px-4 md:px-5 flex flex-col justify-center rounded-md transition-all duration-300 shrink-0 overflow-hidden cursor-pointer ${
                   isActive
                     ? "glass-tab-active"
-                    : "bg-transparent hover:bg-white/10"
+                    : "glass-tab-inactive"
                 }`}
               >
                 {/* Active animated progress bar */}
@@ -205,17 +230,18 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
                       duration: SLIDE_DURATION / 1000,
                       ease: "linear",
                     }}
-                    className="absolute top-0 left-0 h-[3px] bg-white shadow-[0_0_8px_#ffffff]"
+                    className="tab-progress-bar absolute top-0 left-0 h-[3px] bg-white shadow-[0_0_8px_#ffffff] transition-colors"
                   />
                 )}
                 {isActive && !isPlaying && (
-                  <div className="absolute top-0 left-0 w-full h-[3px] bg-white" />
+                  <div className="tab-progress-bar absolute top-0 left-0 w-full h-[3px] bg-white transition-colors" />
                 )}
 
                 <span
-                  style={{ color: isActive ? "#ffffff" : "rgba(255, 255, 255, 0.78)" }}
-                  className={`text-xs sm:text-[14px] leading-snug block whitespace-pre-line ${
-                    isActive ? "font-semibold" : "font-medium hover:text-white"
+                  className={`text-xs sm:text-[13.5px] md:text-[14px] leading-snug block whitespace-pre-line transition-colors duration-200 ${
+                    isActive
+                      ? "font-semibold text-white group-hover:text-[#001438]"
+                      : "font-medium text-white/80 group-hover:text-[#001438]"
                   }`}
                 >
                   {slide.tabTitle}
@@ -223,47 +249,6 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
               </button>
             );
           })}
-
-          {/* Carousel Pause / Play Toggle */}
-          <div className="mb-4 ml-1 hidden sm:block">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              aria-label={isPlaying ? "Pause auto-rotation" : "Play auto-rotation"}
-              title={isPlaying ? "Pause auto-rotation" : "Play auto-rotation"}
-              className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 border border-white/25 text-white flex items-center justify-center transition-all hover:scale-105"
-            >
-              {isPlaying ? (
-                <Pause className="w-3.5 h-3.5 fill-current" />
-              ) : (
-                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Floating Accessibility Widget (Bottom Right corner as in screenshots) */}
-        <div className="relative mb-6 pointer-events-auto">
-          <button
-            onClick={() => setIsAccModalOpen(!isAccModalOpen)}
-            className="w-11 h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105"
-            aria-label="Accessibility settings"
-            title="Accessibility Preferences"
-          >
-            {/* Universal Accessibility Icon */}
-            <svg
-              className="w-6 h-6 fill-current"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="12" cy="4" r="2" />
-              <path d="M15.89 8.11C15.5 7.72 14.83 7 13.53 7h-3.06c-1.3 0-1.97.72-2.36 1.11L4 12.25l1.41 1.41 3.59-3.59V22h2v-6h2v6h2V10.07l3.59 3.59 1.41-1.41-4.11-4.14z" />
-            </svg>
-          </button>
-
-          {/* Accessibility Modal */}
-          <AccessibilityModal
-            isOpen={isAccModalOpen}
-            onClose={() => setIsAccModalOpen(false)}
-          />
         </div>
       </div>
     </section>

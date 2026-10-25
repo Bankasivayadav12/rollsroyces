@@ -5,21 +5,21 @@ import { Mail, Radio, FileText } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#11179c] text-white pt-20 pb-12 px-6 md:px-12 relative z-20">
+    <footer className="w-full bg-[#11179c] text-white pt-14 sm:pt-16 md:pt-20 pb-8 sm:pb-12 px-4 sm:px-6 md:px-12 relative z-20">
       <div className="max-w-[1540px] mx-auto">
         {/* Upper Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 pb-10 sm:pb-16">
           
           {/* Column 1: Brand Motto & Copyright */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div>
-              <p className="text-[17px] sm:text-[18px] font-normal leading-relaxed text-white/95 max-w-sm mb-4">
+              <p className="text-[16px] sm:text-[18px] font-normal leading-relaxed text-white/95 max-w-sm mb-4">
                 A force for progress;<br />
                 powering, protecting and connecting people everywhere.
               </p>
             </div>
 
-            <div className="mt-12 lg:mt-auto pt-6 text-[13.5px] text-white/80 font-normal">
+            <div className="mt-8 sm:mt-12 lg:mt-auto pt-4 sm:pt-6 text-[13px] sm:text-[13.5px] text-white/80 font-normal">
               &copy; Rolls-Royce plc 2026. All rights reserved.
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function Footer() {
             </div>
 
             {/* Right: Legal & Policy Links */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-3 gap-y-2 text-[12.5px] text-white/90 font-normal">
+            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-2.5 sm:gap-x-3 gap-y-1.5 sm:gap-y-2 text-[11.5px] sm:text-[12.5px] text-white/90 font-normal">
               <a href="#" className="hover:underline hover:text-white transition-colors">Site map</a>
               <span className="text-white/40">|</span>
               <a href="#" className="hover:underline hover:text-white transition-colors">Use of cookies</a>

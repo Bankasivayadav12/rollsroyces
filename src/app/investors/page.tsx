@@ -314,11 +314,14 @@ export default function InvestorsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#001e62] selection:text-white">
       {/* 1. Official Global Navbar */}
-      <Navbar onOpenSearch={() => setIsSearchOpen(true)} />
+      <Navbar
+        onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
+        isSearchOpen={isSearchOpen}
+      />
 
       {/* 2. Breadcrumbs Bar */}
       <nav aria-label="Breadcrumb" className="w-full bg-white border-b border-gray-100 py-3.5">
-        <div className="max-w-[1540px] mx-auto px-6 md:px-12 flex items-center gap-2 text-sm">
+        <div className="max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-center gap-2 text-sm">
           <a
             href="/"
             className="text-gray-500 hover:text-[#001e62] transition-colors font-normal"
@@ -331,7 +334,7 @@ export default function InvestorsPage() {
       </nav>
 
       {/* 3. Hero Banner: Trading Update */}
-      <section className="relative w-full min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[340px] sm:min-h-[420px] lg:min-h-[480px] flex items-center overflow-hidden">
         {/* Background photo */}
         <div className="absolute inset-0 z-0">
           <img
@@ -345,40 +348,40 @@ export default function InvestorsPage() {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 max-w-[1540px] mx-auto w-full px-6 md:px-12 py-12 flex items-center">
+        <div className="relative z-10 max-w-[1540px] mx-auto w-full px-4 sm:px-6 md:px-12 py-8 sm:py-12 flex items-center">
           {/* Dark Blue Box matching exact screenshot design */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-[560px] bg-[#000887] text-white p-8 sm:p-12 shadow-2xl rounded-sm"
+            className="w-full max-w-[560px] bg-[#000887] text-white p-6 sm:p-10 md:p-12 shadow-2xl rounded-sm"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-[46px] font-medium tracking-tight mb-2 sm:mb-4 leading-tight">
               Trading Update
             </h1>
-            <p className="text-white/95 text-base sm:text-lg lg:text-[20px] font-normal">
+            <p className="text-white/95 text-sm sm:text-base lg:text-[20px] font-normal">
               7am GMT, 12 November 2026
             </p>
           </motion.div>
         </div>
 
         {/* Down Chevron Indicator */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10">
+        <div className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 z-10">
           <a
             href="#useful-resources"
             aria-label="Scroll to useful resources"
             className="text-white/80 hover:text-white transition-colors duration-300 block"
           >
-            <ChevronDown className="w-8 h-8 stroke-[2.5] animate-bounce" />
+            <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.5] animate-bounce" />
           </a>
         </div>
       </section>
 
-      {/* 4. Section: Useful resources (Fully Functional + Interactive Hover Actions) */}
-      <section id="useful-resources" className="w-full bg-white py-20 sm:py-28">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+      {/* 4. Section: Useful resources */}
+      <section id="useful-resources" className="w-full bg-white py-14 sm:py-20 md:py-28">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
           {/* Centered Title */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-light text-[#0f2942] tracking-tight text-center mb-16 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-light text-[#0f2942] tracking-tight text-center mb-8 sm:mb-14 md:mb-20">
             Useful resources
           </h2>
 
@@ -496,11 +499,11 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* 5. Section: Latest press releases (Full functional carousel & interactive hover actions) */}
-      <section className="w-full bg-white py-16 sm:py-24 border-t border-gray-100">
-        <div className="max-w-[1540px] mx-auto px-6 md:px-12">
+      {/* 5. Section: Latest press releases */}
+      <section className="w-full bg-white py-12 sm:py-16 md:py-24 border-t border-gray-100">
+        <div className="max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12">
           {/* Centered Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-light text-[#0f2942] tracking-tight text-center mb-16 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-light text-[#0f2942] tracking-tight text-center mb-8 sm:mb-14 md:mb-20">
             Latest press releases
           </h2>
 
@@ -625,19 +628,32 @@ export default function InvestorsPage() {
       {/* 7. Official Rolls-Royce Footer */}
       <Footer />
 
-      {/* 8. Floating Accessibility Widget */}
-      <button
-        onClick={() => setIsAccessibilityOpen(true)}
-        aria-label="Open accessibility options"
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#00009c] hover:bg-[#0808a3] text-white rounded-md flex items-center justify-center shadow-2xl transition-transform hover:scale-105 active:scale-95"
-      >
-        <UserCheck className="w-6 h-6 stroke-[2.2]" />
-      </button>
+      {/* 8. Floating Accessibility Widget - Fixed to bottom right on scroll */}
+      <div className="fixed bottom-5 sm:bottom-6 right-4 sm:right-6 z-50">
+        <button
+          onClick={() => setIsAccessibilityOpen(!isAccessibilityOpen)}
+          aria-label="Accessibility settings"
+          title="Accessibility Preferences"
+          className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105 active:scale-95"
+        >
+          {/* Universal Accessibility Icon */}
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="4" r="2" />
+            <path d="M15.89 8.11C15.5 7.72 14.83 7 13.53 7h-3.06c-1.3 0-1.97.72-2.36 1.11L4 12.25l1.41 1.41 3.59-3.59V22h2v-6h2v6h2V10.07l3.59 3.59 1.41-1.41-4.11-4.14z" />
+          </svg>
+        </button>
+
+        {/* Accessibility Modal */}
+        <AccessibilityModal
+          isOpen={isAccessibilityOpen}
+          onClose={() => setIsAccessibilityOpen(false)}
+        />
+      </div>
 
       {/* 9. Useful Resource Interactive Modal */}
       <AnimatePresence>
         {selectedResource && (
-          <div className="fixed inset-0 z-[130] flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-black/75 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[130] flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-black/75 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -646,16 +662,16 @@ export default function InvestorsPage() {
               className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-gray-200"
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 bg-[#001438] text-white border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#00a3e0] bg-white/10 px-2.5 py-1 rounded">
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 bg-[#001438] text-white border-b border-white/10">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#00a3e0] bg-white/10 px-2 sm:px-2.5 py-1 rounded">
                     {selectedResource.modalCategory}
                   </span>
-                  <span className="text-xs text-white/80">Rolls-Royce Investor Centre</span>
+                  <span className="text-xs text-white/80 hidden xs:inline">Rolls-Royce Investor Centre</span>
                 </div>
                 <button
                   onClick={() => setSelectedResource(null)}
-                  className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                  className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
                   aria-label="Close resource modal"
                 >
                   <X className="w-5 h-5" />
@@ -663,29 +679,29 @@ export default function InvestorsPage() {
               </div>
 
               {/* Modal Body */}
-              <div className="overflow-y-auto p-6 sm:p-10">
-                <h2 className="text-2xl sm:text-3xl font-light text-[#0f2942] tracking-tight leading-snug mb-3">
+              <div className="overflow-y-auto p-4 sm:p-7 md:p-10">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-[#0f2942] tracking-tight leading-snug mb-2 sm:mb-3">
                   {selectedResource.modalTitle}
                 </h2>
-                <p className="text-gray-600 mb-8">{selectedResource.description}</p>
+                <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">{selectedResource.description}</p>
 
                 {/* Conditional Content by Resource Type */}
                 {selectedResource.id === "results" && (
                   <div className="space-y-6">
-                    <div className="bg-[#f0f7ff] p-5 rounded-md border border-blue-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div className="bg-[#f0f7ff] p-4 sm:p-5 rounded-md border border-blue-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div>
-                        <h4 className="font-bold text-[#001e62] text-lg">Half Year 2026 Results Webcast</h4>
-                        <p className="text-sm text-gray-600">Presented by Chief Executive & Chief Financial Officer</p>
+                        <h4 className="font-bold text-[#001e62] text-base sm:text-lg">Half Year 2026 Results Webcast</h4>
+                        <p className="text-xs sm:text-sm text-gray-600">Presented by Chief Executive & Chief Financial Officer</p>
                       </div>
                       <button
                         onClick={() => alert("Launching live webcast replay...")}
-                        className="px-4 py-2 bg-[#0062ff] hover:bg-[#0052cc] text-white font-medium text-sm rounded transition-colors"
+                        className="px-4 py-2 bg-[#0062ff] hover:bg-[#0052cc] text-white font-medium text-xs sm:text-sm rounded transition-colors shrink-0"
                       >
                         Watch Webcast
                       </button>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       <div className="p-4 border border-gray-200 rounded-md hover:border-blue-400 transition-colors">
                         <FileText className="w-5 h-5 text-blue-600 mb-2" />
                         <h5 className="font-semibold text-gray-900 text-sm">HY 2026 Results Statement (PDF)</h5>
@@ -704,14 +720,14 @@ export default function InvestorsPage() {
 
                 {selectedResource.id === "consensus" && (
                   <div className="space-y-6">
-                    <div className="border border-gray-200 rounded-md overflow-hidden">
-                      <table className="w-full text-left text-sm">
+                    <div className="border border-gray-200 rounded-md overflow-x-auto">
+                      <table className="w-full text-left text-xs sm:text-sm min-w-[460px]">
                         <thead className="bg-gray-50 border-b border-gray-200 text-gray-600 font-semibold">
                           <tr>
-                            <th className="p-3">Financial Metric</th>
-                            <th className="p-3">Consensus (Mean)</th>
-                            <th className="p-3">High</th>
-                            <th className="p-3">Low</th>
+                            <th className="p-2.5 sm:p-3">Financial Metric</th>
+                            <th className="p-2.5 sm:p-3">Consensus (Mean)</th>
+                            <th className="p-2.5 sm:p-3">High</th>
+                            <th className="p-2.5 sm:p-3">Low</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100 text-gray-800">

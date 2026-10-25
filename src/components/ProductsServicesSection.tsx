@@ -44,20 +44,20 @@ const divisions = [
 
 export default function ProductsServicesSection() {
   return (
-    <section className="w-full bg-white py-24 px-6 md:px-12 border-b border-gray-100">
+    <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
       <div className="max-w-[1540px] mx-auto">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-5">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-3 sm:mb-5">
             Products &amp; Services
           </h2>
-          <p className="text-gray-600 text-base sm:text-[17px] leading-relaxed font-normal">
+          <p className="text-gray-600 text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
             We develop and deliver complex power and propulsion solutions for safety-critical applications in the air, at sea and on land.
           </p>
         </div>
 
         {/* 3 Showcase Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {divisions.map((div, idx) => (
             <motion.a
               key={div.title}
@@ -66,7 +66,7 @@ export default function ProductsServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: idx * 0.12, ease: "easeOut" }}
-              className="relative aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950"
+              className="relative aspect-[16/10] sm:aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950"
             >
               {/* Background Image */}
               <img
@@ -78,10 +78,10 @@ export default function ProductsServicesSection() {
               {/* Gradient Vignette */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 group-hover:from-black/70 group-hover:to-black/80 transition-colors duration-500" />
 
-              {/* Label & Icon at Top Left (Exact Screenshot Style) */}
-              <div className="absolute top-6 left-6 z-10 flex items-center gap-3">
+              {/* Label & Icon at Top Left */}
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 flex items-center gap-2.5 sm:gap-3">
                 <span className="opacity-95">{div.icon}</span>
-                <span className="text-white text-2xl lg:text-[26px] font-normal tracking-wide">
+                <span className="text-white text-xl sm:text-2xl lg:text-[26px] font-normal tracking-wide">
                   {div.title}
                 </span>
               </div>

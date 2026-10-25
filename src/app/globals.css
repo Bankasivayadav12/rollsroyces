@@ -21,10 +21,35 @@ body {
   background: rgba(255, 255, 255, 0.16) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.3s ease;
+}
+
+.glass-tab-inactive {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.3s ease;
+}
+
+.glass-tab-active:hover,
+.glass-tab-inactive:hover {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+.glass-tab-active:hover span,
+.glass-tab-inactive:hover span {
+  color: #001438 !important;
+}
+
+.glass-tab-active:hover .tab-progress-bar {
+  background: #001438 !important;
+  box-shadow: 0 0 8px rgba(0, 20, 56, 0.4) !important;
 }
 
 .glass-pill-btn {
@@ -40,3 +65,18 @@ body {
   border-color: #ffffff;
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
 }
+
+/* Hide scrollbar completely across Chrome, Safari, Edge, Firefox */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+

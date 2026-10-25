@@ -71,10 +71,13 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white flex flex-col selection:bg-[#001e62] selection:text-white">
       {/* 1. Main Navigation Bar */}
-      <Navbar onOpenSearch={() => setIsSearchOpen(true)} />
+      <Navbar
+        onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
+        isSearchOpen={isSearchOpen}
+      />
 
       {/* 2. Breadcrumbs Bar */}
-      <div className="w-full bg-white border-b border-gray-100 py-3.5 px-6 md:px-12 text-sm">
+      <div className="w-full bg-white border-b border-gray-100 py-3.5 px-4 sm:px-6 md:px-12 text-sm">
         <div className="max-w-[1540px] mx-auto flex items-center gap-2 text-gray-600 font-normal">
           <a href="/" className="hover:text-[#001e62] transition-colors">
             Home
@@ -84,8 +87,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* 3. About Hero Section with Spheres Visual (Screenshot 1) */}
-      <section className="relative w-full h-[520px] sm:h-[580px] lg:h-[620px] bg-[#03091e] overflow-hidden">
+      {/* 3. About Hero Section with Spheres Visual */}
+      <section className="relative w-full min-h-[440px] sm:min-h-[520px] lg:h-[620px] bg-[#03091e] overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('/assets/images/about-hero.jpg')` }}
@@ -93,22 +96,22 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/60" />
         </div>
 
-        <div className="relative z-10 w-full h-full max-w-[1540px] mx-auto px-6 md:px-12 flex items-center justify-center lg:justify-end">
+        <div className="relative z-10 w-full h-full max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 py-12 flex items-center justify-center lg:justify-end">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full max-w-[560px] bg-[#061129]/75 backdrop-blur-xl border border-white/15 p-8 sm:p-12 rounded-sm shadow-2xl text-white"
+            className="w-full max-w-[560px] bg-[#061129]/75 backdrop-blur-xl border border-white/15 p-6 sm:p-10 lg:p-12 rounded-sm shadow-2xl text-white"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3 sm:mb-4 leading-tight">
               Rolls-Royce
             </h1>
-            <p className="text-white/90 text-lg sm:text-[20px] leading-relaxed font-normal mb-8">
+            <p className="text-white/90 text-base sm:text-lg lg:text-[20px] leading-relaxed font-normal mb-6 sm:mb-8">
               Powering, protecting and connecting the modern world
             </p>
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="inline-flex items-center gap-3 px-7 py-3 rounded-full border-[1.8px] border-white text-white font-bold text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#001438] transition-all duration-300 hover:scale-105 group"
+              className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#001438] transition-all duration-300 hover:scale-105 group"
             >
               <Play className="w-3.5 h-3.5 fill-current transition-transform group-hover:scale-110" />
               <span>PLAY VIDEO</span>
@@ -119,14 +122,14 @@ export default function AboutPage() {
 
       {/* 4. Subnavigation Bar (Sticks seamlessly directly below the 84px Navbar) */}
       <div className="w-full bg-[#0808a3] text-white sticky top-[84px] z-30 shadow-md">
-        <div className="max-w-[1540px] mx-auto px-6 md:px-12 flex items-center gap-6 sm:gap-10 overflow-x-auto">
+        <div className="max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-center gap-4 sm:gap-8 lg:gap-10 overflow-x-auto no-scrollbar">
           {subNavLinks.map((tab) => {
             const isActive = activeSubTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => scrollToSection(tab.id)}
-                className={`relative py-4 text-[13.5px] sm:text-[14.5px] font-semibold whitespace-nowrap transition-colors ${
+                className={`relative py-3.5 sm:py-4 text-[13px] sm:text-[14.5px] font-semibold whitespace-nowrap transition-colors ${
                   isActive ? "text-white" : "text-white/75 hover:text-white"
                 }`}
               >
@@ -145,15 +148,15 @@ export default function AboutPage() {
 
       {/* 5. Section: About us (#about-us) */}
       <div id="about-us">
-        {/* About Rolls-Royce Editorial Statement (Screenshot 2) */}
-        <section className="w-full bg-white py-24 sm:py-32 px-6 md:px-12 border-b border-gray-100">
+        {/* About Rolls-Royce Editorial Statement */}
+        <section className="w-full bg-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-4xl sm:text-5xl lg:text-[54px] font-light text-[#001438] tracking-[-0.5px] mb-8"
+              className="text-3xl sm:text-4xl lg:text-[54px] font-light text-[#001438] tracking-[-0.5px] mb-4 sm:mb-8"
             >
               About Rolls-Royce
             </motion.h2>
@@ -163,7 +166,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xl sm:text-2xl text-[#334155] leading-relaxed font-normal mb-8"
+              className="text-lg sm:text-xl lg:text-2xl text-[#334155] leading-relaxed font-normal mb-6 sm:mb-8"
             >
               We&apos;ve been at the forefront of innovation for more than a hundred years, helping to power, protect and connect the modern world
             </motion.p>
@@ -180,9 +183,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* The Rolls-Royce Proposition (Screenshot 3) */}
-        <section className="w-full bg-white py-24 px-6 md:px-12 border-b border-gray-100">
-          <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* The Rolls-Royce Proposition */}
+        <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+          <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -206,11 +209,11 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="lg:col-span-7 flex flex-col justify-center"
             >
-              <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-8">
                 The Rolls-Royce proposition
               </h2>
 
-              <ol className="space-y-4 mb-8 text-base sm:text-[17px] text-[#001438] font-medium leading-relaxed">
+              <ol className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-[17px] text-[#001438] font-medium leading-relaxed">
                 <li className="flex gap-2">
                   <span>1.</span>
                   <span>Build a high-performing, competitive and resilient business with profitable growth.</span>
@@ -225,7 +228,7 @@ export default function AboutPage() {
                 </li>
               </ol>
 
-              <div className="space-y-6 text-gray-700 text-base sm:text-[16.5px] leading-[1.75] font-normal">
+              <div className="space-y-4 sm:space-y-6 text-gray-700 text-sm sm:text-base md:text-[16.5px] leading-[1.75] font-normal">
                 <p>
                   Delivering the proposition will make us a stronger partner to our customers as they face future challenges and opportunities. We will unlock our full potential by turning engineering excellence into strong financial performance.
                 </p>
@@ -240,9 +243,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Where We're Going (Screenshot 4) */}
-        <section className="w-full bg-white py-24 px-6 md:px-12 border-b border-gray-100">
-          <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Where We're Going */}
+        <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+          <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -284,18 +287,18 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="lg:col-span-7 flex flex-col justify-center"
             >
-              <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-6">
                 Where we&apos;re going
               </h2>
 
-              <p className="text-gray-700 text-base sm:text-[17px] leading-[1.75] font-normal mb-8 max-w-xl">
+              <p className="text-gray-700 text-sm sm:text-base md:text-[17px] leading-[1.75] font-normal mb-6 sm:mb-8 max-w-xl">
                 Our leadership team made a public announcement about where we&apos;re going and our plans for getting there, at our Capital Markets Day on 28 November 2023. Watch the recording, browse our Virtual Exhibition, and download presentations from the day.
               </p>
 
               <div>
                 <a
                   href="#where-we-are-going"
-                  className="inline-block text-[#001e62] font-bold text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
+                  className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
                 >
                   LEARN MORE
                 </a>
@@ -305,19 +308,19 @@ export default function AboutPage() {
         </section>
       </div>
 
-      {/* 6. Section: Our businesses (#our-businesses) (Screenshot 1) */}
-      <section id="our-businesses" className="w-full bg-white py-28 px-6 md:px-12 border-b border-gray-100">
+      {/* 6. Section: Our businesses (#our-businesses) */}
+      <section id="our-businesses" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
         <div className="max-w-[1540px] mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-3 sm:mb-6">
               Our businesses
             </h2>
-            <p className="text-gray-600 text-base sm:text-[17px] leading-relaxed font-normal">
+            <p className="text-gray-600 text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
               We have a differentiated position with a strong portfolio of products and technologies in attractive markets. Our core operating businesses cover:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
             {businessCards.map((bCard, idx) => (
               <motion.div
                 key={bCard.title}
@@ -325,7 +328,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950 cursor-pointer"
+                className="relative aspect-[16/10] sm:aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950 cursor-pointer"
               >
                 <img
                   src={bCard.image}
@@ -333,9 +336,9 @@ export default function AboutPage() {
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 group-hover:from-black/70 group-hover:to-black/80 transition-colors duration-500" />
-                <div className="absolute top-6 left-6 z-10 flex items-center gap-3">
+                <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 flex items-center gap-2.5 sm:gap-3">
                   <span className="opacity-95">{bCard.icon}</span>
-                  <span className="text-white text-2xl lg:text-[26px] font-normal tracking-wide">
+                  <span className="text-white text-xl sm:text-2xl lg:text-[26px] font-normal tracking-wide">
                     {bCard.title}
                   </span>
                 </div>
@@ -345,9 +348,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. Section: Our strategic framework (#our-strategic-framework) (Screenshot 2) */}
-      <section id="our-strategic-framework" className="w-full bg-white py-28 px-6 md:px-12 border-b border-gray-100">
-        <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* 7. Section: Our strategic framework (#our-strategic-framework) */}
+      <section id="our-strategic-framework" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left Column: Framework Narrative & Button */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -356,18 +359,18 @@ export default function AboutPage() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
-            <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-8">
               Our strategic framework
             </h2>
 
-            <p className="text-gray-700 text-base sm:text-[17px] leading-[1.8] font-normal mb-10 max-w-xl">
+            <p className="text-gray-700 text-sm sm:text-base md:text-[17px] leading-[1.8] font-normal mb-6 sm:mb-10 max-w-xl">
               Our near-term focus areas and strategic priorities are informed by our business environment. Our strategy is delivered by our people, enabled by our business model, enacted by our business units and measured through our KPIs. It’s underpinned by strong governance and leadership, which manages risk and uncertainty, and creates value for all our stakeholders.
             </p>
 
             <div>
               <a
                 href="#strategic-framework-details"
-                className="inline-block text-[#001e62] font-bold text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
+                className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
               >
                 LEARN MORE
               </a>
@@ -393,35 +396,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. Section: Inside Rolls-Royce (#inside-rolls-royce) (Screenshot 3) */}
-      <section id="inside-rolls-royce" className="w-full bg-white py-28 px-6 md:px-12 border-b border-gray-100">
+      {/* 8. Section: Inside Rolls-Royce (#inside-rolls-royce) */}
+      <section id="inside-rolls-royce" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
         <div className="max-w-[1540px] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px]">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px]">
               Inside Rolls-Royce
             </h2>
           </div>
 
           {/* 4 Feature Cards (2x2 Grid) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Card 1: Leadership */}
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
               className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
             >
-              <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden bg-gray-100">
+              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
                   src="/assets/images/inside-leader.jpg"
                   alt="Rolls-Royce Leadership"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-semibold text-[#001e62] mb-2 group-hover:text-[#0a2f8c] transition-colors">
+              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
                   Leadership
                 </h3>
-                <p className="text-gray-600 text-base leading-relaxed font-normal">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
                   Our Board and Executive Team
                 </p>
               </div>
@@ -433,18 +436,18 @@ export default function AboutPage() {
               transition={{ duration: 0.25 }}
               className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
             >
-              <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto p-4 flex items-center justify-center bg-gray-50/50">
+              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto p-4 flex items-center justify-center bg-gray-50/50">
                 <img
                   src="/assets/images/world-map.svg"
                   alt="Where we operate map"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="sm:w-3/5 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-semibold text-[#001e62] mb-2 group-hover:text-[#0a2f8c] transition-colors">
+              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
                   Where we operate
                 </h3>
-                <p className="text-gray-600 text-base leading-relaxed font-normal">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
                   Find out details of our global presence
                 </p>
               </div>
@@ -456,18 +459,18 @@ export default function AboutPage() {
               transition={{ duration: 0.25 }}
               className="rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
             >
-              <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden bg-gray-900">
+              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-900">
                 <img
                   src="/assets/images/inside-research.jpg"
                   alt="Our Research"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-8 flex flex-col justify-center bg-[#0284c7] text-white">
-                <h3 className="text-2xl font-semibold text-white mb-2">
+              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center bg-[#0284c7] text-white">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-1.5 sm:mb-2">
                   Our Research
                 </h3>
-                <p className="text-white/90 text-base leading-relaxed font-normal">
+                <p className="text-white/90 text-sm sm:text-base leading-relaxed font-normal">
                   Find out more about how we structure our research
                 </p>
               </div>
@@ -479,18 +482,18 @@ export default function AboutPage() {
               transition={{ duration: 0.25 }}
               className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
             >
-              <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden bg-gray-100">
+              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
                   src="/assets/images/inside-history.jpg"
                   alt="Rolls-Royce 1906 History"
                   className="w-full h-full object-cover sepia-[0.35] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-semibold text-[#001e62] mb-2 group-hover:text-[#0a2f8c] transition-colors">
+              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
                   Our History
                 </h3>
-                <p className="text-gray-600 text-base leading-relaxed font-normal">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
                   Our company was founded in 1906: use our timeline to discover our key milestones
                 </p>
               </div>
@@ -499,21 +502,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 9. The Rolls-Royce Heritage Trust Banner (Screenshot 4) */}
-      <section className="w-full bg-white py-12 px-6 md:px-12">
+      {/* 9. The Rolls-Royce Heritage Trust Banner */}
+      <section className="w-full bg-white py-10 sm:py-12 px-4 sm:px-6 md:px-12">
         <div className="max-w-[1540px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full bg-[#0808a3] text-white rounded-sm py-14 px-8 sm:px-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl"
+            className="w-full bg-[#0808a3] text-white rounded-sm py-10 sm:py-14 px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 shadow-xl"
           >
             <div className="max-w-2xl">
-              <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white tracking-tight mb-2 sm:mb-3">
                 The Rolls-Royce Heritage Trust
               </h2>
-              <p className="text-white/90 text-base sm:text-lg leading-relaxed font-normal">
+              <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
                 The Rolls-Royce Heritage Trust promotes the history and engineering excellence of Rolls-Royce and its ancestral companies.
               </p>
             </div>
@@ -521,7 +524,7 @@ export default function AboutPage() {
             <div className="shrink-0">
               <a
                 href="#heritage-trust"
-                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#0808a3] transition-all duration-300 hover:scale-105 group"
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#0808a3] transition-all duration-300 hover:scale-105 group"
               >
                 <span>LEARN MORE</span>
                 <ChevronRight className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
@@ -532,7 +535,7 @@ export default function AboutPage() {
       </section>
 
       {/* 10. Clean White Buffer before Footer */}
-      <section className="w-full bg-white py-14 sm:py-20" />
+      <section className="w-full bg-white py-10 sm:py-16 md:py-20" />
 
       {/* 11. Official Rolls-Royce Footer */}
       <Footer />
@@ -586,13 +589,14 @@ export default function AboutPage() {
       />
 
       {/* Floating Accessibility Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-5 sm:bottom-6 right-4 sm:right-6 z-50">
         <button
           onClick={() => setIsAccModalOpen(!isAccModalOpen)}
-          className="w-11 h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105"
+          className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105 active:scale-95"
           aria-label="Accessibility settings"
+          title="Accessibility Preferences"
         >
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
             <circle cx="12" cy="4" r="2" />
             <path d="M15.89 8.11C15.5 7.72 14.83 7 13.53 7h-3.06c-1.3 0-1.97.72-2.36 1.11L4 12.25l1.41 1.41 3.59-3.59V22h2v-6h2v6h2V10.07l3.59 3.59 1.41-1.41-4.11-4.14z" />
           </svg>

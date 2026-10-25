@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   onOpenSearch?: () => void;
+  isSearchOpen?: boolean;
 }
 
-export default function Navbar({ onOpenSearch }: NavbarProps) {
+export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -55,20 +56,20 @@ export default function Navbar({ onOpenSearch }: NavbarProps) {
           isScrolled ? "shadow-md" : "border-b border-gray-100"
         }`}
       >
-        <div className="max-w-[1540px] mx-auto w-full flex items-center justify-between px-6 md:px-12 h-full relative">
+        <div className="max-w-[1540px] mx-auto w-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 h-full relative">
           {/* Left Group: Rolls-Royce Logo + Navigation Links */}
-          <div className="flex items-center gap-8 xl:gap-11 h-full">
+          <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 xl:gap-11 h-full">
             <a href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls-Royce Home">
               <RollsRoyceLogo />
             </a>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-9">
+            <ul className="hidden md:flex items-center gap-4 lg:gap-7 xl:gap-9">
               {navLinks.map((link) => (
                 <li key={link.name} className="relative flex items-center">
                   <a
                     href={link.href}
-                    className="text-[15.5px] lg:text-[16px] font-semibold text-[#001e62] hover:text-[#0a2f8c] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap"
+                    className="text-[14px] lg:text-[15.5px] xl:text-[16px] font-semibold text-[#001e62] hover:text-[#0a2f8c] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap"
                   >
                     {link.name}
                     {/* Hover indicator line */}
@@ -79,27 +80,28 @@ export default function Navbar({ onOpenSearch }: NavbarProps) {
             </ul>
           </div>
 
-          {/* Right Group: Search Icon & Expandable Search Bar on Far Right */}
-          <div className="flex items-center gap-3">
-            {/* Desktop Expandable Search Bar */}
+          {/* Right Group: Single Search Icon (Mobile & Desktop) + Mobile Hamburger */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
+            {/* Search Trigger / Expandable Bar */}
             <div className="relative flex items-center">
-              <AnimatePresence>
-                {isSearchActive ? (
+              <AnimatePresence mode="wait">
+                {isSearchActive && !onOpenSearch ? (
                   <motion.div
+                    key="active-search-bar"
                     initial={{ opacity: 0, width: 40 }}
                     animate={{ opacity: 1, width: "auto" }}
                     exit={{ opacity: 0, width: 40 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="flex items-center bg-gray-50 border border-gray-300 rounded-full px-4 py-1.5 shadow-inner"
+                    className="flex items-center bg-gray-50 border border-gray-300 rounded-full px-3.5 sm:px-4 py-1.5 shadow-inner"
                   >
-                    <Search className="w-4 h-4 text-[#001e62] shrink-0 mr-2.5" />
+                    <Search className="w-4 h-4 text-[#001e62] shrink-0 mr-2" />
                     <input
                       ref={inputRef}
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search Rolls-Royce..."
-                      className="w-48 sm:w-64 lg:w-80 bg-transparent text-sm text-[#001e62] placeholder-gray-400 focus:outline-none"
+                      placeholder="Search..."
+                      className="w-36 sm:w-60 lg:w-72 bg-transparent text-sm text-[#001e62] placeholder-gray-400 focus:outline-none"
                     />
                     <button
                       onClick={() => {
@@ -114,9 +116,20 @@ export default function Navbar({ onOpenSearch }: NavbarProps) {
                   </motion.div>
                 ) : (
                   <button
-                    onClick={() => setIsSearchActive(true)}
-                    className="p-2.5 rounded-full text-[#001e62] hover:bg-blue-50 transition-all hover:scale-110 active:scale-95 flex items-center justify-center"
-                    aria-label="Open search bar"
+                    key="search-trigger-btn"
+                    onClick={() => {
+                      if (onOpenSearch) {
+                        onOpenSearch();
+                      } else {
+                        setIsSearchActive(true);
+                      }
+                    }}
+                    className={`p-2 sm:p-2.5 rounded-full transition-all hover:scale-105 active:scale-95 flex items-center justify-center ${
+                      isSearchOpen
+                        ? "text-[#e40046] hover:bg-pink-50"
+                        : "text-[#001e62] hover:bg-blue-50"
+                    }`}
+                    aria-label="Open search"
                   >
                     <Search className="w-5 h-5 stroke-[2.4]" />
                   </button>
@@ -124,25 +137,14 @@ export default function Navbar({ onOpenSearch }: NavbarProps) {
               </AnimatePresence>
             </div>
 
-            {/* Mobile Search Trigger */}
-            <div className="flex md:hidden items-center gap-1">
-              {!isSearchActive && (
-                <button
-                  onClick={() => setIsSearchActive(true)}
-                  className="p-2 rounded-full text-[#001e62] hover:bg-gray-100"
-                  aria-label="Open search"
-                >
-                  <Search className="w-5 h-5 stroke-[2.4]" />
-                </button>
-              )}
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-lg text-[#001e62] hover:bg-gray-100"
-                aria-label="Toggle menu"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
-            </div>
+            {/* Mobile Hamburger Menu Toggle (Only on Mobile & Tablet < md) */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="md:hidden p-2 rounded-lg text-[#001e62] hover:bg-gray-100 transition-colors flex items-center justify-center"
+              aria-label="Toggle navigation menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </nav>
@@ -171,18 +173,37 @@ export default function Navbar({ onOpenSearch }: NavbarProps) {
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1 rounded-full text-gray-500 hover:text-gray-900"
+                    aria-label="Close navigation drawer"
                   >
                     <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <ul className="py-6 space-y-4">
+                {/* Quick Search Button in Mobile Drawer */}
+                <div className="mt-4 mb-2">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      if (onOpenSearch) {
+                        onOpenSearch();
+                      } else {
+                        setIsSearchActive(true);
+                      }
+                    }}
+                    className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-600 border border-gray-200 transition-colors"
+                  >
+                    <Search className="w-4 h-4 text-gray-500" />
+                    <span>Search Rolls-Royce...</span>
+                  </button>
+                </div>
+
+                <ul className="py-4 space-y-3">
                   {navLinks.map((link) => (
                     <li key={link.name}>
                       <a
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-lg font-semibold text-[#001e62] hover:text-[#0a2f8c] block py-1"
+                        className="text-base sm:text-lg font-semibold text-[#001e62] hover:text-[#0a2f8c] block py-1.5 transition-colors"
                       >
                         {link.name}
                       </a>

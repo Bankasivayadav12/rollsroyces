@@ -36,7 +36,7 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
           />
 
           {/* Drawer Panel */}
-          <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
+          <div className="fixed inset-y-0 right-0 flex max-w-full pl-0 sm:pl-10">
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -46,7 +46,7 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
             >
               {/* Header */}
               <div>
-                <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100">
+                <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-6 border-b border-gray-100">
                   <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-[#001e62]">
                     {story.category}
                   </span>
@@ -59,8 +59,8 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
                 </div>
 
                 {/* Content */}
-                <div className="px-8 py-6">
-                  <div className="w-full h-64 rounded-lg overflow-hidden mb-6 shadow-md bg-gray-900">
+                <div className="px-5 sm:px-8 py-5 sm:py-6">
+                  <div className="w-full h-52 sm:h-64 rounded-lg overflow-hidden mb-6 shadow-md bg-gray-900">
                     <img
                       src={story.image}
                       alt={story.title}
@@ -68,15 +68,15 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
                     />
                   </div>
 
-                  <h2 className="text-3xl font-bold text-[#001438] leading-tight mb-4">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#001438] leading-tight mb-4">
                     {story.title}
                   </h2>
 
-                  <p className="text-gray-600 text-base leading-relaxed mb-6">
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
                     {story.description}
                   </p>
 
-                  <div className="bg-[#001438] text-white p-4 rounded-lg mb-8">
+                  <div className="bg-[#001438] text-white p-4 rounded-lg mb-6 sm:mb-8">
                     <span className="text-xs uppercase tracking-widest text-blue-300 font-bold block mb-1">
                       Key Engineering Innovation
                     </span>
@@ -87,16 +87,16 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
                   <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-4">
                     Technical Specifications
                   </h3>
-                  <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
                     {story.specs.map((item, idx) => (
                       <div
                         key={idx}
-                        className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#001e62]"
+                        className="bg-gray-50 p-3.5 sm:p-4 rounded-lg border-l-4 border-[#001e62]"
                       >
-                        <div className="text-xl font-bold text-[#001438]">
+                        <div className="text-lg sm:text-xl font-bold text-[#001438]">
                           {item.value}
                         </div>
-                        <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-1">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-0.5 sm:mt-1">
                           {item.label}
                         </div>
                       </div>
@@ -106,7 +106,7 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
               </div>
 
               {/* Action Footer */}
-              <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 flex flex-col gap-3">
+              <div className="px-5 sm:px-8 py-4 sm:py-6 bg-gray-50 border-t border-gray-100 flex flex-col gap-3">
                 <button className="w-full py-3.5 px-6 rounded bg-[#001e62] hover:bg-[#001438] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
                   <Download className="w-4 h-4" />
                   <span>Download Technical Datasheet</span>

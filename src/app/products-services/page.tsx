@@ -91,7 +91,10 @@ export default function ProductsServicesPage() {
   return (
     <main className="min-h-screen bg-white flex flex-col selection:bg-[#001e62] selection:text-white">
       {/* 1. Main Navigation Bar */}
-      <Navbar onOpenSearch={() => setIsSearchOpen(true)} />
+      <Navbar
+        onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
+        isSearchOpen={isSearchOpen}
+      />
 
       {/* 2. Breadcrumbs Bar (Screenshot 1) */}
       <div className="w-full bg-white border-b border-gray-100 py-3.5 px-6 md:px-12 text-sm">
@@ -193,13 +196,14 @@ export default function ProductsServicesPage() {
       />
 
       {/* Floating Accessibility Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-5 sm:bottom-6 right-4 sm:right-6 z-50">
         <button
           onClick={() => setIsAccModalOpen(!isAccModalOpen)}
-          className="w-11 h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105"
+          className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0000a0] hover:bg-[#0000c8] text-white rounded-md flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,160,0.5)] transition-all hover:scale-105 active:scale-95"
           aria-label="Accessibility settings"
+          title="Accessibility Preferences"
         >
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
             <circle cx="12" cy="4" r="2" />
             <path d="M15.89 8.11C15.5 7.72 14.83 7 13.53 7h-3.06c-1.3 0-1.97.72-2.36 1.11L4 12.25l1.41 1.41 3.59-3.59V22h2v-6h2v6h2V10.07l3.59 3.59 1.41-1.41-4.11-4.14z" />
           </svg>

@@ -40,17 +40,17 @@ const newsItems = [
 
 export default function LatestUpdatesSection() {
   return (
-    <section className="w-full bg-white py-24 px-6 md:px-12 border-b border-gray-100">
+    <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
       <div className="max-w-[1540px] mx-auto">
         {/* Section Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-light text-[#001438] tracking-[-0.5px]">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px]">
             Latest updates
           </h2>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {newsItems.map((item, idx) => (
             <motion.a
               key={item.id}
@@ -63,7 +63,7 @@ export default function LatestUpdatesSection() {
             >
               <div>
                 {/* Image */}
-                <div className="aspect-[16/10] overflow-hidden rounded-sm bg-gray-100 mb-5 shadow-sm">
+                <div className="aspect-[16/10] overflow-hidden rounded-sm bg-gray-100 mb-4 sm:mb-5 shadow-sm">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -72,13 +72,13 @@ export default function LatestUpdatesSection() {
                 </div>
 
                 {/* News Headline */}
-                <h3 className="text-[20px] font-medium text-[#001e62] group-hover:text-[#0a2f8c] leading-[1.35] tracking-tight mb-6 line-clamp-3 transition-colors">
+                <h3 className="text-lg sm:text-[20px] font-medium text-[#001e62] group-hover:text-[#0a2f8c] leading-[1.35] tracking-tight mb-4 sm:mb-6 line-clamp-3 transition-colors">
                   {item.title}
                 </h3>
               </div>
 
               {/* Card Footer Divider & Info */}
-              <div className="pt-4 border-t border-gray-200 flex items-center justify-between text-[11.5px] font-semibold text-gray-500 uppercase tracking-wider">
+              <div className="pt-3 sm:pt-4 border-t border-gray-200 flex items-center justify-between text-[11px] sm:text-[11.5px] font-semibold text-gray-500 uppercase tracking-wider">
                 <span>{item.type}</span>
                 <span className="font-medium text-gray-400">{item.date}</span>
               </div>
