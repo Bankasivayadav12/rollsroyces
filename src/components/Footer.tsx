@@ -30,38 +30,22 @@ export default function Footer() {
               HOME
             </h4>
             <ul className="space-y-3.5 text-[14px] text-white/90 font-normal">
-              <li><a href="#about" className="hover:text-white hover:underline transition-colors">About</a></li>
-              <li><a href="#products-services" className="hover:text-white hover:underline transition-colors">Products &amp; Services</a></li>
-              <li><a href="#innovation" className="hover:text-white hover:underline transition-colors">Innovation</a></li>
-              <li><a href="#sustainability" className="hover:text-white hover:underline transition-colors">Sustainability</a></li>
-              <li><a href="#investors" className="hover:text-white hover:underline transition-colors">Investors</a></li>
-              <li><a href="#media" className="hover:text-white hover:underline transition-colors">Media</a></li>
-              <li><a href="#careers" className="hover:text-white hover:underline transition-colors">Careers</a></li>
+              <li><a href="/about" className="hover:text-white hover:underline transition-colors">About</a></li>
+              <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Products &amp; Services</a></li>
+              <li><a href="/innovation" className="hover:text-white hover:underline transition-colors">Innovation</a></li>
             </ul>
           </div>
 
-          {/* Column 3: Products & Services + Suppliers & Partners */}
+          {/* Column 3: Products & Services */}
           <div className="lg:col-span-3">
-            <div className="mb-8">
+            <div>
               <h4 className="text-[12px] font-bold tracking-[1.5px] uppercase text-white mb-5">
                 PRODUCTS &amp; SERVICES
               </h4>
               <ul className="space-y-3 text-[14px] text-white/90 font-normal">
-                <li><a href="#civil-aerospace" className="hover:text-white hover:underline transition-colors">Civil Aerospace</a></li>
-                <li><a href="#defence" className="hover:text-white hover:underline transition-colors">Defence</a></li>
-                <li><a href="#power-systems" className="hover:text-white hover:underline transition-colors">Power Systems</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-[12px] font-bold tracking-[1.5px] uppercase text-white mb-5">
-                SUPPLIERS &amp; PARTNERS
-              </h4>
-              <ul className="space-y-3 text-[14px] text-white/90 font-normal">
-                <li><a href="#" className="hover:text-white hover:underline transition-colors">Supplier Home</a></li>
-                <li><a href="#" className="hover:text-white hover:underline transition-colors">Supplier Code of Conduct</a></li>
-                <li><a href="#" className="hover:text-white hover:underline transition-colors">Global Supplier Portal</a></li>
-                <li><a href="#" className="hover:text-white hover:underline transition-colors">Prospective Suppliers</a></li>
+                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Civil Aerospace</a></li>
+                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Defence</a></li>
+                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Power Systems</a></li>
               </ul>
             </div>
           </div>
@@ -130,12 +114,7 @@ export default function Footer() {
                     <span>Contact us</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="flex items-center gap-3 hover:text-white group">
-                    <FileText className="w-4 h-4 stroke-[2.2] shrink-0 opacity-90 group-hover:opacity-100" />
-                    <span>Vulnerability Reporting</span>
-                  </a>
-                </li>
+               
               </ul>
             </div>
           </div>
@@ -158,17 +137,17 @@ export default function Footer() {
 
             {/* Right: Legal & Policy Links */}
             <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-2.5 sm:gap-x-3 gap-y-1.5 sm:gap-y-2 text-[11.5px] sm:text-[12.5px] text-white/90 font-normal">
-              <a href="#" className="hover:underline hover:text-white transition-colors">Site map</a>
+              <a href="/site-map" className="hover:underline hover:text-white transition-colors">Site map</a>
               <span className="text-white/40">|</span>
-              <a href="#" className="hover:underline hover:text-white transition-colors">Use of cookies</a>
+              <a href="/cookies" className="hover:underline hover:text-white transition-colors">Use of cookies</a>
               <span className="text-white/40">|</span>
-              <a href="#" className="hover:underline hover:text-white transition-colors">Cookie Settings</a>
+              <a href="/cookie-settings" className="hover:underline hover:text-white transition-colors">Cookie Settings</a>
               <span className="text-white/40">|</span>
-              <a href="#" className="hover:underline hover:text-white transition-colors">Legal information</a>
+              <a href="/legal" className="hover:underline hover:text-white transition-colors">Legal information</a>
               <span className="text-white/40">|</span>
-              <a href="#" className="hover:underline hover:text-white transition-colors">Data privacy</a>
+              <a href="/privacy" className="hover:underline hover:text-white transition-colors">Data privacy</a>
               <span className="text-white/40">|</span>
-              <a href="#" className="hover:underline hover:text-white transition-colors">Anti-slavery statement</a>
+              <a href="/anti-slavery" className="hover:underline hover:text-white transition-colors">Anti-slavery statement</a>
             </div>
           </div>
         </div>
