@@ -20,7 +20,7 @@ export const slidesData: (StoryData & {
     slideTitle: "Introducing the\nTrent 1000 XE",
     tabTitle: "Introducing the\nTrent 1000 XE",
     buttonText: "FIND OUT MORE",
-    align: "right",
+    align: "left",
     image: "/assets/images/trent-xe.jpg",
     description:
       "The Trent 1000 XE represents our next technological leap for the Boeing 787 Dreamliner family. Combining high-pressure turbine advancements with advanced aerodynamics, it delivers unmatched fuel efficiency, durability, and on-wing time.",
@@ -187,11 +187,12 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
 
               <button
                 onClick={() => onOpenStory(activeData)}
-                className="inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full glass-pill-btn text-white font-bold text-xs sm:text-[13.5px] uppercase tracking-[1.4px] transition-all duration-300 hover:scale-105 group"
-                style={{ color: "#ffffff" }}
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full glass-pill-btn text-white hover:text-[#001438] font-bold text-xs sm:text-[13.5px] uppercase tracking-[1.4px] transition-all duration-300 hover:scale-105 group cursor-pointer"
               >
-                <span>{activeData.buttonText}</span>
-                <ChevronRight className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
+                <span className="text-white group-hover:text-[#001438] transition-colors duration-200">
+                  {activeData.buttonText}
+                </span>
+                <ChevronRight className="w-4 h-4 stroke-[2.5] text-white group-hover:text-[#001438] transition-all duration-300 group-hover:translate-x-1" />
               </button>
             </motion.div>
           </AnimatePresence>

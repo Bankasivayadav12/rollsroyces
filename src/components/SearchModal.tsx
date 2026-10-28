@@ -82,18 +82,17 @@ export default function SearchModal({
   onSelectStory,
 }: SearchModalProps) {
   const router = useRouter();
-  const [query, setQuery] = useState("about");
+  const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
-      // Focus the input when modal opens
+      setQuery("");
       setTimeout(() => {
         if (inputRef.current) {
           inputRef.current.focus();
-          inputRef.current.select();
         }
-      }, 50);
+      }, 60);
     }
   }, [isOpen]);
 
@@ -111,7 +110,7 @@ export default function SearchModal({
   const getSuggestions = (): SuggestionItem[] => {
     const clean = query.trim().toLowerCase();
     if (!clean) {
-      return autoSearchDB["about"];
+      return [];
     }
 
     // Direct key matches
@@ -162,6 +161,9 @@ export default function SearchModal({
     e.preventDefault();
     if (suggestions.length > 0) {
       handleSelect(suggestions[0]);
+    } else if (query.trim()) {
+      router.push(`/about`);
+      onClose();
     }
   };
 
@@ -179,50 +181,57 @@ export default function SearchModal({
           <button
             onClick={onClose}
             aria-label="Close search"
-            className="absolute top-6 sm:top-8 right-6 sm:right-10 text-white/90 hover:text-white transition-all hover:scale-110 active:scale-95 p-2 z-50"
+            className="absolute top-6 sm:top-8 right-6 sm:right-10 text-white/90 hover:text-white transition-all hover:scale-110 active:scale-95 p-2 z-50 cursor-pointer"
           >
             <X className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
           </button>
 
-          {/* Central Auto-Search Area */}
-          <div className="w-full max-w-[640px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 md:pt-16 pb-20">
+          {/* Central Search Area */}
+          <div className="w-full max-w-[680px] mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-20">
             <form onSubmit={handleSubmit} className="w-full">
-              {/* Search Input Bar with Icon */}
-              <div className="relative flex items-center border-b-2 border-white/50 focus-within:border-white pb-2.5 transition-colors">
+              {/* Search Input Bar with Magenta Underline matching screenshot */}
+              <div className="relative flex items-center border-b-2 border-[#e40046] pb-2 sm:pb-3 transition-colors">
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search..."
-                  className="w-full bg-transparent text-3xl sm:text-4xl md:text-[46px] font-bold text-white tracking-tight outline-none placeholder:text-white/40 caret-white pr-12 font-sans"
+                  placeholder="Search"
+                  className="w-full bg-transparent text-3xl sm:text-4xl md:text-[50px] font-bold text-white tracking-tight outline-none placeholder:text-white placeholder:font-bold caret-white pr-12 font-sans"
                 />
                 <button
                   type="submit"
                   aria-label="Submit search"
-                  className="absolute right-0 bottom-2 text-white hover:opacity-85 transition-opacity"
+                  className="absolute right-0 bottom-2.5 text-white hover:opacity-85 transition-opacity cursor-pointer"
                 >
-                  <Search className="w-7 h-7 sm:w-9 sm:h-9 text-white stroke-[2.8]" />
+                  <Search className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-white stroke-[3]" />
                 </button>
               </div>
 
-              {/* White Auto-Search Suggestions Dropdown Box */}
-              <div className="w-full bg-white shadow-2xl mt-0 overflow-hidden">
-                {suggestions.map((item, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => handleSelect(item)}
-                    className="py-3 sm:py-3.5 px-5 sm:px-6 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-colors border-b border-gray-100 last:border-b-0 group"
-                  >
-                    <span className="text-slate-800 text-lg sm:text-[19px] font-normal group-hover:text-[#001e62] transition-colors">
-                      {item.text}
-                    </span>
-                    <span className="text-slate-500 font-normal text-sm sm:text-base ml-4">
-                      ({item.count})
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {/* Helper text on right below the magenta line */}
+              <p className="text-white/80 text-xs sm:text-[13px] font-normal tracking-wide text-right mt-2 sm:mt-2.5">
+                Press ENTER to search or ESC to close
+              </p>
+
+              {/* White Auto-Search Suggestions Dropdown Box (When user types) */}
+              {query.trim().length > 0 && suggestions.length > 0 && (
+                <div className="w-full bg-white shadow-2xl mt-3 overflow-hidden">
+                  {suggestions.map((item, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => handleSelect(item)}
+                      className="py-3 sm:py-3.5 px-5 sm:px-6 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-colors border-b border-gray-100 last:border-b-0 group"
+                    >
+                      <span className="text-slate-800 text-lg sm:text-[19px] font-normal group-hover:text-[#001e62] transition-colors">
+                        {item.text}
+                      </span>
+                      <span className="text-slate-500 font-normal text-sm sm:text-base ml-4">
+                        ({item.count})
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </form>
           </div>
         </motion.div>

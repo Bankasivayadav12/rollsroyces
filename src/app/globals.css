@@ -60,10 +60,16 @@ body {
 }
 
 .glass-pill-btn:hover {
-  background: #ffffff;
-  color: #001438;
-  border-color: #ffffff;
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
+  background: #ffffff !important;
+  color: #001438 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35) !important;
+}
+
+.glass-pill-btn:hover span,
+.glass-pill-btn:hover svg {
+  color: #001438 !important;
+  stroke: #001438 !important;
 }
 
 /* Hide scrollbar completely across Chrome, Safari, Edge, Firefox */

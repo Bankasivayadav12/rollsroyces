@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const newsItems = [
   {
     id: 1,
-    title: "Rolls-Royce strengthens freighter market position...",
+    title: "Rolls-Royce strengthens freighter market position with Trent 7000 agreements",
     image: "/assets/images/news-a350f.jpg",
     type: "PRESS RELEASES",
     date: "29 SEPTEMBER 2026",
@@ -14,7 +14,7 @@ const newsItems = [
   },
   {
     id: 2,
-    title: "Rolls-Royce invests £300 million in UK...",
+    title: "Rolls-Royce invests £300 million in UK manufacturing facilities to boost aerospace capabilities",
     image: "/assets/images/news-turbine.jpg",
     type: "PRESS RELEASES",
     date: "28 SEPTEMBER 2026",
@@ -22,7 +22,7 @@ const newsItems = [
   },
   {
     id: 3,
-    title: "Rolls-Royce Completes $1 Billion Investment in...",
+    title: "Rolls-Royce Completes $1 Billion Investment in Global Advanced Manufacturing Footprint",
     image: "/assets/images/news-ribbon.jpg",
     type: "PRESS RELEASES",
     date: "27 AUGUST 2026",
@@ -30,7 +30,7 @@ const newsItems = [
   },
   {
     id: 4,
-    title: "Reliance Industries and Rolls-Royce announce...",
+    title: "Reliance Industries and Rolls-Royce announce strategic partnership for clean energy development",
     image: "/assets/images/news-hq.jpg",
     type: "PRESS RELEASES",
     date: "14 AUGUST 2026",
@@ -50,7 +50,7 @@ export default function LatestUpdatesSection() {
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
           {newsItems.map((item, idx) => (
             <motion.a
               key={item.id}
@@ -59,7 +59,7 @@ export default function LatestUpdatesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-              className="group flex flex-col justify-between text-left decoration-transparent"
+              className="group flex flex-col justify-between text-left decoration-transparent h-full"
             >
               <div>
                 {/* Image */}
@@ -71,14 +71,14 @@ export default function LatestUpdatesSection() {
                   />
                 </div>
 
-                {/* News Headline */}
-                <h3 className="text-lg sm:text-[20px] font-medium text-[#001e62] group-hover:text-[#0a2f8c] leading-[1.35] tracking-tight mb-4 sm:mb-6 line-clamp-3 transition-colors">
+                {/* News Headline - Full Text Displayed */}
+                <h3 className="text-lg sm:text-[20px] font-medium text-[#001e62] group-hover:text-[#0a2f8c] leading-[1.35] tracking-tight mb-4 sm:mb-6 transition-colors">
                   {item.title}
                 </h3>
               </div>
 
               {/* Card Footer Divider & Info */}
-              <div className="pt-3 sm:pt-4 border-t border-gray-200 flex items-center justify-between text-[11px] sm:text-[11.5px] font-semibold text-gray-500 uppercase tracking-wider">
+              <div className="pt-3 sm:pt-4 border-t border-gray-200 flex items-center justify-between text-[11px] sm:text-[11.5px] font-semibold text-gray-500 uppercase tracking-wider mt-auto">
                 <span>{item.type}</span>
                 <span className="font-medium text-gray-400">{item.date}</span>
               </div>
