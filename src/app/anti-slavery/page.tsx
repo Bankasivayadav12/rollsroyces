@@ -76,7 +76,7 @@ export default function AntiSlaveryPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            Rolls-Royce plc and its subsidiaries’ statement on modern slavery, forced labour, human trafficking, and supply chain transparency.
+            Rolls Royces plc and its subsidiaries’ statement on modern slavery, forced labour, human trafficking, and supply chain transparency.
           </motion.p>
         </div>
       </section>
@@ -91,7 +91,7 @@ export default function AntiSlaveryPage() {
               <span>Statement under Section 54 of the Modern Slavery Act 2015</span>
             </h3>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              This statement sets out the actions taken by Rolls-Royce Holdings plc and its relevant group subsidiaries during the financial year to identify, prevent, and mitigate the risk of modern slavery and human trafficking across our direct business operations and supply chain.
+              This statement sets out the actions taken by Rolls Royces Holdings plc and its relevant group subsidiaries during the financial year to identify, prevent, and mitigate the risk of modern slavery and human trafficking across our direct business operations and supply chain.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function AntiSlaveryPage() {
               1. Our Zero-Tolerance Commitment
             </h2>
             <p className="text-gray-700">
-              Modern slavery is a crime and a gross violation of fundamental human rights. It takes various forms, including slavery, servitude, forced or compulsory labour, and human trafficking. Rolls-Royce has a zero-tolerance approach to modern slavery in all its forms. We are committed to acting ethically, transparently, and with integrity in all our commercial dealings and to implementing robust systems and controls to ensure slavery does not occur anywhere within our business or global supplier network.
+              Modern slavery is a crime and a gross violation of fundamental human rights. It takes various forms, including slavery, servitude, forced or compulsory labour, and human trafficking. Rolls Royces has a zero-tolerance approach to modern slavery in all its forms. We are committed to acting ethically, transparently, and with integrity in all our commercial dealings and to implementing robust systems and controls to ensure slavery does not occur anywhere within our business or global supplier network.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export default function AntiSlaveryPage() {
               4. Whistleblowing &amp; Ethics Line
             </h2>
             <p className="text-gray-700">
-              We encourage all employees, contractors, suppliers, and members of the public to speak up about any suspected unethical conduct or human rights violation. Reports can be filed anonymously through the Rolls-Royce Ethics Line, accessible online and via toll-free telephone around the clock in multiple languages. All reports are investigated thoroughly by independent compliance investigators.
+              We encourage all employees, contractors, suppliers, and members of the public to speak up about any suspected unethical conduct or human rights violation. Reports can be filed anonymously through the Rolls Royces Ethics Line, accessible online and via toll-free telephone around the clock in multiple languages. All reports are investigated thoroughly by independent compliance investigators.
             </p>
           </div>
 
@@ -147,7 +147,7 @@ export default function AntiSlaveryPage() {
               Board Approval &amp; Signature
             </p>
             <p>
-              This statement has been formally approved by the Board of Directors of Rolls-Royce Holdings plc and is reviewed annually to reflect continuous improvement in our anti-slavery framework.
+              This statement has been formally approved by the Board of Directors of Rolls Royces Holdings plc and is reviewed annually to reflect continuous improvement in our anti-slavery framework.
             </p>
           </div>
         </div>

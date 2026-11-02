@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
 
             <div className="mt-8 sm:mt-12 lg:mt-auto pt-4 sm:pt-6 text-[13px] sm:text-[13.5px] text-white/80 font-normal">
-              &copy; Rolls-Royce plc 2026. All rights reserved.
+              &copy; Rolls Royces plc 2026. All rights reserved.
             </div>
           </div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
                 PRODUCTS &amp; SERVICES
               </h4>
               <ul className="space-y-3 text-[14px] text-white/90 font-normal">
-                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Civil Aerospace</a></li>
+                <li><a href="/products-services#submarines" className="hover:text-white hover:underline transition-colors">Submarines</a></li>
                 <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Defence</a></li>
                 <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Power Systems</a></li>
               </ul>
@@ -123,15 +123,15 @@ export default function Footer() {
         {/* Divider Line */}
         <div className="w-full border-t border-white/20 pt-8 mt-2">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 text-[13px] text-white/80">
-            {/* Left: Rolls-Royce Monogram & Wordmark */}
+            {/* Left: Rolls Royces Monogram & Wordmark */}
             <div className="flex items-center gap-4">
               <img
                 src="/rolls-royce-blue-crest.png"
-                alt="Rolls-Royce Crest"
+                alt="Rolls Royces Crest"
                 className="h-14 sm:h-16 w-auto object-contain brightness-110 drop-shadow-md"
               />
               <span className="text-[20px] font-serif tracking-wider font-semibold text-white">
-                Rolls-Royce<span className="text-[10px] font-sans font-normal align-top">&reg;</span>
+                Rolls Royces<span className="text-[10px] font-sans font-normal align-top">&reg;</span>
               </span>
             </div>
 

@@ -24,7 +24,7 @@ export default function RollsRoyceLogo({
     >
       <img
         src="/rolls-royce-blue-crest.png"
-        alt="Rolls-Royce Blue & White Crest Logo"
+        alt="Rolls Royces Blue & White Crest Logo"
         className={`${heightClass} w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,38,130,0.25)]`}
       />
     </div>

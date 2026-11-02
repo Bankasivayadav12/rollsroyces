@@ -5,14 +5,18 @@ import { motion } from "framer-motion";
 
 const divisions = [
   {
-    title: "Civil Aerospace",
-    image: "/assets/images/prod-fan.jpg",
+    title: "Submarines",
+    image: "/assets/images/submarine-hero.jpg",
     icon: (
-      <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24">
-        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.8-.2-1.6.2-2 1-.3.8 0 1.7.7 2.1l5.5 3.2L6 16.5l-2.5-.5L2 17.5l3.5 2 2 3.5 1.5-1.5-.5-2.5 3.5-3.5 3.2 5.5c.4.7 1.3 1 2.1.7.8-.4 1.2-1.2 1-2z" />
+      <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 13c0-3 3.5-5.5 8.5-5.5 4.5 0 7.5 1.5 9 3.5l2.5-1.5v4l-2.5-1.5c-1.5 2-4.5 3.5-9 3.5C5.5 15.5 2 13 2 13z" />
+        <path d="M11 7.5V4h2v3.5" />
+        <path d="M13 4h1.5" />
+        <circle cx="7.5" cy="12.5" r="0.75" fill="white" />
+        <circle cx="11" cy="12.5" r="0.75" fill="white" />
       </svg>
     ),
-    href: "#civil-aerospace",
+    href: "/products-services#submarines",
   },
   {
     title: "Defence",

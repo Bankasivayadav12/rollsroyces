@@ -18,22 +18,22 @@ const productsData: (StoryData & {
   blueBackground?: boolean;
 })[] = [
   {
-    id: "civil-aerospace",
-    category: "Civil Aerospace",
-    title: "Civil Aerospace",
-    cardTitle: "Civil Aerospace",
-    cardSubtitle: "Pioneering clean, efficient air travel",
+    id: "submarines",
+    category: "Submarines",
+    title: "Submarines",
+    cardTitle: "Submarines",
+    cardSubtitle: "Powering continuous at-sea deterrence and underwater defence",
     cardDesc:
-      "We are a major supplier of commercial aircraft engines, powering more than 35 types of commercial airplanes. From widebody airliners to corporate business jets, our engines deliver world-class fuel efficiency and reliability.",
-    image: "/assets/images/annual-report.jpg",
+      "For over 60 years, Rolls Royces has been the exclusive designer and manufacturer of nuclear steam raising plants powering the UK Royal Navy's nuclear submarine fleet with mission-critical silent endurance.",
+    image: "/assets/images/submarine-hero.jpg",
     description:
-      "Civil Aerospace is a major manufacturer of aero engines for all sectors of the airline and corporate jet markets. Over 13,000 civil engines are in service with 350+ airlines and 400+ corporate operators worldwide.",
-    highlight: "UltraFan® demonstrator delivers a 25% efficiency improvement over the original Trent engine.",
+      "Rolls Royces Submarines designs, manufactures, and supports the naval nuclear reactor propulsion plants for the Astute, Vanguard, and future Dreadnought and SSN-AUKUS submarine fleets.",
+    highlight: "Over 18 million miles travelled underwater powered by Rolls Royces nuclear reactor technology.",
     specs: [
-      { label: "Fleet in Service", value: "13,000+ Engines" },
-      { label: "Airline Customers", value: "350+ Airlines" },
-      { label: "UltraFan Fan Size", value: "140 in (3.55m)" },
-      { label: "SAF Compatibility", value: "100% Certified" },
+      { label: "Operational Heritage", value: "60+ Years Nuclear" },
+      { label: "Propulsion Plant", value: "PWR Nuclear Reactor" },
+      { label: "Submarine Fleet", value: "Astute, Vanguard & Dreadnought" },
+      { label: "Global Alliance", value: "SSN-AUKUS Partnership" },
     ],
   },
   {
@@ -46,7 +46,7 @@ const productsData: (StoryData & {
       "We provide world-leading power and propulsion systems for military aircraft, naval combatants and nuclear submarines, supporting the armed forces of more than 100 nations across safety-critical mission profiles.",
     image: "/assets/images/carrier-deck.jpg",
     description:
-      "Rolls-Royce is one of the world's leading suppliers of defence aircraft engines and naval propulsion systems. Powering fighter jets like Eurofighter Typhoon and the F-35B, as well as the UK Royal Navy's nuclear submarine fleet.",
+      "Rolls Royces is one of the world's leading suppliers of defence aircraft engines and naval propulsion systems. Powering fighter jets like Eurofighter Typhoon and the F-35B, as well as the UK Royal Navy's nuclear submarine fleet.",
     highlight: "Exclusive provider of nuclear propulsion for the UK Royal Navy's Vanguard and Astute submarines.",
     specs: [
       { label: "Armed Forces Supported", value: "100+ Nations" },
@@ -66,7 +66,7 @@ const productsData: (StoryData & {
     image: "/assets/images/powersystems-landscape.svg",
     blueBackground: true,
     description:
-      "Rolls-Royce Power Systems develops and produces high-speed mtu engines and propulsion systems for ships, heavy land vehicles, and distributed energy power generation systems worldwide.",
+      "Rolls Royces Power Systems develops and produces high-speed mtu engines and propulsion systems for ships, heavy land vehicles, and distributed energy power generation systems worldwide.",
     highlight: "mtu Hydrogen microgrid and battery storage systems delivering resilient zero-carbon power.",
     specs: [
       { label: "Max Power Output", value: "Up to 10,000 kW" },
@@ -185,7 +185,7 @@ export default function ProductsServicesPage() {
       {/* 5. Clean White Buffer Section */}
       <section className="w-full bg-white py-14 sm:py-20" />
 
-      {/* 6. Official Rolls-Royce Footer */}
+      {/* 6. Official Rolls Royces Footer */}
       <Footer />
 
       {/* Technical Specifications Drawer */}

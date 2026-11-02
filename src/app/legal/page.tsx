@@ -57,7 +57,7 @@ export default function LegalPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            Terms of use, intellectual property policies, company regulatory details, and disclaimer notices for Rolls-Royce digital services.
+            Terms of use, intellectual property policies, company regulatory details, and disclaimer notices for Rolls Royces digital services.
           </motion.p>
         </div>
       </section>
@@ -72,8 +72,8 @@ export default function LegalPage() {
               <h3 className="font-bold text-base text-[#001438] mb-1">
                 Company Registration &amp; Registered Office
               </h3>
-              <p><strong>Rolls-Royce plc</strong> (Registered in England and Wales No. 1003142)</p>
-              <p><strong>Rolls-Royce Holdings plc</strong> (Registered in England and Wales No. 04706930)</p>
+              <p><strong>Rolls Royces plc</strong> (Registered in England and Wales No. 1003142)</p>
+              <p><strong>Rolls Royces Holdings plc</strong> (Registered in England and Wales No. 04706930)</p>
               <p>Registered Office: Kings Place, 90 York Way, London, N1 9AG, United Kingdom</p>
               <p>VAT Registration Number: GB 238 5244 23</p>
             </div>
@@ -84,7 +84,7 @@ export default function LegalPage() {
               1. Acceptance of Terms
             </h2>
             <p className="text-gray-700">
-              By accessing and using this website (rolls-royce.com), you acknowledge and agree to be bound by these Terms of Use and our Data Privacy Notice. If you do not agree to these terms, please refrain from using the site. Rolls-Royce reserves the right to modify these terms at any time without prior notice.
+              By accessing and using this website (rollsroyces.com), you acknowledge and agree to be bound by these Terms of Use and our Data Privacy Notice. If you do not agree to these terms, please refrain from using the site. Rolls Royces reserves the right to modify these terms at any time without prior notice.
             </p>
           </div>
 
@@ -93,10 +93,10 @@ export default function LegalPage() {
               2. Intellectual Property Rights &amp; Trademarks
             </h2>
             <p className="text-gray-700 mb-3">
-              All content on this website, including but not limited to text, photographs, graphics, videos, diagrams, sound recordings, and software, is the property of Rolls-Royce plc or its licensors and is protected by international copyright, trademark, and other intellectual property laws.
+              All content on this website, including but not limited to text, photographs, graphics, videos, diagrams, sound recordings, and software, is the property of Rolls Royces plc or its licensors and is protected by international copyright, trademark, and other intellectual property laws.
             </p>
             <p className="text-gray-700">
-              The Rolls-Royce name, the Rolls-Royce double-R monogram, the Spirit of Ecstasy badge, Trent®, UltraFan®, mtu®, TotalCare®, CorporateCare®, and all associated trade dress are registered trademarks of Rolls-Royce plc and Rolls-Royce Motor Cars Limited (used under licence where applicable). Nothing on this site grants any licence or right to use any trademark without prior written permission.
+              The Rolls Royces name, the Rolls Royces double-R monogram, the Spirit of Ecstasy badge, Trent®, UltraFan®, mtu®, TotalCare®, CorporateCare®, and all associated trade dress are registered trademarks of Rolls Royces plc and Rolls Royces Motor Cars Limited (used under licence where applicable). Nothing on this site grants any licence or right to use any trademark without prior written permission.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function LegalPage() {
               3. Disclaimer of Warranties
             </h2>
             <p className="text-gray-700">
-              This website and its contents are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis. Rolls-Royce makes no representations or warranties of any kind, express or implied, including regarding accuracy, completeness, timeliness, non-infringement, or fitness for a particular purpose. Technical specifications, fleet data, and dates are subject to operational change without notice.
+              This website and its contents are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis. Rolls Royces makes no representations or warranties of any kind, express or implied, including regarding accuracy, completeness, timeliness, non-infringement, or fitness for a particular purpose. Technical specifications, fleet data, and dates are subject to operational change without notice.
             </p>
           </div>
 
@@ -114,7 +114,7 @@ export default function LegalPage() {
               4. Forward-Looking Statements
             </h2>
             <p className="text-gray-700">
-              This website contains statements that are &ldquo;forward-looking statements&rdquo; concerning the financial condition, results of operations, and businesses of Rolls-Royce. By their nature, forward-looking statements involve risk and uncertainty because they relate to future events and circumstances that could cause actual outcomes to differ materially from those expressed or implied.
+              This website contains statements that are &ldquo;forward-looking statements&rdquo; concerning the financial condition, results of operations, and businesses of Rolls Royces. By their nature, forward-looking statements involve risk and uncertainty because they relate to future events and circumstances that could cause actual outcomes to differ materially from those expressed or implied.
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export default function LegalPage() {
               5. Limitation of Liability &amp; Governing Law
             </h2>
             <p className="text-gray-700 mb-3">
-              To the fullest extent permitted by applicable law, Rolls-Royce plc and its subsidiaries exclude all liability for any direct, indirect, incidental, consequential, or punitive damages arising from the access to, use of, or inability to use this website.
+              To the fullest extent permitted by applicable law, Rolls Royces plc and its subsidiaries exclude all liability for any direct, indirect, incidental, consequential, or punitive damages arising from the access to, use of, or inability to use this website.
             </p>
             <p className="text-gray-700">
               These terms of use and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the laws of England and Wales. The courts of England shall have exclusive jurisdiction.

@@ -78,10 +78,10 @@ export default function PrivacyPage() {
           <div className="bg-[#f0f4fd] border border-[#d0e0fb] rounded-lg p-6 sm:p-8">
             <h3 className="font-bold text-lg text-[#001e62] mb-2 flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#001e62]" />
-              <span>Rolls-Royce Privacy Commitment</span>
+              <span>Rolls Royces Privacy Commitment</span>
             </h3>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              Rolls-Royce takes the protection of your personal information very seriously. We process data transparently, securely, and strictly in compliance with the UK Data Protection Act 2018, the General Data Protection Regulation (GDPR), and applicable privacy laws worldwide.
+              Rolls Royces takes the protection of your personal information very seriously. We process data transparently, securely, and strictly in compliance with the UK Data Protection Act 2018, the General Data Protection Regulation (GDPR), and applicable privacy laws worldwide.
             </p>
           </div>
 
@@ -90,9 +90,9 @@ export default function PrivacyPage() {
               1. Who is the data controller?
             </h2>
             <p className="text-gray-700">
-              The data controller responsible for your personal data collected via this website is Rolls-Royce plc, registered at Kings Place, 90 York Way, London, N1 9AG, United Kingdom. If you have any inquiries regarding how your data is handled, you may reach our Data Protection Officer at{" "}
-              <a href="mailto:privacy@rolls-royce.com" className="text-[#001e62] underline font-semibold">
-                privacy@rolls-royce.com
+              The data controller responsible for your personal data collected via this website is Rolls Royces plc, registered at Kings Place, 90 York Way, London, N1 9AG, United Kingdom. If you have any inquiries regarding how your data is handled, you may reach our Data Protection Officer at{" "}
+              <a href="mailto:privacy@rollsroyces.com" className="text-[#001e62] underline font-semibold">
+                privacy@rollsroyces.com
               </a>.
             </p>
           </div>
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li><strong>Contact information:</strong> Name, professional title, corporate email address, telephone number, and employer organization.</li>
               <li><strong>Technical identifiers:</strong> IP address, browser type and version, device identifier, time zone, and operating system.</li>
-              <li><strong>Usage metrics:</strong> Pages visited, interaction duration, search queries submitted within rolls-royce.com, and referring URLs.</li>
+              <li><strong>Usage metrics:</strong> Pages visited, interaction duration, search queries submitted within rollsroyces.com, and referring URLs.</li>
               <li><strong>Communications:</strong> Inquiries, feedback, event registrations, and newsletter subscription preferences.</li>
             </ul>
           </div>
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
               5. International data transfers &amp; security
             </h2>
             <p className="text-gray-700">
-              Rolls-Royce is a global organisation with operations across Europe, the Americas, Asia-Pacific, and the Middle East. Your data may be transferred to and stored in countries outside the UK and European Economic Area. Where international transfers occur, we implement Standard Contractual Clauses (SCCs), International Data Transfer Agreements (IDTAs), and robust technical encryption to safeguard your data.
+              Rolls Royces is a global organisation with operations across Europe, the Americas, Asia-Pacific, and the Middle East. Your data may be transferred to and stored in countries outside the UK and European Economic Area. Where international transfers occur, we implement Standard Contractual Clauses (SCCs), International Data Transfer Agreements (IDTAs), and robust technical encryption to safeguard your data.
             </p>
           </div>
         </div>

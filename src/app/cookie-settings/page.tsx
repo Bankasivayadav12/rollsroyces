@@ -94,7 +94,7 @@ export default function CookieSettingsPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            Manage and customize your consent preferences for cookies and tracking technologies used on rolls-royce.com.
+            Manage and customize your consent preferences for cookies and tracking technologies used on rollsroyces.com.
           </motion.p>
         </div>
       </section>

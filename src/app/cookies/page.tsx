@@ -17,7 +17,7 @@ export default function CookiesPage() {
       name: "Strictly Necessary Cookies",
       badge: "Always Active",
       description:
-        "These cookies are essential for you to browse the Rolls-Royce website and use its features, such as accessing secure areas, language selection, and maintaining session security. Without these cookies, the services you have requested cannot be provided.",
+        "These cookies are essential for you to browse the Rolls Royces website and use its features, such as accessing secure areas, language selection, and maintaining session security. Without these cookies, the services you have requested cannot be provided.",
       examples: ["Session identifier", "CSRF security tokens", "Cookie consent preferences"],
     },
     {
@@ -88,7 +88,7 @@ export default function CookiesPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            How Rolls-Royce uses cookies and related technologies to provide you with the best possible digital experience and safeguard your privacy.
+            How Rolls Royces uses cookies and related technologies to provide you with the best possible digital experience and safeguard your privacy.
           </motion.p>
         </div>
       </section>

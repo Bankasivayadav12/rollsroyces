@@ -211,7 +211,7 @@ export default function InnovationPage() {
               </h4>
 
               <p className="text-gray-600 text-sm sm:text-base md:text-[16.5px] leading-relaxed font-normal mb-6 sm:mb-10">
-                At Rolls-Royce we believe in the positive, transforming potential of technology. So we are placing the transition to net zero at the heart of everything we do.
+                At Rolls Royces we believe in the positive, transforming potential of technology. So we are placing the transition to net zero at the heart of everything we do.
               </p>
 
               <div>
@@ -248,7 +248,7 @@ export default function InnovationPage() {
               </h4>
 
               <p className="text-gray-600 text-sm sm:text-base md:text-[16.5px] leading-relaxed font-normal mb-6 sm:mb-10">
-                Our Small Modular Reactor (SMR) design provides affordable, low-carbon nuclear power at scale. Using standardized factory manufacturing, Rolls-Royce SMR delivers dependable, clean baseload electricity to decarbonize grids and industry worldwide.
+                Our Small Modular Reactor (SMR) design provides affordable, low-carbon nuclear power at scale. Using standardized factory manufacturing, Rolls Royces SMR delivers dependable, clean baseload electricity to decarbonize grids and industry worldwide.
               </p>
 
               <div>
@@ -271,7 +271,7 @@ export default function InnovationPage() {
             >
               <img
                 src="/assets/images/smr-building.svg"
-                alt="Rolls-Royce Small Modular Reactor facility"
+                alt="Rolls Royces Small Modular Reactor facility"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </motion.div>
@@ -293,7 +293,7 @@ export default function InnovationPage() {
             >
               <img
                 src="/assets/images/testbed-80.jpg"
-                alt="Rolls-Royce Testbed 80 indoor aero-engine test facility"
+                alt="Rolls Royces Testbed 80 indoor aero-engine test facility"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -335,7 +335,7 @@ export default function InnovationPage() {
       {/* 8. Clean White Buffer Section */}
       <section className="w-full bg-white py-14 sm:py-20" />
 
-      {/* 7. Official Rolls-Royce Footer */}
+      {/* 7. Official Rolls Royces Footer */}
       <Footer />
 
       {/* Video Modal Player */}
@@ -350,7 +350,7 @@ export default function InnovationPage() {
             >
               <div className="flex items-center justify-between p-4 bg-[#001438] text-white">
                 <span className="font-semibold text-sm">
-                  Rolls-Royce – Pathway to Net Zero Carbon
+                  Rolls Royces – Pathway to Net Zero Carbon
                 </span>
                 <button
                   onClick={() => setIsVideoModalOpen(false)}

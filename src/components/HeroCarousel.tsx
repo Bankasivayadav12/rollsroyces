@@ -15,6 +15,27 @@ export const slidesData: (StoryData & {
 })[] = [
   {
     id: 0,
+    category: "Submarines",
+    title: "Rolls Royces Submarines – Powering the Fleet",
+    slideTitle: "Rolls Royces Submarines –\npowering the fleet",
+    tabTitle: "Rolls Royces Submarines –\npowering the fleet",
+    buttonText: "FIND OUT MORE",
+    align: "left",
+    image: "/assets/images/submarine-hero.jpg",
+    subtitle:
+      "Delivering mission-critical nuclear propulsion and continuous at-sea deterrence for more than 60 years.",
+    description:
+      "For over six decades, Rolls Royces has been the UK's sole designer and manufacturer of nuclear propulsion systems for the Royal Navy's submarine fleet. From the Astute and Vanguard classes to the future Dreadnought and SSN-AUKUS programs, our reactors deliver silent, limitless underwater endurance.",
+    highlight: "Powering the UK's Continuous At-Sea Deterrent (CASD) with zero-refuelling naval nuclear reactor cores.",
+    specs: [
+      { label: "Operational Heritage", value: "60+ Years Nuclear" },
+      { label: "Propulsion Type", value: "PWR Nuclear Reactor" },
+      { label: "Submarine Classes", value: "Astute, Vanguard & Dreadnought" },
+      { label: "Strategic Alliance", value: "AUKUS Trilateral" },
+    ],
+  },
+  {
+    id: 1,
     category: "Civil Aerospace",
     title: "Introducing the Trent 1000 XE",
     slideTitle: "Introducing the\nTrent 1000 XE",
@@ -33,7 +54,7 @@ export const slidesData: (StoryData & {
     ],
   },
   {
-    id: 1,
+    id: 2,
     category: "Power Systems",
     title: "Series 8000 – A Legacy of Excellence",
     slideTitle: "Series 8000 – a legacy of\nexcellence",
@@ -52,7 +73,7 @@ export const slidesData: (StoryData & {
     ],
   },
   {
-    id: 2,
+    id: 3,
     category: "Defence",
     title: "AE – The Story Behind the Engine",
     slideTitle: "AE – the story behind the\nengine",
@@ -63,7 +84,7 @@ export const slidesData: (StoryData & {
     align: "left",
     image: "/assets/images/ae-engine.jpg",
     description:
-      "With more than 92 million flight hours accumulated across military and civil applications, the Rolls-Royce AE engine family delivers steadfast reliability in demanding tactical environments around the globe.",
+      "With more than 92 million flight hours accumulated across military and civil applications, the Rolls Royces AE engine family delivers steadfast reliability in demanding tactical environments around the globe.",
     highlight: "Proven power for the C-130J Super Hercules, V-22 Osprey, and Global Hawk surveillance.",
     specs: [
       { label: "Total Fleet Hours", value: "92,000,000+" },
@@ -215,7 +236,7 @@ export default function HeroCarousel({ onOpenStory }: HeroCarouselProps) {
                   tabRefs.current[idx] = el;
                 }}
                 onClick={() => setCurrentSlide(idx)}
-                className={`group relative w-44 sm:w-56 md:w-64 h-[66px] sm:h-[72px] md:h-[74px] text-left px-3.5 sm:px-4 md:px-5 flex flex-col justify-center rounded-md transition-all duration-300 shrink-0 overflow-hidden cursor-pointer ${
+                className={`group relative w-44 sm:w-52 md:w-56 lg:w-64 h-[66px] sm:h-[72px] md:h-[74px] text-left px-3.5 sm:px-4 md:px-5 flex flex-col justify-center rounded-md transition-all duration-300 shrink-0 overflow-hidden cursor-pointer ${
                   isActive
                     ? "glass-tab-active"
                     : "glass-tab-inactive"

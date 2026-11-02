@@ -57,9 +57,9 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
         }`}
       >
         <div className="max-w-[1540px] mx-auto w-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 h-full relative">
-          {/* Left Group: Rolls-Royce Logo + Navigation Links */}
+          {/* Left Group: Rolls Royces Logo + Navigation Links */}
           <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 xl:gap-11 h-full">
-            <a href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls-Royce Home">
+            <a href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls Royces Home">
               <RollsRoyceLogo />
             </a>
 
@@ -193,7 +193,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
                     className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-600 border border-gray-200 transition-colors"
                   >
                     <Search className="w-4 h-4 text-gray-500" />
-                    <span>Search Rolls-Royce...</span>
+                    <span>Search Rolls Royces...</span>
                   </button>
                 </div>
 
@@ -214,7 +214,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
 
               <div className="p-4 bg-gray-50 rounded-lg text-xs text-gray-600">
                 <span className="font-semibold block text-gray-900 mb-1">
-                  Rolls-Royce Holdings plc
+                  Rolls Royces Holdings plc
                 </span>
                 <span>1,327.40 GBX <span className="text-emerald-600 font-bold">▲ +4.80</span></span>
               </div>

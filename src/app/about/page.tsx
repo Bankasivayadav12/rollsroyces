@@ -6,7 +6,23 @@ import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
 import StoryDrawer, { StoryData } from "@/components/StoryDrawer";
 import AccessibilityModal from "@/components/AccessibilityModal";
-import { ChevronRight, Play, X, ArrowRight } from "lucide-react";
+import {
+  ChevronRight,
+  Play,
+  X,
+  ArrowRight,
+  Mail,
+  Copy,
+  Check,
+  ExternalLink,
+  ShieldCheck,
+  Award,
+  Briefcase,
+  User,
+  Sparkles,
+  MapPin,
+  Send,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutPage() {
@@ -16,13 +32,121 @@ export default function AboutPage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isAccModalOpen, setIsAccModalOpen] = useState(false);
   const [activeSubTab, setActiveSubTab] = useState("about-us");
+  const [selectedTeamCategory, setSelectedTeamCategory] = useState<string>("all");
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+
+  const handleCopyEmail = (email: string) => {
+    navigator.clipboard.writeText(email);
+    setCopiedEmail(email);
+    setTimeout(() => setCopiedEmail(null), 2500);
+  };
 
   const subNavLinks = [
     { id: "about-us", label: "About us" },
+    { id: "our-leadership", label: "Our team & leadership" },
     { id: "our-businesses", label: "Our businesses" },
     { id: "our-strategic-framework", label: "Our strategic framework" },
-    { id: "inside-rolls-royce", label: "Inside Rolls-Royce" },
+    { id: "inside-rolls-royce", label: "Inside Rolls Royces" },
   ];
+
+  const teamMembers = [
+    {
+      id: "pritham-mital",
+      name: "Pritham Mital",
+      role: "C.C.O of Rolls Royces",
+      category: "leadership",
+      categoryLabel: "Executive Leadership",
+      department: "Chief Commercial Office",
+      region: "Asia, Gulf Countries & Africa",
+      email: "pritham.mital@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80",
+      bio: "Directs commercial strategy, enterprise deals, and strategic programmes across Civil Aerospace, Defence, and Power Systems across Asia, the Gulf, and Africa.",
+      initials: "PM",
+    },
+    {
+      id: "agrwal-ch",
+      name: "Agrwal . CH",
+      role: "Indian Head",
+      category: "leadership",
+      categoryLabel: "Regional Leadership",
+      department: "India Corporate Leadership",
+      region: "India",
+      email: "agrwal.ch@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
+      bio: "Oversees Rolls Royces nationwide operations in India, engineering centers of excellence, government liaisons, and strategic aerospace supply chains.",
+      initials: "AC",
+    },
+    {
+      id: "danion-mishra",
+      name: "Danion Mishra",
+      role: "South India Head",
+      category: "leadership",
+      categoryLabel: "Regional Leadership",
+      department: "Southern Regional Operations",
+      region: "South India",
+      email: "danion.mishra@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
+      bio: "Heads regional manufacturing partnerships, customer service infrastructure, and technological operations across South Indian aerospace corridors.",
+      initials: "DM",
+    },
+    {
+      id: "gopal-subramanium-raju",
+      name: "Gopal Subramanium Raju",
+      role: "Legal Advisor & Coordinator",
+      category: "legal",
+      categoryLabel: "Legal & Regulatory",
+      department: "Corporate Legal Affairs & Coordination",
+      region: "Regional Governance",
+      email: "gopal.subramanium@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80",
+      bio: "Coordinates strategic regulatory compliance, defence procurement covenants, corporate governance, and multi-jurisdictional legal advisory.",
+      initials: "GR",
+    },
+    {
+      id: "meghana-roy",
+      name: "Meghana Roy",
+      role: "Senior Metallurgist",
+      category: "metallurgy",
+      categoryLabel: "Metallurgy Team",
+      department: "Materials Science & Superalloys",
+      region: "Advanced Materials Lab",
+      email: "meghana.roy@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80",
+      bio: "Pioneers single-crystal nickel superalloy research and ceramic thermal barriers tailored for ultra-high temperature turbine blades.",
+      initials: "MR",
+    },
+    {
+      id: "namratha-rathod",
+      name: "Namratha Rathod",
+      role: "Metallurgist",
+      category: "metallurgy",
+      categoryLabel: "Metallurgy Team",
+      department: "Aerospace Structural Metallurgy",
+      region: "Materials Testing Division",
+      email: "namratha.rathod@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80",
+      bio: "Specializes in titanium-aluminide composite matrices, structural fatigue diagnostics, and metal powder characterization for additive manufacturing.",
+      initials: "NR",
+    },
+    {
+      id: "nigam",
+      name: "Nigam",
+      role: "Metallurgical Specialist",
+      category: "metallurgy",
+      categoryLabel: "Metallurgy Team",
+      department: "Naval & High-Stress Alloys",
+      region: "Metallurgical Diagnostics",
+      email: "nigam@rollsroyces.com",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+      bio: "Focuses on microstructural analysis, stress corrosion cracking resistance, and durability evaluations for critical marine and aviation propulsion alloys.",
+      initials: "NI",
+    },
+  ];
+
+  const filteredTeamMembers =
+    selectedTeamCategory === "all"
+      ? teamMembers
+      : teamMembers.filter((m) => m.category === selectedTeamCategory);
 
   const scrollToSection = (id: string) => {
     setActiveSubTab(id);
@@ -34,11 +158,15 @@ export default function AboutPage() {
 
   const businessCards = [
     {
-      title: "Civil Aerospace",
-      image: "/assets/images/annual-report.jpg",
+      title: "Submarines",
+      image: "/assets/images/submarine-hero.jpg",
       icon: (
-        <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24">
-          <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.8-.2-1.6.2-2 1-.3.8 0 1.7.7 2.1l5.5 3.2L6 16.5l-2.5-.5L2 17.5l3.5 2 2 3.5 1.5-1.5-.5-2.5 3.5-3.5 3.2 5.5c.4.7 1.3 1 2.1.7.8-.4 1.2-1.2 1-2z" />
+        <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 13c0-3 3.5-5.5 8.5-5.5 4.5 0 7.5 1.5 9 3.5l2.5-1.5v4l-2.5-1.5c-1.5 2-4.5 3.5-9 3.5C5.5 15.5 2 13 2 13z" />
+          <path d="M11 7.5V4h2v3.5" />
+          <path d="M13 4h1.5" />
+          <circle cx="7.5" cy="12.5" r="0.75" fill="white" />
+          <circle cx="11" cy="12.5" r="0.75" fill="white" />
         </svg>
       ),
     },
@@ -104,7 +232,7 @@ export default function AboutPage() {
             className="w-full max-w-[560px] bg-[#061129]/75 backdrop-blur-xl border border-white/15 p-6 sm:p-10 lg:p-12 rounded-sm shadow-2xl text-white"
           >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3 sm:mb-4 leading-tight">
-              Rolls-Royce
+              Rolls Royces
             </h1>
             <p className="text-white/90 text-base sm:text-lg lg:text-[20px] leading-relaxed font-normal mb-6 sm:mb-8">
               Powering, protecting and connecting the modern world
@@ -148,7 +276,7 @@ export default function AboutPage() {
 
       {/* 5. Section: About us (#about-us) */}
       <div id="about-us">
-        {/* About Rolls-Royce Editorial Statement */}
+        {/* About Rolls Royces Editorial Statement */}
         <section className="w-full bg-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
@@ -158,7 +286,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-3xl sm:text-4xl lg:text-[54px] font-light text-[#001438] tracking-[-0.5px] mb-4 sm:mb-8"
             >
-              About Rolls-Royce
+              About Rolls Royces
             </motion.h2>
 
             <motion.p
@@ -178,12 +306,12 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-[17px] text-gray-600 leading-[1.8] font-normal"
             >
-              Today, we&apos;re working on a multi-year transformation to unlock our full potential. We&apos;re building on our enduring, distinctive strengths to create a high-performing, competitive, resilient and growing Rolls-Royce. We will continue to design, build and maintain systems that provide mission-critical power to customers.
+              Today, we&apos;re working on a multi-year transformation to unlock our full potential. We&apos;re building on our enduring, distinctive strengths to create a high-performing, competitive, resilient and growing Rolls Royces. We will continue to design, build and maintain systems that provide mission-critical power to customers.
             </motion.p>
           </div>
         </section>
 
-        {/* The Rolls-Royce Proposition */}
+        {/* The Rolls Royces Proposition */}
         <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
           <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
             <motion.div
@@ -196,7 +324,7 @@ export default function AboutPage() {
               <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg bg-gray-100">
                 <img
                   src="/assets/images/apprentice.jpg"
-                  alt="Rolls-Royce engineering apprentice inspecting engine assembly"
+                  alt="Rolls Royces engineering apprentice inspecting engine assembly"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -210,7 +338,7 @@ export default function AboutPage() {
               className="lg:col-span-7 flex flex-col justify-center"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-8">
-                The Rolls-Royce proposition
+                The Rolls Royces proposition
               </h2>
 
               <ol className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-[17px] text-[#001438] font-medium leading-relaxed">
@@ -274,7 +402,7 @@ export default function AboutPage() {
                 </div>
                 <img
                   src="/assets/images/news-ribbon.jpg"
-                  alt="Rolls-Royce Leadership"
+                  alt="Rolls Royces Leadership"
                   className="relative z-10 w-full h-full object-cover rounded-sm shadow-md"
                 />
               </div>
@@ -295,7 +423,18 @@ export default function AboutPage() {
                 Our leadership team made a public announcement about where we&apos;re going and our plans for getting there, at our Capital Markets Day on 28 November 2023. Watch the recording, browse our Virtual Exhibition, and download presentations from the day.
               </p>
 
-              <div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#our-leadership"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("our-leadership");
+                  }}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#001e62] text-white hover:bg-[#0a2f8c] font-bold text-xs uppercase tracking-[1.4px] transition-all hover:scale-105 shadow-sm"
+                >
+                  <span>MEET OUR TEAM &amp; LEADERSHIP</span>
+                  <ChevronRight className="w-4 h-4" />
+                </a>
                 <a
                   href="#where-we-are-going"
                   className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
@@ -307,6 +446,231 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
+
+      {/* 5b. Section: Our Leadership & Team Mates (#our-leadership) */}
+      <section
+        id="our-leadership"
+        className="w-full bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
+      >
+        <div className="max-w-[1540px] mx-auto">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-[1.4px] bg-[#001e62]/10 text-[#001e62] mb-3">
+              Key Team Mates &amp; Leadership
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-4">
+              Our Leadership &amp; Specialists
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
+              Meet our executive directors, regional leaders, legal coordinators, and metallurgy engineers powering continuous technological leadership across India, Asia, the Gulf, and Africa.
+            </p>
+          </div>
+
+          {/* Central Rolls Royces Mail ID Card Banner */}
+          <div className="max-w-4xl mx-auto mb-12 sm:mb-16">
+            <div className="bg-gradient-to-r from-[#001438] via-[#001e62] to-[#0a2f8c] rounded-xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10">
+              <div className="flex items-center gap-4 sm:gap-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/20">
+                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs uppercase font-bold tracking-wider text-cyan-200">
+                      Central Corporate Mail ID
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono select-all">
+                    RollsRoyces@rollsroyces.com
+                  </h3>
+                  <p className="text-white/80 text-xs sm:text-sm mt-1">
+                    Direct communications for leadership coordination, metallurgy testing &amp; regional affairs
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 w-full sm:w-auto">
+                <button
+                  onClick={() => handleCopyEmail("RollsRoyces@rollsroyces.com")}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-medium text-xs sm:text-sm transition-all border border-white/20 cursor-pointer"
+                >
+                  {copiedEmail === "RollsRoyces@rollsroyces.com" ? (
+                    <>
+                      <Check className="w-4 h-4 text-emerald-300" />
+                      <span className="text-emerald-200 font-semibold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      <span>Copy Mail ID</span>
+                    </>
+                  )}
+                </button>
+                <a
+                  href="mailto:RollsRoyces@rollsroyces.com"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white text-[#001438] hover:bg-cyan-50 font-bold text-xs sm:text-sm transition-all shadow-md hover:scale-105"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Send Mail</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-12">
+            {[
+              { id: "all", label: "All Team Mates", count: teamMembers.length },
+              {
+                id: "leadership",
+                label: "Executive & Regional Leadership",
+                count: teamMembers.filter((m) => m.category === "leadership").length,
+              },
+              {
+                id: "metallurgy",
+                label: "Metallurgy Specialists",
+                count: teamMembers.filter((m) => m.category === "metallurgy").length,
+              },
+              {
+                id: "legal",
+                label: "Legal & Advisory",
+                count: teamMembers.filter((m) => m.category === "legal").length,
+              },
+            ].map((tab) => {
+              const isActive = selectedTeamCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setSelectedTeamCategory(tab.id)}
+                  className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                    isActive
+                      ? "bg-[#001e62] text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200/80"
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-100 text-gray-600"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Team Members Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+            {filteredTeamMembers.map((member, idx) => {
+              const isCopied = copiedEmail === member.email;
+              return (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  whileHover={{ y: -6 }}
+                  className="bg-white rounded-lg border border-gray-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group"
+                >
+                  {/* Photo Container */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-slate-800 to-[#001438]">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+
+                    {/* Gradient overlay for contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+                    {/* Role Tag Pill */}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#001e62]/90 backdrop-blur-md text-white border border-white/20 shadow-sm">
+                        {member.categoryLabel}
+                      </span>
+                    </div>
+
+                    {/* Region Pill if available */}
+                    {member.region && (
+                      <div className="absolute bottom-3 left-3 z-10 flex items-center gap-1.5 text-white/95 text-xs font-medium drop-shadow-md">
+                        <MapPin className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
+                        <span className="truncate">{member.region}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Card Content Body */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Name & Title */}
+                      <h3 className="text-xl sm:text-[22px] font-bold text-[#001438] tracking-tight group-hover:text-[#001e62] transition-colors mb-1">
+                        {member.name}
+                      </h3>
+
+                      <p className="text-xs sm:text-[13.5px] font-semibold text-[#0066ff] uppercase tracking-wider mb-2.5">
+                        {member.role}
+                      </p>
+
+                      <div className="flex items-center gap-1.5 text-gray-500 text-xs mb-3 font-medium">
+                        <Briefcase className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+                        <span>{member.department}</span>
+                      </div>
+
+                      <p className="text-gray-600 text-xs sm:text-[13px] leading-relaxed line-clamp-3 mb-5 font-normal">
+                        {member.bio}
+                      </p>
+                    </div>
+
+                    {/* Dedicated Rolls Royces Mail ID Row */}
+                    <div className="pt-4 border-t border-gray-100">
+                      <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 font-medium">
+                        <span>Corporate Mail ID</span>
+                        {isCopied && (
+                          <span className="text-emerald-600 font-semibold flex items-center gap-1 text-[11px]">
+                            <Check className="w-3 h-3" /> Copied
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between bg-gray-50 hover:bg-gray-100/80 rounded-md p-2 transition-colors border border-gray-100">
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="flex items-center gap-2 text-xs font-mono text-[#001e62] hover:text-[#0066ff] truncate transition-colors"
+                          title={`Email ${member.name}`}
+                        >
+                          <Mail className="w-3.5 h-3.5 text-[#001e62] shrink-0" />
+                          <span className="truncate">{member.email}</span>
+                        </a>
+
+                        <button
+                          onClick={() => handleCopyEmail(member.email)}
+                          aria-label={`Copy ${member.name} email`}
+                          className="p-1 rounded text-gray-400 hover:text-[#001e62] hover:bg-white transition-colors shrink-0 ml-1.5 cursor-pointer"
+                          title="Copy email address"
+                        >
+                          {isCopied ? (
+                            <Check className="w-3.5 h-3.5 text-emerald-600" />
+                          ) : (
+                            <Copy className="w-3.5 h-3.5" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* 6. Section: Our businesses (#our-businesses) */}
       <section id="our-businesses" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
@@ -388,7 +752,7 @@ export default function AboutPage() {
             <div className="aspect-[16/10] rounded-sm overflow-hidden shadow-lg bg-gray-100">
               <img
                 src="/assets/images/framework-tech.jpg"
-                alt="Rolls-Royce engineer working on aerospace propulsion systems"
+                alt="Rolls Royces engineer working on aerospace propulsion systems"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -396,12 +760,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. Section: Inside Rolls-Royce (#inside-rolls-royce) */}
+      {/* 8. Section: Inside Rolls Royces (#inside-rolls-royce) */}
       <section id="inside-rolls-royce" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
         <div className="max-w-[1540px] mx-auto">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px]">
-              Inside Rolls-Royce
+              Inside Rolls Royces
             </h2>
           </div>
 
@@ -411,21 +775,22 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
-              className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
+              onClick={() => scrollToSection("our-leadership")}
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
                   src="/assets/images/inside-leader.jpg"
-                  alt="Rolls-Royce Leadership"
+                  alt="Rolls Royces Leadership & Team"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
-                  Leadership
+              <div className="sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0284c7] transition-colors duration-300">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#001e62] group-hover:text-white mb-2 sm:mb-3 transition-colors duration-300">
+                  Leadership &amp; Team
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
-                  Our Board and Executive Team
+                <p className="text-gray-600 group-hover:text-white text-base sm:text-[17px] leading-relaxed font-normal transition-colors duration-300">
+                  Our Executive Leaders, Regional Heads &amp; Metallurgists
                 </p>
               </div>
             </motion.div>
@@ -434,20 +799,20 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
-              className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
-              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto p-4 flex items-center justify-center bg-gray-50/50">
+              <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto p-4 flex items-center justify-center bg-gray-50/50 group-hover:bg-white transition-colors duration-300">
                 <img
                   src="/assets/images/world-map.svg"
                   alt="Where we operate map"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
+              <div className="sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0284c7] transition-colors duration-300">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#001e62] group-hover:text-white mb-2 sm:mb-3 transition-colors duration-300">
                   Where we operate
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
+                <p className="text-gray-600 group-hover:text-white text-base sm:text-[17px] leading-relaxed font-normal transition-colors duration-300">
                   Find out details of our global presence
                 </p>
               </div>
@@ -457,7 +822,7 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
-              className="rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-900">
                 <img
@@ -466,11 +831,11 @@ export default function AboutPage() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center bg-[#0284c7] text-white">
-                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-1.5 sm:mb-2">
+              <div className="sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0284c7] transition-colors duration-300">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#001e62] group-hover:text-white mb-2 sm:mb-3 transition-colors duration-300">
                   Our Research
                 </h3>
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed font-normal">
+                <p className="text-gray-600 group-hover:text-white text-base sm:text-[17px] leading-relaxed font-normal transition-colors duration-300">
                   Find out more about how we structure our research
                 </p>
               </div>
@@ -480,20 +845,20 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
-              className="bg-white border border-gray-200/90 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
                   src="/assets/images/inside-history.jpg"
-                  alt="Rolls-Royce 1906 History"
+                  alt="Rolls Royces 1906 History"
                   className="w-full h-full object-cover sepia-[0.35] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="sm:w-3/5 p-5 sm:p-7 md:p-8 flex flex-col justify-center">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#001e62] mb-1.5 sm:mb-2 group-hover:text-[#0a2f8c] transition-colors">
+              <div className="sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0284c7] transition-colors duration-300">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#001e62] group-hover:text-white mb-2 sm:mb-3 transition-colors duration-300">
                   Our History
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
+                <p className="text-gray-600 group-hover:text-white text-base sm:text-[17px] leading-relaxed font-normal transition-colors duration-300">
                   Our company was founded in 1906: use our timeline to discover our key milestones
                 </p>
               </div>
@@ -502,7 +867,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 9. The Rolls-Royce Heritage Trust Banner */}
+      {/* 9. The Rolls Royces Heritage Trust Banner */}
       <section className="w-full bg-white py-10 sm:py-12 px-4 sm:px-6 md:px-12">
         <div className="max-w-[1540px] mx-auto">
           <motion.div
@@ -514,10 +879,10 @@ export default function AboutPage() {
           >
             <div className="max-w-2xl">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white tracking-tight mb-2 sm:mb-3">
-                The Rolls-Royce Heritage Trust
+                The Rolls Royces Heritage Trust
               </h2>
               <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
-                The Rolls-Royce Heritage Trust promotes the history and engineering excellence of Rolls-Royce and its ancestral companies.
+                The Rolls Royces Heritage Trust promotes the history and engineering excellence of Rolls Royces and its ancestral companies.
               </p>
             </div>
 
@@ -537,7 +902,7 @@ export default function AboutPage() {
       {/* 10. Clean White Buffer before Footer */}
       <section className="w-full bg-white py-10 sm:py-16 md:py-20" />
 
-      {/* 11. Official Rolls-Royce Footer */}
+      {/* 11. Official Rolls Royces Footer */}
       <Footer />
 
       {/* Video Modal Player */}
@@ -552,7 +917,7 @@ export default function AboutPage() {
             >
               <div className="flex items-center justify-between p-4 bg-[#001438] text-white">
                 <span className="font-semibold text-sm">
-                  Rolls-Royce – Powering, Protecting &amp; Connecting
+                  Rolls Royces – Powering, Protecting &amp; Connecting
                 </span>
                 <button
                   onClick={() => setIsVideoModalOpen(false)}

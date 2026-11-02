@@ -18,7 +18,7 @@ export default function AnnualReportSection() {
           <div className="relative aspect-[16/10] overflow-hidden">
             <img
               src="/assets/images/annual-report.jpg"
-              alt="Rolls-Royce Trent engine assembly facility"
+              alt="Rolls Royces Trent engine assembly facility"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
           </div>

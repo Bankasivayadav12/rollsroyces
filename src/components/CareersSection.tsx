@@ -29,7 +29,7 @@ export default function CareersSection() {
               href="#careers"
               className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13.5px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#00009c] transition-all duration-300 hover:scale-105 group"
             >
-              <span>VISIT ROLLS-ROYCE CAREERS</span>
+              <span>VISIT ROLLS ROYCES CAREERS</span>
               <ChevronRight className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
@@ -46,7 +46,7 @@ export default function CareersSection() {
           <div className="relative w-full max-w-[640px] drop-shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
             <img
               src="/assets/images/careers-infinity.jpg"
-              alt="Rolls-Royce Careers with Infinite Potential"
+              alt="Rolls Royces Careers with Infinite Potential"
               className="w-full h-auto object-contain rounded-lg"
             />
           </div>

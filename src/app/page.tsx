@@ -56,7 +56,7 @@ export default function HomePage() {
       {/* White Section Below Careers */}
       <section className="w-full bg-white py-16 sm:py-24" />
 
-      {/* 7. Rolls-Royce Corporate Official Footer */}
+      {/* 7. Rolls Royces Corporate Official Footer */}
       <Footer />
 
       {/* Interactive Story / Technical Specs Drawer */}

@@ -18,38 +18,44 @@ interface SuggestionItem {
   slideIndex?: number;
 }
 
-// Rolls-Royce auto-search database with real counts matching official search indexing
+// Rolls Royces auto-search database with real counts matching official search indexing
 const autoSearchDB: { [key: string]: SuggestionItem[] } = {
   about: [
     { text: "about", count: 2214, href: "/about" },
     { text: "about our", count: 2037, href: "/about" },
     { text: "about create", count: 1797, href: "/about" },
     { text: "about press", count: 1007, href: "/investors" },
-    { text: "about rolls", count: 1006, href: "/about" },
+    { text: "about rolls royces", count: 1006, href: "/about" },
     { text: "about we", count: 137, href: "/about" },
   ],
+  submarine: [
+    { text: "rolls royces submarines", count: 2890, href: "/", slideIndex: 0 },
+    { text: "submarine nuclear propulsion", count: 2450, href: "/", slideIndex: 0 },
+    { text: "submarines royal navy astute", count: 1820, href: "/", slideIndex: 0 },
+    { text: "submarine dreadnought aukus", count: 1350, href: "/products-services" },
+  ],
   trent: [
-    { text: "trent 1000 xe", count: 1845, href: "/", slideIndex: 0 },
+    { text: "trent 1000 xe", count: 1845, href: "/", slideIndex: 1 },
     { text: "trent 7000 engine", count: 1420, href: "/products-services" },
-    { text: "trent 1000 durability", count: 980, href: "/", slideIndex: 0 },
+    { text: "trent 1000 durability", count: 980, href: "/", slideIndex: 1 },
     { text: "trent 900 a380", count: 740, href: "/products-services" },
     { text: "trent saf readiness", count: 520, href: "/innovation" },
   ],
   series: [
-    { text: "series 8000 marine", count: 2150, href: "/products-services", slideIndex: 1 },
-    { text: "series 8000 specs", count: 1480, href: "/", slideIndex: 1 },
+    { text: "series 8000 marine", count: 2150, href: "/products-services", slideIndex: 2 },
+    { text: "series 8000 specs", count: 1480, href: "/", slideIndex: 2 },
     { text: "series 4000 mtu", count: 1210, href: "/products-services" },
     { text: "series 2000 power", count: 840, href: "/products-services" },
   ],
   ae: [
-    { text: "ae the story behind the engine", count: 1980, href: "/", slideIndex: 2 },
+    { text: "ae the story behind the engine", count: 1980, href: "/", slideIndex: 3 },
     { text: "ae 2100 turboprop", count: 1420, href: "/products-services" },
     { text: "ae 3007 turbofan", count: 1110, href: "/products-services" },
     { text: "ae defence reliability", count: 860, href: "/products-services" },
   ],
   product: [
     { text: "products & services", count: 3210, href: "/products-services" },
-    { text: "products civil aerospace", count: 2040, href: "/products-services" },
+    { text: "products submarines", count: 2450, href: "/products-services#submarines" },
     { text: "products defence", count: 1680, href: "/products-services" },
     { text: "products power systems", count: 1420, href: "/products-services" },
     { text: "products electrical", count: 870, href: "/innovation" },

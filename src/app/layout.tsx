@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Rolls-Royce – Pioneering the Power that Matters",
-  description: "Rolls-Royce develops and delivers complex power and propulsion solutions for safety-critical applications in the air, at sea, and on land.",
+  title: "Rolls Royces – Pioneering the Power that Matters",
+  description: "Rolls Royces develops and delivers complex power and propulsion solutions for safety-critical applications in the air, at sea, and on land.",
   icons: {
     icon: "/favicon.ico",
   },

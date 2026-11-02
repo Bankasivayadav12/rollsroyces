@@ -16,10 +16,10 @@ export default function SiteMapPage() {
     {
       title: "About Us",
       links: [
-        { label: "About Rolls-Royce", href: "/about" },
+        { label: "About Rolls Royces", href: "/about" },
         { label: "Our Purpose & Vision", href: "/about#purpose" },
         { label: "Our Strategic Framework", href: "/about#framework" },
-        { label: "Inside Rolls-Royce", href: "/about#inside" },
+        { label: "Inside Rolls Royces", href: "/about#inside" },
         { label: "Our Businesses", href: "/about#businesses" },
       ],
     },
@@ -27,7 +27,7 @@ export default function SiteMapPage() {
       title: "Products & Services",
       links: [
         { label: "Products & Services Overview", href: "/products-services" },
-        { label: "Civil Aerospace Engines (Trent Family)", href: "/products-services#civil-aerospace" },
+        { label: "Submarines & Naval Nuclear Propulsion", href: "/products-services#submarines" },
         { label: "Defence Combat & Submarine Propulsion", href: "/products-services#defence" },
         { label: "Power Systems (mtu Series 8000 & 4000)", href: "/products-services#power-systems" },
         { label: "Electrical & Advanced Propulsion", href: "/products-services#electrical" },
@@ -67,7 +67,7 @@ export default function SiteMapPage() {
       title: "Quick Links",
       links: [
         { label: "Home", href: "/" },
-        { label: "Search rolls-royce.com", href: "#", onClick: () => setIsSearchOpen(true) },
+        { label: "Search rollsroyces.com", href: "#", onClick: () => setIsSearchOpen(true) },
         { label: "Accessibility Preferences", href: "#", onClick: () => setIsAccModalOpen(true) },
       ],
     },
@@ -118,7 +118,7 @@ export default function SiteMapPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg text-white/80 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            A comprehensive overview of content, commercial businesses, technologies, and corporate disclosures across Rolls-Royce.
+            A comprehensive overview of content, commercial businesses, technologies, and corporate disclosures across Rolls Royces.
           </motion.p>
         </div>
       </section>

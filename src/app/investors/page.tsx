@@ -98,7 +98,7 @@ export default function InvestorsPage() {
       image: "/assets/images/investor-shareprice.svg",
       isSvgGraphic: true,
       defaultBlue: false,
-      modalTitle: "Rolls-Royce Holdings plc (LSE: RR.) Share Performance",
+      modalTitle: "Rolls Royces Holdings plc (LSE: RR.) Share Performance",
       modalCategory: "MARKET DATA",
     },
     {
@@ -117,7 +117,7 @@ export default function InvestorsPage() {
       image: "/assets/images/annual-report.jpg",
       isAnnualReportGraphic: true,
       defaultBlue: false,
-      modalTitle: "Rolls-Royce Holdings plc Annual Report & Accounts 2025",
+      modalTitle: "Rolls Royces Holdings plc Annual Report & Accounts 2025",
       modalCategory: "STATUTORY REPORT",
     },
     {
@@ -137,14 +137,14 @@ export default function InvestorsPage() {
     {
       id: 1,
       image: "/assets/images/press-bizjet.jpg",
-      title: "Rolls-Royce introduces additional benefits for corporate jet customers",
+      title: "Rolls Royces introduces additional benefits for corporate jet customers",
       type: "PRESS RELEASE",
       date: "19 OCTOBER 2026",
-      summary: "Rolls-Royce today announced an expansion of its market-leading CorporateCare® Enhanced service for business aviation customers worldwide.",
+      summary: "Rolls Royces today announced an expansion of its market-leading CorporateCare® Enhanced service for business aviation customers worldwide.",
       content: [
-        "Rolls-Royce has unveiled significant enhancements to its CorporateCare® Enhanced service programme, delivering greater operating cost predictability, comprehensive asset protection, and digital health monitoring for corporate jet owners.",
+        "Rolls Royces has unveiled significant enhancements to its CorporateCare® Enhanced service programme, delivering greater operating cost predictability, comprehensive asset protection, and digital health monitoring for corporate jet owners.",
         "The new coverage introduces predictive engine maintenance algorithms that detect anomalies before they impact flight schedules, ensuring unmatched fleet availability across Pearl and BR700 engine families.",
-        "With more than 70% of Rolls-Royce powered business aircraft enrolled in CorporateCare, this upgrade highlights our steadfast commitment to customer excellence and lifecycle support.",
+        "With more than 70% of Rolls Royces powered business aircraft enrolled in CorporateCare, this upgrade highlights our steadfast commitment to customer excellence and lifecycle support.",
       ],
     },
     {
@@ -154,7 +154,7 @@ export default function InvestorsPage() {
       type: "PRESS RELEASE",
       date: "13 OCTOBER 2026",
       initialActive: true,
-      summary: "Rolls-Royce announces remarkable durability and fuel-burn improvements across its flagship widebody Trent engine family.",
+      summary: "Rolls Royces announces remarkable durability and fuel-burn improvements across its flagship widebody Trent engine family.",
       content: [
         "The Trent engine family continues to set industry standards for long-haul reliability and fuel efficiency. Accelerated endurance testing on the Trent 1000 and Trent 7000 has proven new blade aerodynamic coatings and high-pressure turbine upgrades that double time-on-wing in severe operating environments.",
         "Airlines across Asia-Pacific, Europe, and the Americas have logged more than 150 million flight hours on the Trent family, praising its continuous innovation and transition pathway to 100% Sustainable Aviation Fuel (SAF).",
@@ -164,12 +164,12 @@ export default function InvestorsPage() {
     {
       id: 3,
       image: "/assets/images/press-signing.jpg",
-      title: "Rolls-Royce becomes first high-speed engine manufacturer to approve 100% SAF",
+      title: "Rolls Royces becomes first high-speed engine manufacturer to approve 100% SAF",
       type: "PRESS RELEASE",
       date: "1 OCTOBER 2026",
-      summary: "Rolls-Royce Power Systems has formally approved its mtu Series 2000 and Series 4000 engines for 100% Sustainable Aviation Fuel and renewable HVO diesel.",
+      summary: "Rolls Royces Power Systems has formally approved its mtu Series 2000 and Series 4000 engines for 100% Sustainable Aviation Fuel and renewable HVO diesel.",
       content: [
-        "In a landmark sustainability milestone, Rolls-Royce has validated and approved the use of 100% Sustainable Aviation Fuel (SAF) and Hydrotreated Vegetable Oil (HVO) across its extensive mtu high-speed internal combustion product portfolio.",
+        "In a landmark sustainability milestone, Rolls Royces has validated and approved the use of 100% Sustainable Aviation Fuel (SAF) and Hydrotreated Vegetable Oil (HVO) across its extensive mtu high-speed internal combustion product portfolio.",
         "The breakthrough allows commercial marine, yacht, rail, and distributed power generation customers to cut net greenhouse gas emissions by up to 90% without requiring engine modifications.",
         "A formal signing ceremony in Friedrichshafen solidified new long-term agreements with global maritime fleet operators aiming for net-zero carbon operations.",
       ],
@@ -177,14 +177,14 @@ export default function InvestorsPage() {
     {
       id: 4,
       image: "/assets/images/news-a350f.jpg",
-      title: "Rolls-Royce strengthens freighter market position with Trent 7000 agreements",
+      title: "Rolls Royces strengthens freighter market position with Trent 7000 agreements",
       type: "PRESS RELEASE",
       date: "29 SEPTEMBER 2026",
-      summary: "Rolls-Royce secures landmark long-term propulsion agreements for global cargo operators investing in new-generation widebody freighters.",
+      summary: "Rolls Royces secures landmark long-term propulsion agreements for global cargo operators investing in new-generation widebody freighters.",
       content: [
-        "Rolls-Royce has strengthened its commercial leadership in the global air cargo sector with key new commitments for Trent 7000 engines powering modern widebody freighters.",
+        "Rolls Royces has strengthened its commercial leadership in the global air cargo sector with key new commitments for Trent 7000 engines powering modern widebody freighters.",
         "The Trent 7000 brings exceptional fuel efficiency, quiet operation, and proven reliability, providing freighter operators with superior payload range economics and lower carbon intensity.",
-        "Combined with Rolls-Royce TotalCare® service coverage, cargo operators benefit from round-the-clock digital fleet monitoring and guaranteed spare engine availability worldwide.",
+        "Combined with Rolls Royces TotalCare® service coverage, cargo operators benefit from round-the-clock digital fleet monitoring and guaranteed spare engine availability worldwide.",
       ],
     },
 
@@ -192,12 +192,12 @@ export default function InvestorsPage() {
     {
       id: 5,
       image: "/assets/images/smr-building.svg",
-      title: "Rolls-Royce SMR selected for European clean baseload nuclear energy deployment",
+      title: "Rolls Royces SMR selected for European clean baseload nuclear energy deployment",
       type: "PRESS RELEASE",
       date: "18 SEPTEMBER 2026",
-      summary: "Rolls-Royce Small Modular Reactor (SMR) programme chosen for pioneering nuclear deployment to decarbonize European industrial grids.",
+      summary: "Rolls Royces Small Modular Reactor (SMR) programme chosen for pioneering nuclear deployment to decarbonize European industrial grids.",
       content: [
-        "Rolls-Royce SMR has been chosen by premier European utility partners to construct modular nuclear power stations, delivering dependable low-carbon electricity by the early 2030s.",
+        "Rolls Royces SMR has been chosen by premier European utility partners to construct modular nuclear power stations, delivering dependable low-carbon electricity by the early 2030s.",
         "Each 470MWe power station utilizes standardized, factory-built modules that minimize construction risk and dramatically accelerate deployment compared to conventional nuclear plants.",
         "This project marks a cornerstone in Europe's energy sovereignty and industrial decarbonization agenda.",
       ],
@@ -210,7 +210,7 @@ export default function InvestorsPage() {
       date: "04 SEPTEMBER 2026",
       summary: "UltraFan® demonstrator technology achieves record fuel efficiency targets and data validation at the state-of-the-art Testbed 80 facility in Derby.",
       content: [
-        "Rolls-Royce has successfully concluded high-power endurance testing of the UltraFan® demonstrator engine at Testbed 80 in Derby, the world's largest indoor test facility.",
+        "Rolls Royces has successfully concluded high-power endurance testing of the UltraFan® demonstrator engine at Testbed 80 in Derby, the world's largest indoor test facility.",
         "The test proved a 10% efficiency gain over the world's most efficient in-service engines, confirming the strength of the composite carbon-titanium fan system and high-power gearbox.",
         "Data gathered across thousands of sensor channels provides a proven baseline for future commercial and defence propulsion architectures.",
       ],
@@ -218,12 +218,12 @@ export default function InvestorsPage() {
     {
       id: 7,
       image: "/assets/images/annual-report.jpg",
-      title: "Rolls-Royce reports robust free cash flow and raises full-year guidance",
+      title: "Rolls Royces reports robust free cash flow and raises full-year guidance",
       type: "PRESS RELEASE",
       date: "22 AUGUST 2026",
       summary: "Disciplined operational execution and commercial optimisation deliver record operating profit across Civil, Defence, and Power Systems.",
       content: [
-        "Rolls-Royce today announced upgraded guidance for the full financial year, reflecting superior commercial discipline, contractual margin improvements, and structural cost efficiency.",
+        "Rolls Royces today announced upgraded guidance for the full financial year, reflecting superior commercial discipline, contractual margin improvements, and structural cost efficiency.",
         "Underlying operating profit increased substantially, underpinned by strong large engine flying hours recovery and robust defence order intake across nuclear submarine and combat air programmes.",
         "The Group's resilient balance sheet continues to support disciplined investment in strategic decarbonisation technologies.",
       ],
@@ -231,12 +231,12 @@ export default function InvestorsPage() {
     {
       id: 8,
       image: "/assets/images/prod-defence.jpg",
-      title: "Rolls-Royce signs strategic propulsion pact for Global Combat Air Programme",
+      title: "Rolls Royces signs strategic propulsion pact for Global Combat Air Programme",
       type: "PRESS RELEASE",
       date: "11 AUGUST 2026",
       summary: "Trilateral engineering partnership between the UK, Japan, and Italy achieves crucial milestones in sixth-generation fighter engine development.",
       content: [
-        "Rolls-Royce Defence has signed a multi-year collaborative propulsion agreement with industry partners to co-develop the sixth-generation fighter jet engine under GCAP.",
+        "Rolls Royces Defence has signed a multi-year collaborative propulsion agreement with industry partners to co-develop the sixth-generation fighter jet engine under GCAP.",
         "The cutting-edge power and propulsion system will deliver unprecedented electrical power generation to support directed energy weapons and advanced digital avionics.",
         "Initial combustor and turbine sub-assembly trials have demonstrated exceptional thermal tolerance and radar signature reduction.",
       ],
@@ -246,24 +246,24 @@ export default function InvestorsPage() {
     {
       id: 9,
       image: "/assets/images/powersystems-landscape.svg",
-      title: "Rolls-Royce Power Systems supplies battery microgrid systems to critical hospitals",
+      title: "Rolls Royces Power Systems supplies battery microgrid systems to critical hospitals",
       type: "PRESS RELEASE",
       date: "28 JULY 2026",
       summary: "mtu EnergyPack battery storage systems provide zero-emission uninterrupted emergency power for medical centers.",
       content: [
-        "Rolls-Royce Power Systems has delivered containerized mtu EnergyPack battery energy storage solutions to major metropolitan hospital campuses.",
+        "Rolls Royces Power Systems has delivered containerized mtu EnergyPack battery energy storage solutions to major metropolitan hospital campuses.",
         "The intelligent microgrids combine solar photovoltaic arrays, lithium-iron-phosphate battery packs, and standby gas generators to provide seamless backup power while cutting campus emissions.",
       ],
     },
     {
       id: 10,
       image: "/assets/images/netzero-pod.jpg",
-      title: "Rolls-Royce publishes 2026 Sustainability and Net Zero Transition Progress Report",
+      title: "Rolls Royces publishes 2026 Sustainability and Net Zero Transition Progress Report",
       type: "PRESS RELEASE",
       date: "15 JULY 2026",
       summary: "Detailed carbon accounting confirms ongoing reduction in Scope 1 and Scope 2 emissions across all global production sites.",
       content: [
-        "Rolls-Royce has published its comprehensive mid-year Net Zero progress audit, validating that 100% of manufacturing facilities in the UK and Germany now source renewable electricity.",
+        "Rolls Royces has published its comprehensive mid-year Net Zero progress audit, validating that 100% of manufacturing facilities in the UK and Germany now source renewable electricity.",
         "The report outlines our verified roadmap to reach net zero operational emissions by 2030 and net zero lifecycle emissions by 2050.",
       ],
     },
@@ -273,21 +273,21 @@ export default function InvestorsPage() {
       title: "EJ200 fleet achieves 2 million engine flying hours with Eurofighter Typhoon air forces",
       type: "PRESS RELEASE",
       date: "02 JULY 2026",
-      summary: "Rolls-Royce celebrates two million operational flight hours on the EJ200 engine powering frontline Eurofighter Typhoon squadrons.",
+      summary: "Rolls Royces celebrates two million operational flight hours on the EJ200 engine powering frontline Eurofighter Typhoon squadrons.",
       content: [
-        "The EUROJET consortium, led in the UK by Rolls-Royce, celebrated the landmark achievement of two million flying hours for the EJ200 turbofan engine.",
+        "The EUROJET consortium, led in the UK by Rolls Royces, celebrated the landmark achievement of two million flying hours for the EJ200 turbofan engine.",
         "The EJ200 has proven extraordinary operational readiness, high thrust-to-weight performance, and exceptional hot-and-high agility during NATO air policing missions.",
       ],
     },
     {
       id: 12,
       image: "/assets/images/vertiport-terminal.jpg",
-      title: "Rolls-Royce electrical propulsion unit achieves successful first flight on eVTOL testbed",
+      title: "Rolls Royces electrical propulsion unit achieves successful first flight on eVTOL testbed",
       type: "PRESS RELEASE",
       date: "19 JUNE 2026",
       summary: "High-density electric motor and inverter architecture demonstrate smooth vertical takeoff and horizontal transition flight.",
       content: [
-        "Rolls-Royce Electrical has concluded the maiden flight test of its 400kW lightweight aviation electric propulsion system on an experimental urban air mobility aircraft.",
+        "Rolls Royces Electrical has concluded the maiden flight test of its 400kW lightweight aviation electric propulsion system on an experimental urban air mobility aircraft.",
         "The unit delivered class-leading power density and acoustic stealth, validating our commitment to quiet and clean urban air mobility solutions.",
       ],
     },
@@ -339,7 +339,7 @@ export default function InvestorsPage() {
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/images/investor-technicians.jpg"
-            alt="Rolls-Royce aerospace engineers at engine facility"
+            alt="Rolls Royces aerospace engineers at engine facility"
             className="w-full h-full object-cover object-center"
           />
           {/* Blue gradient overlay matching screenshot */}
@@ -443,7 +443,7 @@ export default function InvestorsPage() {
                     )}
                   </div>
 
-                  {/* Right Content Side: White by default, turns Rolls-Royce Electric Blue on hover */}
+                  {/* Right Content Side: White by default, turns Rolls Royces Electric Blue on hover */}
                   <div className="sm:w-[58%] p-6 sm:p-8 flex flex-col justify-center bg-white group-hover:bg-[#0062ff] transition-colors duration-300">
                     <h3 className="text-xl sm:text-[22px] font-bold text-[#0808a3] group-hover:text-white transition-colors duration-300 leading-snug mb-2.5">
                       {item.title}
@@ -625,7 +625,7 @@ export default function InvestorsPage() {
       {/* 6. Clean White Buffer Section */}
       <section className="w-full bg-white py-14 sm:py-20" />
 
-      {/* 7. Official Rolls-Royce Footer */}
+      {/* 7. Official Rolls Royces Footer */}
       <Footer />
 
       {/* 8. Floating Accessibility Widget - Fixed to bottom right on scroll */}
@@ -667,7 +667,7 @@ export default function InvestorsPage() {
                   <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#00a3e0] bg-white/10 px-2 sm:px-2.5 py-1 rounded">
                     {selectedResource.modalCategory}
                   </span>
-                  <span className="text-xs text-white/80 hidden xs:inline">Rolls-Royce Investor Centre</span>
+                  <span className="text-xs text-white/80 hidden xs:inline">Rolls Royces Investor Centre</span>
                 </div>
                 <button
                   onClick={() => setSelectedResource(null)}
@@ -752,7 +752,7 @@ export default function InvestorsPage() {
                         </tbody>
                       </table>
                     </div>
-                    <p className="text-xs text-gray-500">Based on projections from 22 sell-side equity analysts covering Rolls-Royce Holdings plc.</p>
+                    <p className="text-xs text-gray-500">Based on projections from 22 sell-side equity analysts covering Rolls Royces Holdings plc.</p>
                   </div>
                 )}
 
@@ -924,7 +924,7 @@ export default function InvestorsPage() {
                     Media Relations Contact
                   </h4>
                   <p className="text-sm text-gray-600">
-                    Rolls-Royce plc Media Centre • <span className="font-medium text-blue-600">media@rolls-royce.com</span> • London, UK
+                    Rolls Royces plc Media Centre • <span className="font-medium text-blue-600">media@rollsroyces.com</span> • London, UK
                   </p>
                 </div>
 
@@ -949,7 +949,7 @@ export default function InvestorsPage() {
                     </button>
 
                     <button
-                      onClick={() => alert("Downloading official Rolls-Royce press release PDF...")}
+                      onClick={() => alert("Downloading official Rolls Royces press release PDF...")}
                       className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
                     >
                       <Download className="w-4 h-4" />
