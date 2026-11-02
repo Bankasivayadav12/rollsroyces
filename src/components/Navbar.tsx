@@ -44,6 +44,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
 
   const navLinks = [
     { name: "About", href: "/about" },
+    { name: "Mission", href: "/mission" },
     { name: "Products & Services", href: "/products-services" },
     { name: "Innovation", href: "/innovation" },
     { name: "Investors", href: "/investors" },

@@ -207,6 +207,89 @@ export default function AboutPage() {
     },
   ];
 
+  const foreignTeamMembers = [
+    {
+      id: "hans-muller",
+      name: "Hans Müller",
+      initials: "HM",
+      role: "VP OF EUROPEAN OPERATIONS & ORBITAL ENGINEERING",
+      location: "GERMANY / SWITZERLAND",
+      gradient: "from-[#2e1065] via-[#1e1b4b] to-[#1e3a8a]",
+    },
+    {
+      id: "lukas-schmidt",
+      name: "Lukas Schmidt",
+      initials: "LS",
+      role: "SENIOR DIRECTOR OF MICROGRAVITY REFINERIES",
+      location: "GERMANY",
+      gradient: "from-[#064e3b] via-[#047857] to-[#022c22]",
+    },
+    {
+      id: "leon-fischer",
+      name: "Leon Fischer",
+      initials: "LF",
+      role: "HEAD OF ORBITAL THERMAL & POWER SYSTEMS",
+      location: "SWITZERLAND",
+      gradient: "from-[#082f49] via-[#0369a1] to-[#0c4a6e]",
+    },
+    {
+      id: "max-weber",
+      name: "Max Weber",
+      initials: "MW",
+      role: "LEAD QUANTUM MATERIALS SCIENTIST",
+      location: "GERMANY",
+      gradient: "from-[#581c87] via-[#7e22ce] to-[#3b0764]",
+    },
+    {
+      id: "paul-wagner",
+      name: "Paul Wagner",
+      initials: "PW",
+      role: "DIRECTOR OF SOVEREIGN MISSION ACCORDS",
+      location: "AUSTRIA",
+      gradient: "from-[#7c2d12] via-[#9a3412] to-[#431407]",
+    },
+    {
+      id: "felix-becker",
+      name: "Felix Becker",
+      initials: "FB",
+      role: "AUTOMATION & ROBOTICS ENGINEER",
+      location: "GERMANY",
+      gradient: "from-[#831843] via-[#9d174d] to-[#500724]",
+    },
+    {
+      id: "jonas-hoffmann",
+      name: "Jonas Hoffmann",
+      initials: "JH",
+      role: "LEAD SPACECRAFT SYSTEMS ARCHITECT",
+      location: "SWITZERLAND",
+      gradient: "from-[#172554] via-[#1e40af] to-[#1e1b4b]",
+    },
+    {
+      id: "tim-schneider",
+      name: "Tim Schneider",
+      initials: "TS",
+      role: "DIRECTOR OF CRYOGENIC FUEL SYSTEMS",
+      location: "GERMANY",
+      gradient: "from-[#064e3b] via-[#059669] to-[#022c22]",
+    },
+    {
+      id: "noah-braun",
+      name: "Noah Braun",
+      initials: "NB",
+      role: "SENIOR FLIGHT PAYLOAD SPECIALIST",
+      location: "LUXEMBOURG",
+      gradient: "from-[#134e4a] via-[#0f766e] to-[#042f2e]",
+    },
+    {
+      id: "emil-klein",
+      name: "Emil Klein",
+      initials: "EK",
+      role: "EUROPEAN LOGISTICS & INFRASTRUCTURE LEAD",
+      location: "GERMANY",
+      gradient: "from-[#4c1d95] via-[#6d28d9] to-[#2e1065]",
+    },
+  ];
+
   const filteredTeamMembers =
     selectedTeamCategory === "all"
       ? teamMembers
@@ -518,17 +601,70 @@ export default function AboutPage() {
         className="w-full bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
       >
         <div className="max-w-[1540px] mx-auto">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-[1.4px] bg-[#001e62]/10 text-[#001e62] mb-3">
-              Key Team Mates &amp; Leadership
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-4">
-              Our Leadership &amp; Specialists
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
-              Meet our executive directors, regional leaders, legal coordinators, and metallurgy engineers powering continuous technological leadership across India, Asia, the Gulf, and Africa.
-            </p>
+          {/* Top Part: Foreign & International Engineering Team */}
+          <div className="mb-14 sm:mb-20">
+            <div className="mb-8 sm:mb-10">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#001438] tracking-tight mb-3">
+                Foreign &amp; International Engineering Team
+              </h2>
+              <div className="w-16 h-1 bg-[#001e62] rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
+              {foreignTeamMembers.map((member, idx) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: idx * 0.05 }}
+                  className="flex flex-col group"
+                >
+                  {/* Top Gradient Box with Initials & Title */}
+                  <div
+                    className={`relative aspect-[4/5] rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-md bg-gradient-to-br ${member.gradient} text-white group-hover:scale-102 transition-transform duration-300`}
+                  >
+                    <div className="w-14 h-14 rounded-full bg-white/15 border border-white/30 flex items-center justify-center text-white font-bold text-sm sm:text-base mb-4 shadow-inner">
+                      {member.initials}
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-white tracking-wide mb-1.5">
+                      {member.name}
+                    </h4>
+                    <p className="text-[10px] sm:text-[11px] font-semibold text-white/90 uppercase tracking-wider leading-snug max-w-[170px]">
+                      {member.role}
+                    </p>
+                  </div>
+
+                  {/* Below Card Plain Text Info */}
+                  <div className="pt-3 px-1">
+                    <h5 className="text-sm font-bold text-gray-900 leading-snug">
+                      {member.name}
+                    </h5>
+                    <p className="text-[11px] font-medium text-gray-600 uppercase tracking-wider leading-tight mt-0.5">
+                      {member.role}
+                    </p>
+                    <p className="text-[11px] font-bold text-[#0066ff] uppercase tracking-wider mt-1">
+                      {member.location}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Divider between Foreign and Indian Teams */}
+          <div className="w-full border-t border-gray-200/90 pt-12 sm:pt-16 mb-8 sm:mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-[1.4px] bg-[#001e62]/10 text-[#001e62] mb-3">
+                Key Team Mates &amp; Leadership
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-4">
+                Indian Leadership &amp; Specialists
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
+                Meet our executive directors, regional leaders, legal coordinators, and metallurgy engineers powering continuous technological leadership across India, Asia, the Gulf, and Africa.
+              </p>
+            </div>
           </div>
 
           {/* Central Rolls Royces Mail ID Card Banner */}

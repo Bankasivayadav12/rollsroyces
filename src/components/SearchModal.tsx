@@ -28,6 +28,12 @@ const autoSearchDB: { [key: string]: SuggestionItem[] } = {
     { text: "about rolls royces", count: 1006, href: "/about" },
     { text: "about we", count: 137, href: "/about" },
   ],
+  mission: [
+    { text: "our mission & purpose", count: 2840, href: "/mission" },
+    { text: "mission powering protecting connecting", count: 2190, href: "/mission" },
+    { text: "mission net zero 2050", count: 1820, href: "/mission" },
+    { text: "mission 2030 horizon", count: 1450, href: "/mission" },
+  ],
   submarine: [
     { text: "rolls royces submarines", count: 2890, href: "/products-services/submarines", slideIndex: 0 },
     { text: "submarine nuclear propulsion", count: 2450, href: "/products-services/submarines", slideIndex: 0 },

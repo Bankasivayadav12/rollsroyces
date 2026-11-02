@@ -20,6 +20,7 @@ import {
   Zap,
   Globe,
   Copy,
+  ArrowRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
