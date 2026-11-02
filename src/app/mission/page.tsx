@@ -105,7 +105,7 @@ export default function MissionPage() {
       color: "from-emerald-950/60 via-[#001e62] to-[#001438]",
       badgeColor: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
       accentGlow: "group-hover:border-emerald-400/60 group-hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)]",
-      image: "/assets/images/business-typhoon.jpg",
+      image: "/assets/images/news-a350f.jpg",
       link: "/products-services/defence",
       linkText: "Explore Global Aviation Solutions",
       description:

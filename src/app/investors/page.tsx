@@ -269,7 +269,7 @@ export default function InvestorsPage() {
     },
     {
       id: 11,
-      image: "/assets/images/business-typhoon.jpg",
+      image: "/assets/images/prod-defence.jpg",
       title: "EJ200 fleet achieves 2 million engine flying hours with Eurofighter Typhoon air forces",
       type: "PRESS RELEASE",
       date: "02 JULY 2026",

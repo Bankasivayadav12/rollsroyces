@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { X, ArrowRight, Download, ExternalLink } from "lucide-react";
+import { X, ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface StoryData {
@@ -107,13 +107,9 @@ export default function StoryDrawer({ isOpen, onClose, story }: StoryDrawerProps
 
               {/* Action Footer */}
               <div className="px-5 sm:px-8 py-4 sm:py-6 bg-gray-50 border-t border-gray-100 flex flex-col gap-3">
-                <button className="w-full py-3.5 px-6 rounded bg-[#001e62] hover:bg-[#001438] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
-                  <Download className="w-4 h-4" />
-                  <span>Download Technical Datasheet</span>
-                </button>
                 <button
                   onClick={onClose}
-                  className="w-full py-3 px-6 rounded border border-[#001e62] text-[#001e62] hover:bg-blue-50 font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+                  className="w-full py-3.5 px-6 rounded bg-[#001e62] hover:bg-[#001438] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <span>Close Overview</span>
                 </button>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
@@ -123,169 +124,169 @@ export default function AboutPage() {
       department: "Chief Commercial Office",
       region: "Asia, Gulf Countries & Africa",
       email: "pritham.mital@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80",
+      gradient: "from-[#001438] via-[#001e62] to-[#0a2f8c]",
       bio: "Directs commercial strategy, enterprise deals, and strategic programmes across Civil Aerospace, Defence, and Power Systems across Asia, the Gulf, and Africa.",
       initials: "PM",
     },
     {
-      id: "agrwal-ch",
-      name: "Agrwal . CH",
-      role: "Indian Head",
+      id: "chandrahas-agarwal",
+      name: "Chandrahas Agarwal",
+      role: "President & Managing Director",
       category: "leadership",
       categoryLabel: "Regional Leadership",
       department: "India Corporate Leadership",
       region: "India",
-      email: "agrwal.ch@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
+      email: "chandrahas.agarwal@rollsroyces.com",
+      gradient: "from-[#064e3b] via-[#001e62] to-[#047857]",
       bio: "Oversees Rolls Royces nationwide operations in India, engineering centers of excellence, government liaisons, and strategic aerospace supply chains.",
-      initials: "AC",
+      initials: "CA",
     },
     {
-      id: "danion-mishra",
-      name: "Danion Mishra",
-      role: "South India Head",
+      id: "damodar-mishra",
+      name: "Damodar Mishra",
+      role: "Executive Vice President",
       category: "leadership",
       categoryLabel: "Regional Leadership",
       department: "Southern Regional Operations",
       region: "South India",
-      email: "danion.mishra@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
+      email: "damodar.mishra@rollsroyces.com",
+      gradient: "from-[#082f49] via-[#001438] to-[#0369a1]",
       bio: "Heads regional manufacturing partnerships, customer service infrastructure, and technological operations across South Indian aerospace corridors.",
       initials: "DM",
     },
     {
       id: "gopal-subramanium-raju",
       name: "Gopal Subramanium Raju",
-      role: "Legal Advisor & Coordinator",
+      role: "Senior Legal Advisor & Coordinator",
       category: "legal",
       categoryLabel: "Legal & Regulatory",
       department: "Corporate Legal Affairs & Coordination",
       region: "Regional Governance",
       email: "gopal.subramanium@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80",
+      gradient: "from-[#581c87] via-[#001e62] to-[#3b0764]",
       bio: "Coordinates strategic regulatory compliance, defence procurement covenants, corporate governance, and multi-jurisdictional legal advisory.",
       initials: "GR",
     },
     {
       id: "meghana-roy",
-      name: "Meghana Roy",
-      role: "Senior Metallurgist",
+      name: "Dr. Meghana Roy",
+      role: "Principal Metallurgist",
       category: "metallurgy",
       categoryLabel: "Metallurgy Team",
       department: "Materials Science & Superalloys",
       region: "Advanced Materials Lab",
       email: "meghana.roy@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80",
+      gradient: "from-[#831843] via-[#001e62] to-[#500724]",
       bio: "Pioneers single-crystal nickel superalloy research and ceramic thermal barriers tailored for ultra-high temperature turbine blades.",
       initials: "MR",
     },
     {
       id: "namratha-rathod",
       name: "Namratha Rathod",
-      role: "Metallurgist",
+      role: "Lead Aerospace Metallurgist",
       category: "metallurgy",
       categoryLabel: "Metallurgy Team",
       department: "Aerospace Structural Metallurgy",
       region: "Materials Testing Division",
       email: "namratha.rathod@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80",
+      gradient: "from-[#134e4a] via-[#001438] to-[#0f766e]",
       bio: "Specializes in titanium-aluminide composite matrices, structural fatigue diagnostics, and metal powder characterization for additive manufacturing.",
       initials: "NR",
     },
     {
-      id: "nigam",
-      name: "Nigam",
-      role: "Metallurgical Specialist",
+      id: "vikram-nigam",
+      name: "Vikram Nigam",
+      role: "Chief Metallurgical Specialist",
       category: "metallurgy",
       categoryLabel: "Metallurgy Team",
       department: "Naval & High-Stress Alloys",
       region: "Metallurgical Diagnostics",
-      email: "nigam@rollsroyces.com",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+      email: "vikram.nigam@rollsroyces.com",
+      gradient: "from-[#1e1b4b] via-[#001e62] to-[#1e3a8a]",
       bio: "Focuses on microstructural analysis, stress corrosion cracking resistance, and durability evaluations for critical marine and aviation propulsion alloys.",
-      initials: "NI",
+      initials: "VN",
     },
   ];
 
-  const foreignTeamMembers = [
+  const ukTeamMembers = [
     {
-      id: "hans-muller",
-      name: "Hans Müller",
-      initials: "HM",
-      role: "VP OF EUROPEAN OPERATIONS & ORBITAL ENGINEERING",
-      location: "GERMANY / SWITZERLAND",
+      id: "oliver-wright",
+      name: "Sir Oliver Wright",
+      initials: "OW",
+      role: "VP OF UK & GLOBAL ORBITAL ENGINEERING",
+      location: "DERBY / LONDON, UNITED KINGDOM",
       gradient: "from-[#2e1065] via-[#1e1b4b] to-[#1e3a8a]",
     },
     {
-      id: "lukas-schmidt",
-      name: "Lukas Schmidt",
-      initials: "LS",
+      id: "james-macleod",
+      name: "James MacLeod",
+      initials: "JM",
       role: "SENIOR DIRECTOR OF MICROGRAVITY REFINERIES",
-      location: "GERMANY",
+      location: "EDINBURGH, SCOTLAND (UK)",
       gradient: "from-[#064e3b] via-[#047857] to-[#022c22]",
     },
     {
-      id: "leon-fischer",
-      name: "Leon Fischer",
-      initials: "LF",
-      role: "HEAD OF ORBITAL THERMAL & POWER SYSTEMS",
-      location: "SWITZERLAND",
+      id: "alistair-crawford",
+      name: "Alistair Crawford",
+      initials: "AC",
+      role: "HEAD OF ADVANCED THERMAL & PROPULSION SYSTEMS",
+      location: "BRISTOL / FILTON, UNITED KINGDOM",
       gradient: "from-[#082f49] via-[#0369a1] to-[#0c4a6e]",
     },
     {
-      id: "max-weber",
-      name: "Max Weber",
-      initials: "MW",
-      role: "LEAD QUANTUM MATERIALS SCIENTIST",
-      location: "GERMANY",
+      id: "george-campbell",
+      name: "Dr. George Campbell",
+      initials: "GC",
+      role: "LEAD QUANTUM MATERIALS & SUPERALLOYS SCIENTIST",
+      location: "OXFORD / CAMBRIDGE, UNITED KINGDOM",
       gradient: "from-[#581c87] via-[#7e22ce] to-[#3b0764]",
     },
     {
-      id: "paul-wagner",
-      name: "Paul Wagner",
-      initials: "PW",
+      id: "edward-harrison",
+      name: "Edward Harrison",
+      initials: "EH",
       role: "DIRECTOR OF SOVEREIGN MISSION ACCORDS",
-      location: "AUSTRIA",
+      location: "LONDON / DERBY, UNITED KINGDOM",
       gradient: "from-[#7c2d12] via-[#9a3412] to-[#431407]",
     },
     {
-      id: "felix-becker",
-      name: "Felix Becker",
-      initials: "FB",
-      role: "AUTOMATION & ROBOTICS ENGINEER",
-      location: "GERMANY",
+      id: "arthur-davies",
+      name: "Arthur Davies",
+      initials: "AD",
+      role: "ADVANCED AUTOMATION & ROBOTICS ENGINEER",
+      location: "BIRMINGHAM / MIDLANDS, UNITED KINGDOM",
       gradient: "from-[#831843] via-[#9d174d] to-[#500724]",
     },
     {
-      id: "jonas-hoffmann",
-      name: "Jonas Hoffmann",
-      initials: "JH",
-      role: "LEAD SPACECRAFT SYSTEMS ARCHITECT",
-      location: "SWITZERLAND",
+      id: "william-sterling",
+      name: "William Sterling",
+      initials: "WS",
+      role: "LEAD AEROSPACE & SPACECRAFT SYSTEMS ARCHITECT",
+      location: "FARNBOROUGH / LONDON, UNITED KINGDOM",
       gradient: "from-[#172554] via-[#1e40af] to-[#1e1b4b]",
     },
     {
-      id: "tim-schneider",
-      name: "Tim Schneider",
-      initials: "TS",
-      role: "DIRECTOR OF CRYOGENIC FUEL SYSTEMS",
-      location: "GERMANY",
+      id: "charles-montgomery",
+      name: "Charles Montgomery",
+      initials: "CM",
+      role: "DIRECTOR OF CRYOGENIC & HYDROGEN FUEL SYSTEMS",
+      location: "DERBY, UNITED KINGDOM",
       gradient: "from-[#064e3b] via-[#059669] to-[#022c22]",
     },
     {
-      id: "noah-braun",
-      name: "Noah Braun",
-      initials: "NB",
-      role: "SENIOR FLIGHT PAYLOAD SPECIALIST",
-      location: "LUXEMBOURG",
+      id: "henry-bradley",
+      name: "Henry Bradley",
+      initials: "HB",
+      role: "SENIOR FLIGHT PAYLOAD & PROPULSION SPECIALIST",
+      location: "BRISTOL / BATH, UNITED KINGDOM",
       gradient: "from-[#134e4a] via-[#0f766e] to-[#042f2e]",
     },
     {
-      id: "emil-klein",
-      name: "Emil Klein",
-      initials: "EK",
-      role: "EUROPEAN LOGISTICS & INFRASTRUCTURE LEAD",
-      location: "GERMANY",
+      id: "thomas-evans",
+      name: "Thomas Evans",
+      initials: "TE",
+      role: "UK & GLOBAL LOGISTICS & INFRASTRUCTURE LEAD",
+      location: "GLASGOW / LONDON, UNITED KINGDOM",
       gradient: "from-[#4c1d95] via-[#6d28d9] to-[#2e1065]",
     },
   ];
@@ -307,6 +308,7 @@ export default function AboutPage() {
     {
       title: "Submarines",
       image: "/assets/images/submarine-hero.jpg",
+      href: "/products-services/submarines",
       icon: (
         <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
           <path d="M2 13c0-3 3.5-5.5 8.5-5.5 4.5 0 7.5 1.5 9 3.5l2.5-1.5v4l-2.5-1.5c-1.5 2-4.5 3.5-9 3.5C5.5 15.5 2 13 2 13z" />
@@ -319,7 +321,8 @@ export default function AboutPage() {
     },
     {
       title: "Defence",
-      image: "/assets/images/business-typhoon.jpg",
+      image: "/assets/images/prod-defence.jpg",
+      href: "/products-services/defence",
       icon: (
         <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -329,7 +332,8 @@ export default function AboutPage() {
     },
     {
       title: "Power Systems",
-      image: "/assets/images/business-yacht.jpg",
+      image: "/assets/images/series-8000.jpg",
+      href: "/products-services/power-systems",
       icon: (
         <svg className="w-6 h-6 stroke-white fill-none stroke-[2]" viewBox="0 0 24 24">
           <rect x="4" y="6" width="16" height="12" rx="2" />
@@ -601,17 +605,17 @@ export default function AboutPage() {
         className="w-full bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
       >
         <div className="max-w-[1540px] mx-auto">
-          {/* Top Part: Foreign & International Engineering Team */}
+          {/* Top Part: UK Engineering & Global Operations Team */}
           <div className="mb-14 sm:mb-20">
             <div className="mb-8 sm:mb-10">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#001438] tracking-tight mb-3">
-                Foreign &amp; International Engineering Team
+                UK Engineering &amp; Global Operations Team
               </h2>
               <div className="w-16 h-1 bg-[#001e62] rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
-              {foreignTeamMembers.map((member, idx) => (
+              {ukTeamMembers.map((member, idx) => (
                 <motion.div
                   key={member.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -718,52 +722,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-12">
-            {[
-              { id: "all", label: "All Team Mates", count: teamMembers.length },
-              {
-                id: "leadership",
-                label: "Executive & Regional Leadership",
-                count: teamMembers.filter((m) => m.category === "leadership").length,
-              },
-              {
-                id: "metallurgy",
-                label: "Metallurgy Specialists",
-                count: teamMembers.filter((m) => m.category === "metallurgy").length,
-              },
-              {
-                id: "legal",
-                label: "Legal & Advisory",
-                count: teamMembers.filter((m) => m.category === "legal").length,
-              },
-            ].map((tab) => {
-              const isActive = selectedTeamCategory === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setSelectedTeamCategory(tab.id)}
-                  className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                    isActive
-                      ? "bg-[#001e62] text-white shadow-md"
-                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200/80"
-                  }`}
-                >
-                  <span>{tab.label}</span>
-                  <span
-                    className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
-                      isActive
-                        ? "bg-white/20 text-white"
-                        : "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    {tab.count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
           {/* Team Members Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
             {filteredTeamMembers.map((member, idx) => {
@@ -778,34 +736,34 @@ export default function AboutPage() {
                   whileHover={{ y: -6 }}
                   className="bg-white rounded-lg border border-gray-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group"
                 >
-                  {/* Photo Container */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-slate-800 to-[#001438]">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    />
-
-                    {/* Gradient overlay for contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-                    {/* Role Tag Pill */}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#001e62]/90 backdrop-blur-md text-white border border-white/20 shadow-sm">
+                  {/* Monogram Avatar Header (No stock images) */}
+                  <div
+                    className={`relative h-44 w-full p-5 flex flex-col justify-between overflow-hidden bg-gradient-to-br ${
+                      member.gradient || "from-[#001438] via-[#001e62] to-[#0a2f8c]"
+                    } text-white shadow-inner`}
+                  >
+                    {/* Top Row: Category Tag & Region */}
+                    <div className="flex items-center justify-between z-10">
+                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25 shadow-sm">
                         {member.categoryLabel}
                       </span>
+                      {member.region && (
+                        <div className="flex items-center gap-1.5 text-white/95 text-xs font-medium drop-shadow-md">
+                          <MapPin className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
+                          <span className="truncate">{member.region}</span>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Region Pill if available */}
-                    {member.region && (
-                      <div className="absolute bottom-3 left-3 z-10 flex items-center gap-1.5 text-white/95 text-xs font-medium drop-shadow-md">
-                        <MapPin className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
-                        <span className="truncate">{member.region}</span>
+                    {/* Center: Stylish Monogram Avatar Badge */}
+                    <div className="flex items-center justify-center my-auto z-10">
+                      <div className="w-16 h-16 rounded-full bg-white/15 border-2 border-white/35 flex items-center justify-center text-white font-bold text-xl shadow-lg backdrop-blur-md group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
+                        {member.initials}
                       </div>
-                    )}
+                    </div>
+
+                    {/* Ambient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/10 pointer-events-none" />
                   </div>
 
                   {/* Card Content Body */}
@@ -895,18 +853,20 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 className="relative aspect-[16/10] sm:aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950 cursor-pointer"
               >
-                <img
-                  src={bCard.image}
-                  alt={bCard.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 group-hover:from-black/70 group-hover:to-black/80 transition-colors duration-500" />
-                <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 flex items-center gap-2.5 sm:gap-3">
-                  <span className="opacity-95">{bCard.icon}</span>
-                  <span className="text-white text-xl sm:text-2xl lg:text-[26px] font-normal tracking-wide">
-                    {bCard.title}
-                  </span>
-                </div>
+                <Link href={bCard.href} className="block w-full h-full relative">
+                  <img
+                    src={bCard.image}
+                    alt={bCard.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 group-hover:from-black/70 group-hover:to-black/80 transition-colors duration-500" />
+                  <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 flex items-center gap-2.5 sm:gap-3">
+                    <span className="opacity-95">{bCard.icon}</span>
+                    <span className="text-white text-xl sm:text-2xl lg:text-[26px] font-normal tracking-wide">
+                      {bCard.title}
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
