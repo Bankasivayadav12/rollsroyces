@@ -156,15 +156,15 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
                       href={link.href}
                       className={`text-[14px] lg:text-[15.5px] xl:text-[16px] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap flex items-center ${
                         active
-                          ? "text-[#001e62] font-bold underline underline-offset-[14px] decoration-[3px] decoration-[#001e62]"
+                          ? "text-[#001e62] font-bold"
                           : "text-[#001e62]/80 font-semibold hover:text-[#001e62]"
                       }`}
                     >
                       <span>{link.name}</span>
-                      {/* Hover/Active indicator line */}
+                      {/* Single Hover/Active indicator line */}
                       <span
-                        className={`absolute bottom-0 left-0 right-0 h-[3px] bg-[#001e62] rounded-full transition-all duration-300 ease-out ${
-                          active ? "w-full opacity-100 shadow-xs" : "w-0 opacity-0 bg-[#001e62] group-hover:w-full group-hover:opacity-100"
+                        className={`absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#001e62] rounded-full transition-all duration-300 ease-out ${
+                          active ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                         }`}
                       />
                     </Link>
