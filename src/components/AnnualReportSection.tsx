@@ -42,7 +42,7 @@ export default function AnnualReportSection() {
 
           <div>
             <a
-              href="#annual-report"
+              href="/investors#annual-report"
               className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
             >
               LEARN MORE

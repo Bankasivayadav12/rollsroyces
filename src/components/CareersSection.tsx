@@ -26,7 +26,7 @@ export default function CareersSection() {
 
           <div>
             <a
-              href="#careers"
+              href="/about#our-leadership"
               className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13.5px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#00009c] transition-all duration-300 hover:scale-105 group"
             >
               <span>VISIT ROLLS ROYCES CAREERS</span>

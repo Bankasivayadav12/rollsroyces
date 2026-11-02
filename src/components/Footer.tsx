@@ -103,18 +103,17 @@ export default function Footer() {
               </h4>
               <ul className="space-y-4 text-[13.5px] text-white/90 font-normal">
                 <li>
-                  <a href="#" className="flex items-center gap-3 hover:text-white group">
+                  <a href="/sign-up-latest-news" className="flex items-center gap-3 hover:text-white group transition-colors">
                     <Radio className="w-4 h-4 stroke-[2.2] shrink-0 opacity-90 group-hover:opacity-100" />
                     <span>Sign up to get the latest news</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="flex items-center gap-3 hover:text-white group">
+                  <a href="/contact-us" className="flex items-center gap-3 hover:text-white group transition-colors">
                     <Mail className="w-4 h-4 stroke-[2.2] shrink-0 opacity-90 group-hover:opacity-100" />
                     <span>Contact us</span>
                   </a>
                 </li>
-               
               </ul>
             </div>
           </div>

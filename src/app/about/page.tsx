@@ -41,6 +41,70 @@ export default function AboutPage() {
     setTimeout(() => setCopiedEmail(null), 2500);
   };
 
+  const handleOpenStory = (story: StoryData) => {
+    setActiveStory(story);
+    setIsStoryOpen(true);
+  };
+
+  const aboutStories = {
+    framework: {
+      title: "Our Strategic Framework",
+      category: "Transformation Framework",
+      image: "/assets/images/framework-tech.jpg",
+      description:
+        "Our near-term focus areas and strategic priorities are informed by our business environment. Our strategy is delivered by our people, enabled by our business model, enacted by our business units and measured through our KPIs. It is underpinned by strong governance and leadership, which manages risk and uncertainty, and creates value for all our stakeholders.",
+      highlight: "Underpinned by four strategic pillars: Portfolio Reshaping, Commercial Optimisation, Cost Efficiencies, and Strategic Investments.",
+      specs: [
+        { label: "Strategic Pillars", value: "4 Core Pillars" },
+        { label: "Governance Standard", value: "UK Corporate Code" },
+        { label: "Efficiency Savings", value: "£400m - £500m" },
+        { label: "Capital Allocation", value: "Balanced & Disciplined" },
+      ],
+    },
+    research: {
+      title: "Rolls Royces Global Research & Innovation",
+      category: "Research & Development",
+      image: "/assets/images/inside-research.jpg",
+      description:
+        "Rolls Royces operates an international network of University Technology Centres (UTCs) and Advanced Manufacturing Research Centres. Over 1,000 PhD researchers and senior scientists collaborate with our engineering hubs to pioneer breakthroughs in high-temperature materials, electrification, artificial intelligence, and aerodynamic modeling.",
+      highlight: "Investing over £1.2 billion annually in research and breakthrough technology development.",
+      specs: [
+        { label: "University Technology Centres", value: "28 Global UTCs" },
+        { label: "Annual R&D Investment", value: "£1.2+ Billion" },
+        { label: "Active Patents Portfolio", value: "Over 5,000 Patents" },
+        { label: "Global Academic Partners", value: "Top 30 Universities" },
+      ],
+    },
+    history: {
+      title: "Our History: 1906 to 2026",
+      category: "Heritage & Milestones",
+      image: "/assets/images/inside-history.jpg",
+      description:
+        "Founded in 1906 by Charles Rolls and Henry Royce, Rolls Royces has continuously redefined aviation and engineering excellence. From the legendary Merlin engine powering the Spitfire in World War II, to the world's first commercial turboprop, the pioneering RB211 three-shaft turbofan, and the modern Trent family and naval nuclear reactors.",
+      highlight: "120 years of relentless engineering innovation and setting global speed, endurance, and power records.",
+      specs: [
+        { label: "Founded", value: "1906 by Rolls & Royce" },
+        { label: "Merlin V12 Engine", value: "150,000+ Produced" },
+        { label: "First Jet Flight", value: "1942 Welland Engine" },
+        { label: "Global Milestones", value: "120 Years of Excellence" },
+      ],
+    },
+    heritageTrust: {
+      title: "The Rolls Royces Heritage Trust",
+      category: "Engineering Heritage",
+      image: "/assets/images/inside-leader.jpg",
+      description:
+        "The Rolls Royces Heritage Trust preserves and celebrates the extraordinary history and engineering heritage of Rolls Royces and its ancestral companies. Operating technical branches and museums across Derby, Bristol, Coventry, and Indianapolis, the Trust maintains vast archives of engineering drawings, historic engines, and oral histories.",
+      highlight: "Preserving over 100 years of irreplaceable aviation, marine, and automotive engineering heritage.",
+      specs: [
+        { label: "Global Branches", value: "6 Heritage Branches" },
+        { label: "Historic Engine Exhibits", value: "300+ Preserved Engines" },
+        { label: "Archive Documents", value: "Over 2 Million Records" },
+        { label: "Volunteer Experts", value: "1,500+ Engineers" },
+      ],
+    },
+  };
+
   const subNavLinks = [
     { id: "about-us", label: "About us" },
     { id: "our-leadership", label: "Our team & leadership" },
@@ -435,12 +499,13 @@ export default function AboutPage() {
                   <span>MEET OUR TEAM &amp; LEADERSHIP</span>
                   <ChevronRight className="w-4 h-4" />
                 </a>
-                <a
-                  href="#where-we-are-going"
-                  className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("our-strategic-framework")}
+                  className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors cursor-pointer text-left"
                 >
                   LEARN MORE
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>
@@ -732,12 +797,13 @@ export default function AboutPage() {
             </p>
 
             <div>
-              <a
-                href="#strategic-framework-details"
-                className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors"
+              <button
+                type="button"
+                onClick={() => handleOpenStory(aboutStories.framework)}
+                className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0a2f8c] border-b-2 border-[#001e62] pb-1 transition-colors cursor-pointer text-left"
               >
                 LEARN MORE
-              </a>
+              </button>
             </div>
           </motion.div>
 
@@ -822,6 +888,7 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
+              onClick={() => handleOpenStory(aboutStories.research)}
               className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-900">
@@ -845,6 +912,7 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
+              onClick={() => handleOpenStory(aboutStories.history)}
               className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
@@ -887,13 +955,14 @@ export default function AboutPage() {
             </div>
 
             <div className="shrink-0">
-              <a
-                href="#heritage-trust"
-                className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#0808a3] transition-all duration-300 hover:scale-105 group"
+              <button
+                type="button"
+                onClick={() => handleOpenStory(aboutStories.heritageTrust)}
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-[1.8px] border-white text-white font-bold text-xs sm:text-[13px] uppercase tracking-[1.4px] hover:bg-white hover:text-[#0808a3] transition-all duration-300 hover:scale-105 group cursor-pointer"
               >
                 <span>LEARN MORE</span>
                 <ChevronRight className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
