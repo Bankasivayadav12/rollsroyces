@@ -13,14 +13,15 @@ export const metadata: Metadata = {
   description: "Rolls Royces develops and delivers complex power and propulsion solutions for safety-critical applications in the air, at sea, and on land.",
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "64x64", type: "image/png" },
-      { url: "/rolls-royce-blue-crest.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
       { url: "/favicon.ico" },
     ],
     apple: [
       { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/icon.png",
+    shortcut: "/icon.svg",
   },
 };
 
@@ -31,6 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/icon.png" sizes="512x512" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
+      </head>
       <body className="min-h-full flex flex-col font-sans selection:bg-[#001e62] selection:text-white">
         {children}
       </body>
