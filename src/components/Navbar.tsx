@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import RollsRoyceLogo from "./RollsRoyceLogo";
 import { Search, Menu, X, ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,14 +10,39 @@ import { motion, AnimatePresence } from "framer-motion";
 interface NavbarProps {
   onOpenSearch?: () => void;
   isSearchOpen?: boolean;
+  activePath?: string;
 }
 
-export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
+export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const [mountedPath, setMountedPath] = useState<string>("");
+
+  useEffect(() => {
+    if (pathname) {
+      setMountedPath(pathname);
+    } else if (typeof window !== "undefined") {
+      setMountedPath(window.location.pathname);
+    }
+  }, [pathname]);
+
+  // Lock body & html scroll when mobile menu is open to prevent background scrolling
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const prevBodyOverflow = document.body.style.overflow;
+      const prevDocOverflow = document.documentElement.style.overflow;
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prevBodyOverflow;
+        document.documentElement.style.overflow = prevDocOverflow;
+      };
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +77,61 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
     { name: "Investors", href: "/investors" },
   ];
 
+  const currentPath = mountedPath || pathname || "";
+
+  const isLinkActive = (href: string) => {
+    // 0. Explicit activePath prop override
+    if (activePath) {
+      const cleanActive = activePath.toLowerCase().trim().replace(/\/+$/, "") || "/";
+      const cleanTarget = href.toLowerCase().trim().replace(/\/+$/, "") || "/";
+      if (cleanTarget === "/" && cleanActive === "/") return true;
+      if (cleanTarget !== "/" && (cleanActive === cleanTarget || cleanActive.startsWith(cleanTarget + "/"))) return true;
+      if (
+        cleanTarget === "/products-services" &&
+        (cleanActive.startsWith("/submarines") ||
+          cleanActive.startsWith("/defence") ||
+          cleanActive.startsWith("/power-systems"))
+      ) {
+        return true;
+      }
+    }
+
+    // 1. Check all available candidate paths
+    const candidates: string[] = [];
+    if (currentPath) candidates.push(currentPath);
+    if (pathname) candidates.push(pathname);
+    if (mountedPath) candidates.push(mountedPath);
+    if (typeof window !== "undefined" && window.location.pathname) {
+      candidates.push(window.location.pathname);
+    }
+
+    for (const cand of candidates) {
+      const raw = cand.toLowerCase().trim();
+      const cleanCurrent = raw.replace(/\/+$/, "") || "/";
+      const cleanTarget = href.toLowerCase().trim().replace(/\/+$/, "") || "/";
+
+      if (cleanTarget === "/") {
+        if (cleanCurrent === "/") return true;
+        continue;
+      }
+
+      if (cleanCurrent === cleanTarget || cleanCurrent.startsWith(cleanTarget + "/")) {
+        return true;
+      }
+
+      if (
+        cleanTarget === "/products-services" &&
+        (cleanCurrent.startsWith("/submarines") ||
+          cleanCurrent.startsWith("/defence") ||
+          cleanCurrent.startsWith("/power-systems"))
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   return (
     <>
       <nav
@@ -60,24 +142,35 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
         <div className="max-w-[1540px] mx-auto w-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 h-full relative">
           {/* Left Group: Rolls Royces Logo + Navigation Links */}
           <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 xl:gap-11 h-full">
-            <a href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls Royces Home">
+            <Link href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls Royces Home">
               <RollsRoyceLogo />
-            </a>
+            </Link>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden md:flex items-center gap-4 lg:gap-7 xl:gap-9">
-              {navLinks.map((link) => (
-                <li key={link.name} className="relative flex items-center">
-                  <a
-                    href={link.href}
-                    className="text-[14px] lg:text-[15.5px] xl:text-[16px] font-semibold text-[#001e62] hover:text-[#0a2f8c] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap"
-                  >
-                    {link.name}
-                    {/* Hover indicator line */}
-                    <span className="absolute bottom-0 left-0 w-0 h-[2.5px] bg-[#001e62] transition-all duration-300 ease-out group-hover:w-full" />
-                  </a>
-                </li>
-              ))}
+            <ul className="hidden md:flex items-center gap-4 lg:gap-7 xl:gap-9 h-full">
+              {navLinks.map((link) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <li key={link.name} className="relative flex items-center h-full">
+                    <Link
+                      href={link.href}
+                      className={`text-[14px] lg:text-[15.5px] xl:text-[16px] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap flex items-center ${
+                        active
+                          ? "text-[#001e62] font-bold underline underline-offset-[14px] decoration-[3px] decoration-[#001e62]"
+                          : "text-[#001e62]/80 font-semibold hover:text-[#001e62]"
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      {/* Hover/Active indicator line */}
+                      <span
+                        className={`absolute bottom-0 left-0 right-0 h-[3px] bg-[#001e62] rounded-full transition-all duration-300 ease-out ${
+                          active ? "w-full opacity-100 shadow-xs" : "w-0 opacity-0 bg-[#001e62] group-hover:w-full group-hover:opacity-100"
+                        }`}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -153,7 +246,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
       {/* Mobile Drawer Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 z-[100] md:hidden">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -166,14 +259,14 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 flex flex-col justify-between"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] h-full h-[100dvh] max-h-[100dvh] bg-white shadow-2xl p-5 sm:p-6 flex flex-col justify-between overflow-y-auto no-scrollbar"
             >
               <div>
-                <div className="flex items-center justify-between pb-5 border-b border-gray-100">
+                <div className="flex items-center justify-between pb-3.5 border-b border-gray-100">
                   <span className="font-bold text-lg text-[#001e62]">Navigation</span>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-1 rounded-full text-gray-500 hover:text-gray-900"
+                    className="p-1 rounded-full text-gray-500 hover:text-gray-900 cursor-pointer"
                     aria-label="Close navigation drawer"
                   >
                     <X className="w-6 h-6" />
@@ -181,7 +274,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
                 </div>
 
                 {/* Quick Search Button in Mobile Drawer */}
-                <div className="mt-4 mb-2">
+                <div className="mt-3 mb-2">
                   <button
                     onClick={() => {
                       setMobileMenuOpen(false);
@@ -191,33 +284,50 @@ export default function Navbar({ onOpenSearch, isSearchOpen }: NavbarProps) {
                         setIsSearchActive(true);
                       }
                     }}
-                    className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-600 border border-gray-200 transition-colors"
+                    className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm text-gray-600 border border-gray-200 transition-colors cursor-pointer"
                   >
                     <Search className="w-4 h-4 text-gray-500" />
                     <span>Search Rolls Royces...</span>
                   </button>
                 </div>
 
-                <ul className="py-4 space-y-3">
-                  {navLinks.map((link) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="text-base sm:text-lg font-semibold text-[#001e62] hover:text-[#0a2f8c] block py-1.5 transition-colors"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
+                <ul className="py-2 space-y-1">
+                  {navLinks.map((link) => {
+                    const active = isLinkActive(link.href);
+                    return (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-[15px] sm:text-base transition-all ${
+                            active
+                              ? "bg-rose-50 text-[#e11d48] border-l-4 border-[#e11d48] font-bold shadow-xs pl-3.5"
+                              : "text-slate-600 hover:bg-slate-50 hover:text-[#001e62] border-l-4 border-transparent font-medium pl-3.5"
+                          }`}
+                        >
+                          <span className={active ? "underline underline-offset-4 decoration-2 decoration-[#e11d48]" : ""}>
+                            {link.name}
+                          </span>
+                          {active && (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#e11d48] text-white shadow-xs shrink-0">
+                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                              <span>Active</span>
+                            </span>
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
-              <div className="p-4 bg-gray-50 rounded-lg text-xs text-gray-600">
-                <span className="font-semibold block text-gray-900 mb-1">
+              <div className="p-3.5 bg-gray-50 rounded-lg text-xs text-gray-600 border border-gray-100 mt-4">
+                <span className="font-semibold block text-gray-900 mb-0.5">
                   Rolls Royces Holdings plc
                 </span>
-                <span>1,327.40 GBX <span className="text-emerald-600 font-bold">▲ +4.80</span></span>
+                <span>
+                  1,327.40 GBX <span className="text-emerald-600 font-bold">▲ +4.80</span>
+                </span>
               </div>
             </motion.div>
           </div>

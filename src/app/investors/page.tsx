@@ -317,6 +317,7 @@ export default function InvestorsPage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/investors"
       />
 
       {/* 2. Breadcrumbs Bar */}

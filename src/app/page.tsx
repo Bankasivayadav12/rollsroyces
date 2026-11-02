@@ -36,6 +36,7 @@ export default function HomePage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/"
       />
 
       {/* 2. Hero Carousel Section */}

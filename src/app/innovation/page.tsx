@@ -134,6 +134,7 @@ export default function InnovationPage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/innovation"
       />
 
       {/* 2. Breadcrumbs Bar */}

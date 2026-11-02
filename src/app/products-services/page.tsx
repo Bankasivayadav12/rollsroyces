@@ -95,6 +95,7 @@ export default function ProductsServicesPage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/products-services"
       />
 
       {/* 2. Breadcrumbs Bar (Screenshot 1) */}

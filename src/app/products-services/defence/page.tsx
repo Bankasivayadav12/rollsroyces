@@ -96,6 +96,7 @@ export default function DefencePage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/products-services"
       />
 
       {/* 2. Breadcrumbs Bar */}

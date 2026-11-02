@@ -116,95 +116,95 @@ export default function AboutPage() {
 
   const teamMembers = [
     {
-      id: "pritham-mital",
-      name: "Pritham Mital",
-      role: "C.C.O of Rolls Royces",
+      id: "nivadhitha-roy",
+      name: "Nivadhitha Roy",
+      role: "CEO of Asia",
       category: "leadership",
       categoryLabel: "Executive Leadership",
-      department: "Chief Commercial Office",
-      region: "Asia, Gulf Countries & Africa",
-      email: "pritham.mital@rollsroyces.com",
+      department: "Asia Executive Office",
+      region: "Asia & Global Markets",
+      email: "nivadhitha.roy@rollsroyces.com",
       gradient: "from-[#001438] via-[#001e62] to-[#0a2f8c]",
-      bio: "Directs commercial strategy, enterprise deals, and strategic programmes across Civil Aerospace, Defence, and Power Systems across Asia, the Gulf, and Africa.",
-      initials: "PM",
+      bio: "Directs Rolls Royces commercial strategy, regional operations, and enterprise programmes across Asia and international markets.",
+      initials: "NR",
     },
     {
-      id: "chandrahas-agarwal",
-      name: "Chandrahas Agarwal",
-      role: "President & Managing Director",
+      id: "rama-swammy-naidu",
+      name: "Rama Swammy Naidu",
+      role: "India Head",
       category: "leadership",
       categoryLabel: "Regional Leadership",
       department: "India Corporate Leadership",
       region: "India",
-      email: "chandrahas.agarwal@rollsroyces.com",
+      email: "rama.swammy.naidu@rollsroyces.com",
       gradient: "from-[#064e3b] via-[#001e62] to-[#047857]",
-      bio: "Oversees Rolls Royces nationwide operations in India, engineering centers of excellence, government liaisons, and strategic aerospace supply chains.",
-      initials: "CA",
+      bio: "Oversees Rolls Royces nationwide operations across India, manufacturing centres of excellence, and aerospace supply partnerships.",
+      initials: "RN",
     },
     {
-      id: "damodar-mishra",
-      name: "Damodar Mishra",
-      role: "Executive Vice President",
+      id: "trivadhi",
+      name: "Trivadhi",
+      role: "South Head",
       category: "leadership",
       categoryLabel: "Regional Leadership",
       department: "Southern Regional Operations",
       region: "South India",
-      email: "damodar.mishra@rollsroyces.com",
+      email: "trivadhi@rollsroyces.com",
       gradient: "from-[#082f49] via-[#001438] to-[#0369a1]",
-      bio: "Heads regional manufacturing partnerships, customer service infrastructure, and technological operations across South Indian aerospace corridors.",
-      initials: "DM",
+      bio: "Heads regional manufacturing corridors, customer service infrastructure, and technological operations across South India.",
+      initials: "TR",
     },
     {
-      id: "gopal-subramanium-raju",
-      name: "Gopal Subramanium Raju",
-      role: "Senior Legal Advisor & Coordinator",
-      category: "legal",
-      categoryLabel: "Legal & Regulatory",
-      department: "Corporate Legal Affairs & Coordination",
-      region: "Regional Governance",
-      email: "gopal.subramanium@rollsroyces.com",
-      gradient: "from-[#581c87] via-[#001e62] to-[#3b0764]",
-      bio: "Coordinates strategic regulatory compliance, defence procurement covenants, corporate governance, and multi-jurisdictional legal advisory.",
-      initials: "GR",
-    },
-    {
-      id: "meghana-roy",
-      name: "Dr. Meghana Roy",
-      role: "Principal Metallurgist",
+      id: "harshini-krishna",
+      name: "Harshini Krishna",
+      role: "Metallurgist",
       category: "metallurgy",
       categoryLabel: "Metallurgy Team",
-      department: "Materials Science & Superalloys",
-      region: "Advanced Materials Lab",
-      email: "meghana.roy@rollsroyces.com",
+      department: "Advanced Materials & Superalloys",
+      region: "Advanced Metallurgy Hub",
+      email: "harshini.krishna@rollsroyces.com",
       gradient: "from-[#831843] via-[#001e62] to-[#500724]",
-      bio: "Pioneers single-crystal nickel superalloy research and ceramic thermal barriers tailored for ultra-high temperature turbine blades.",
-      initials: "MR",
+      bio: "Pioneers single-crystal nickel superalloy research, crystal lattice integrity, and thermal barrier coatings for turbine systems.",
+      initials: "HK",
     },
     {
-      id: "namratha-rathod",
-      name: "Namratha Rathod",
-      role: "Lead Aerospace Metallurgist",
+      id: "monies-sivaraj",
+      name: "Monies Sivaraj",
+      role: "Metallurgist",
       category: "metallurgy",
       categoryLabel: "Metallurgy Team",
       department: "Aerospace Structural Metallurgy",
       region: "Materials Testing Division",
-      email: "namratha.rathod@rollsroyces.com",
+      email: "monies.sivaraj@rollsroyces.com",
       gradient: "from-[#134e4a] via-[#001438] to-[#0f766e]",
-      bio: "Specializes in titanium-aluminide composite matrices, structural fatigue diagnostics, and metal powder characterization for additive manufacturing.",
-      initials: "NR",
+      bio: "Specializes in titanium-aluminide composite matrices, microstructural stress diagnostics, and non-destructive alloy characterization.",
+      initials: "MS",
     },
     {
-      id: "vikram-nigam",
-      name: "Vikram Nigam",
-      role: "Chief Metallurgical Specialist",
-      category: "metallurgy",
-      categoryLabel: "Metallurgy Team",
-      department: "Naval & High-Stress Alloys",
-      region: "Metallurgical Diagnostics",
-      email: "vikram.nigam@rollsroyces.com",
+      id: "legal-ackivas",
+      name: "Legal Ackivas",
+      role: "Legal Coordinator",
+      category: "legal",
+      categoryLabel: "Legal & Regulatory",
+      department: "Corporate Legal Affairs & Coordination",
+      region: "Regional Governance",
+      email: "legal.ackivas@rollsroyces.com",
+      gradient: "from-[#581c87] via-[#001e62] to-[#3b0764]",
+      bio: "Coordinates strategic regulatory compliance, defence procurement covenants, corporate governance, and multi-jurisdictional legal advisory.",
+      initials: "LA",
+    },
+    {
+      id: "vsn-roa",
+      name: "V.S.N. Roa",
+      role: "Coordinator",
+      category: "leadership",
+      categoryLabel: "Regional Coordination",
+      department: "Executive Programmes Coordination",
+      region: "Operations Coordination",
+      email: "vsn.roa@rollsroyces.com",
       gradient: "from-[#1e1b4b] via-[#001e62] to-[#1e3a8a]",
-      bio: "Focuses on microstructural analysis, stress corrosion cracking resistance, and durability evaluations for critical marine and aviation propulsion alloys.",
-      initials: "VN",
+      bio: "Coordinates cross-functional leadership initiatives, logistics synchronization, and inter-divisional programme governance.",
+      initials: "VR",
     },
   ];
 
@@ -348,15 +348,16 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white flex flex-col selection:bg-[#001e62] selection:text-white">
+    <main className="w-full max-w-full overflow-x-hidden min-h-screen bg-white flex flex-col selection:bg-[#001e62] selection:text-white">
       {/* 1. Main Navigation Bar */}
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/about"
       />
 
       {/* 2. Breadcrumbs Bar */}
-      <div className="w-full bg-white border-b border-gray-100 py-3.5 px-4 sm:px-6 md:px-12 text-sm">
+      <div className="w-full max-w-full bg-white border-b border-gray-100 py-3.5 px-4 sm:px-6 md:px-12 text-sm overflow-hidden">
         <div className="max-w-[1540px] mx-auto flex items-center gap-2 text-gray-600 font-normal">
           <a href="/" className="hover:text-[#001e62] transition-colors">
             Home
@@ -367,7 +368,7 @@ export default function AboutPage() {
       </div>
 
       {/* 3. About Hero Section with Spheres Visual */}
-      <section className="relative w-full min-h-[440px] sm:min-h-[520px] lg:h-[620px] bg-[#03091e] overflow-hidden">
+      <section className="relative w-full max-w-full min-h-[440px] sm:min-h-[520px] lg:h-[620px] bg-[#03091e] overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('/assets/images/about-hero.jpg')` }}
@@ -400,8 +401,8 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Subnavigation Bar (Sticks seamlessly directly below the 84px Navbar) */}
-      <div className="w-full bg-[#0808a3] text-white sticky top-[84px] z-30 shadow-md">
-        <div className="max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-center gap-4 sm:gap-8 lg:gap-10 overflow-x-auto no-scrollbar">
+      <div className="w-full max-w-full bg-[#0808a3] text-white sticky top-[84px] z-30 shadow-md overflow-hidden">
+        <div className="max-w-[1540px] mx-auto px-4 sm:px-6 md:px-12 flex items-center gap-4 sm:gap-8 lg:gap-10 overflow-x-auto no-scrollbar w-full max-w-full">
           {subNavLinks.map((tab) => {
             const isActive = activeSubTab === tab.id;
             return (
@@ -426,9 +427,9 @@ export default function AboutPage() {
       </div>
 
       {/* 5. Section: About us (#about-us) */}
-      <div id="about-us">
+      <div id="about-us" className="w-full max-w-full overflow-hidden">
         {/* About Rolls Royces Editorial Statement */}
-        <section className="w-full bg-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <section className="w-full max-w-full bg-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100 overflow-hidden">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -463,13 +464,13 @@ export default function AboutPage() {
         </section>
 
         {/* The Rolls Royces Proposition */}
-        <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <section className="w-full max-w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100 overflow-hidden">
           <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
               className="lg:col-span-5"
             >
               <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg bg-gray-100">
@@ -482,10 +483,10 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-7 flex flex-col justify-center"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-8">
@@ -523,13 +524,13 @@ export default function AboutPage() {
         </section>
 
         {/* Where We're Going */}
-        <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <section className="w-full max-w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-12 border-b border-gray-100 overflow-hidden">
           <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
               className="lg:col-span-5 relative"
             >
               <div className="relative aspect-[16/10] bg-gray-50 rounded-sm overflow-hidden flex items-center justify-center p-4">
@@ -560,10 +561,10 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-7 flex flex-col justify-center"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-6">
@@ -602,11 +603,11 @@ export default function AboutPage() {
       {/* 5b. Section: Our Leadership & Team Mates (#our-leadership) */}
       <section
         id="our-leadership"
-        className="w-full bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
+        className="w-full max-w-full overflow-hidden bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
       >
-        <div className="max-w-[1540px] mx-auto">
+        <div className="max-w-[1540px] mx-auto w-full">
           {/* Top Part: UK Engineering & Global Operations Team */}
-          <div className="mb-14 sm:mb-20">
+          <div className="mb-14 sm:mb-20 w-full">
             <div className="mb-8 sm:mb-10">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#001438] tracking-tight mb-3">
                 UK Engineering &amp; Global Operations Team
@@ -614,7 +615,7 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-[#001e62] rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 w-full">
               {ukTeamMembers.map((member, idx) => (
                 <motion.div
                   key={member.id}
@@ -622,34 +623,32 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: idx * 0.05 }}
-                  className="flex flex-col group"
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-xl border border-gray-200/90 shadow-xs hover:shadow-xl p-5 flex flex-col items-center text-center transition-all duration-300 group w-full min-w-0"
                 >
-                  {/* Top Gradient Box with Initials & Title */}
-                  <div
-                    className={`relative aspect-[4/5] rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-md bg-gradient-to-br ${member.gradient} text-white group-hover:scale-102 transition-transform duration-300`}
-                  >
-                    <div className="w-14 h-14 rounded-full bg-white/15 border border-white/30 flex items-center justify-center text-white font-bold text-sm sm:text-base mb-4 shadow-inner">
-                      {member.initials}
+                  {/* Circular Avatar */}
+                  <div className="relative mb-4">
+                    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full p-1 bg-gradient-to-tr from-[#001e62] via-[#0052cc] to-cyan-400 shadow-md group-hover:scale-105 group-hover:shadow-lg transition-transform duration-300">
+                      <div
+                        className={`w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br ${member.gradient} text-white border-2 border-white shadow-inner`}
+                      >
+                        <span className="font-bold text-lg sm:text-xl font-sans tracking-wider drop-shadow-xs">
+                          {member.initials}
+                        </span>
+                      </div>
                     </div>
-                    <h4 className="text-base sm:text-lg font-bold text-white tracking-wide mb-1.5">
-                      {member.name}
-                    </h4>
-                    <p className="text-[10px] sm:text-[11px] font-semibold text-white/90 uppercase tracking-wider leading-snug max-w-[170px]">
-                      {member.role}
-                    </p>
                   </div>
 
-                  {/* Below Card Plain Text Info */}
-                  <div className="pt-3 px-1">
-                    <h5 className="text-sm font-bold text-gray-900 leading-snug">
-                      {member.name}
-                    </h5>
-                    <p className="text-[11px] font-medium text-gray-600 uppercase tracking-wider leading-tight mt-0.5">
-                      {member.role}
-                    </p>
-                    <p className="text-[11px] font-bold text-[#0066ff] uppercase tracking-wider mt-1">
-                      {member.location}
-                    </p>
+                  {/* Member Name, Role & Location */}
+                  <h5 className="text-[15px] sm:text-base font-bold text-gray-900 leading-snug group-hover:text-[#001e62] transition-colors mb-1 truncate max-w-full">
+                    {member.name}
+                  </h5>
+                  <p className="text-[10.5px] sm:text-[11px] font-semibold text-[#0066ff] uppercase tracking-wider leading-snug mb-3 line-clamp-2">
+                    {member.role}
+                  </p>
+                  <div className="flex items-center justify-center gap-1 text-[11px] font-medium text-gray-500 mt-auto pt-2 border-t border-gray-100 w-full">
+                    <MapPin className="w-3 h-3 text-[#001e62] shrink-0" />
+                    <span className="truncate">{member.location}</span>
                   </div>
                 </motion.div>
               ))}
@@ -672,58 +671,58 @@ export default function AboutPage() {
           </div>
 
           {/* Central Rolls Royces Mail ID Card Banner */}
-          <div className="max-w-4xl mx-auto mb-12 sm:mb-16">
-            <div className="bg-gradient-to-r from-[#001438] via-[#001e62] to-[#0a2f8c] rounded-xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10">
-              <div className="flex items-center gap-4 sm:gap-5">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/20">
-                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
+          <div className="w-full max-w-4xl mx-auto mb-12 sm:mb-16 overflow-hidden">
+            <div className="bg-gradient-to-r from-[#001438] via-[#001e62] to-[#0a2f8c] rounded-xl p-4 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-5 sm:gap-6 border border-white/10 w-full max-w-full overflow-hidden">
+              <div className="flex items-center gap-3.5 sm:gap-5 w-full min-w-0">
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/20">
+                  <Mail className="w-5 h-5 sm:w-7 sm:h-7 text-cyan-300" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs uppercase font-bold tracking-wider text-cyan-200">
+                    <span className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-cyan-200 truncate">
                       Central Corporate Mail ID
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono select-all">
+                  <h3 className="text-sm sm:text-xl md:text-2xl font-bold tracking-tight text-white font-mono select-all truncate">
                     RollsRoyces@rollsroyces.com
                   </h3>
-                  <p className="text-white/80 text-xs sm:text-sm mt-1">
+                  <p className="text-white/80 text-[11px] sm:text-sm mt-0.5 line-clamp-2">
                     Direct communications for leadership coordination, metallurgy testing &amp; regional affairs
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 w-full sm:w-auto">
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0 w-full sm:w-auto">
                 <button
                   onClick={() => handleCopyEmail("RollsRoyces@rollsroyces.com")}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-medium text-xs sm:text-sm transition-all border border-white/20 cursor-pointer"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-medium text-xs sm:text-sm transition-all border border-white/20 cursor-pointer min-w-0 truncate"
                 >
                   {copiedEmail === "RollsRoyces@rollsroyces.com" ? (
                     <>
-                      <Check className="w-4 h-4 text-emerald-300" />
-                      <span className="text-emerald-200 font-semibold">Copied!</span>
+                      <Check className="w-4 h-4 text-emerald-300 shrink-0" />
+                      <span className="text-emerald-200 font-semibold truncate">Copied!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-4 h-4" />
-                      <span>Copy Mail ID</span>
+                      <Copy className="w-4 h-4 shrink-0" />
+                      <span className="truncate">Copy Mail ID</span>
                     </>
                   )}
                 </button>
                 <a
                   href="mailto:RollsRoyces@rollsroyces.com"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white text-[#001438] hover:bg-cyan-50 font-bold text-xs sm:text-sm transition-all shadow-md hover:scale-105"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 rounded-lg bg-white text-[#001438] hover:bg-cyan-50 font-bold text-xs sm:text-sm transition-all shadow-md hover:scale-105 min-w-0 truncate"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Mail</span>
+                  <Send className="w-4 h-4 shrink-0" />
+                  <span className="truncate">Send Mail</span>
                 </a>
               </div>
             </div>
           </div>
 
           {/* Team Members Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 w-full">
             {filteredTeamMembers.map((member, idx) => {
               const isCopied = copiedEmail === member.email;
               return (
@@ -734,94 +733,90 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   whileHover={{ y: -6 }}
-                  className="bg-white rounded-lg border border-gray-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group"
+                  className="bg-white rounded-xl border border-gray-200/90 shadow-sm hover:shadow-2xl hover:border-[#001e62]/20 transition-all duration-300 flex flex-col p-6 items-center text-center group w-full min-w-0"
                 >
-                  {/* Monogram Avatar Header (No stock images) */}
-                  <div
-                    className={`relative h-44 w-full p-5 flex flex-col justify-between overflow-hidden bg-gradient-to-br ${
-                      member.gradient || "from-[#001438] via-[#001e62] to-[#0a2f8c]"
-                    } text-white shadow-inner`}
-                  >
-                    {/* Top Row: Category Tag & Region */}
-                    <div className="flex items-center justify-between z-10">
-                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25 shadow-sm">
-                        {member.categoryLabel}
+                  {/* Category Pill Tag & Region */}
+                  <div className="w-full flex items-center justify-between mb-4">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-[#001e62] border border-slate-200/70">
+                      {member.categoryLabel}
+                    </span>
+                    {member.region && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium text-gray-500">
+                        <MapPin className="w-3 h-3 text-[#0066ff] shrink-0" />
+                        <span className="truncate max-w-[110px]">{member.region}</span>
                       </span>
-                      {member.region && (
-                        <div className="flex items-center gap-1.5 text-white/95 text-xs font-medium drop-shadow-md">
-                          <MapPin className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
-                          <span className="truncate">{member.region}</span>
-                        </div>
+                    )}
+                  </div>
+
+                  {/* Circular Avatar */}
+                  <div className="relative mb-4">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-[#001438] via-[#001e62] to-cyan-400 shadow-md group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
+                      <div
+                        className={`w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br ${member.gradient} text-white border-2 border-white shadow-inner`}
+                      >
+                        <span className="font-bold text-2xl sm:text-3xl font-sans tracking-wider drop-shadow-sm">
+                          {member.initials}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Active verified personnel badge */}
+                    <span
+                      className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow-sm"
+                      title="Active Rolls Royces Personnel"
+                    />
+                  </div>
+
+                  {/* Name & Title */}
+                  <h3 className="text-xl sm:text-[22px] font-bold text-[#001438] tracking-tight group-hover:text-[#001e62] transition-colors mb-1 truncate max-w-full">
+                    {member.name}
+                  </h3>
+
+                  <p className="text-xs sm:text-[13.5px] font-semibold text-[#0066ff] uppercase tracking-wider mb-2">
+                    {member.role}
+                  </p>
+
+                  <div className="flex items-center justify-center gap-1.5 text-gray-500 text-xs mb-3 font-medium">
+                    <Briefcase className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+                    <span>{member.department}</span>
+                  </div>
+
+                  <p className="text-gray-600 text-xs sm:text-[13px] leading-relaxed line-clamp-3 mb-5 font-normal">
+                    {member.bio}
+                  </p>
+
+                  {/* Dedicated Rolls Royces Mail ID Row */}
+                  <div className="w-full pt-4 border-t border-gray-100 mt-auto">
+                    <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 font-medium">
+                      <span>Corporate Mail ID</span>
+                      {isCopied && (
+                        <span className="text-emerald-600 font-semibold flex items-center gap-1 text-[11px]">
+                          <Check className="w-3 h-3" /> Copied
+                        </span>
                       )}
                     </div>
 
-                    {/* Center: Stylish Monogram Avatar Badge */}
-                    <div className="flex items-center justify-center my-auto z-10">
-                      <div className="w-16 h-16 rounded-full bg-white/15 border-2 border-white/35 flex items-center justify-center text-white font-bold text-xl shadow-lg backdrop-blur-md group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
-                        {member.initials}
-                      </div>
-                    </div>
+                    <div className="flex items-center justify-between bg-gray-50 hover:bg-gray-100/80 rounded-md p-2 transition-colors border border-gray-100 min-w-0">
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="flex items-center gap-2 text-xs font-mono text-[#001e62] hover:text-[#0066ff] truncate transition-colors min-w-0 flex-1 text-left"
+                        title={`Email ${member.name}`}
+                      >
+                        <Mail className="w-3.5 h-3.5 text-[#001e62] shrink-0" />
+                        <span className="truncate">{member.email}</span>
+                      </a>
 
-                    {/* Ambient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/10 pointer-events-none" />
-                  </div>
-
-                  {/* Card Content Body */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      {/* Name & Title */}
-                      <h3 className="text-xl sm:text-[22px] font-bold text-[#001438] tracking-tight group-hover:text-[#001e62] transition-colors mb-1">
-                        {member.name}
-                      </h3>
-
-                      <p className="text-xs sm:text-[13.5px] font-semibold text-[#0066ff] uppercase tracking-wider mb-2.5">
-                        {member.role}
-                      </p>
-
-                      <div className="flex items-center gap-1.5 text-gray-500 text-xs mb-3 font-medium">
-                        <Briefcase className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                        <span>{member.department}</span>
-                      </div>
-
-                      <p className="text-gray-600 text-xs sm:text-[13px] leading-relaxed line-clamp-3 mb-5 font-normal">
-                        {member.bio}
-                      </p>
-                    </div>
-
-                    {/* Dedicated Rolls Royces Mail ID Row */}
-                    <div className="pt-4 border-t border-gray-100">
-                      <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 font-medium">
-                        <span>Corporate Mail ID</span>
-                        {isCopied && (
-                          <span className="text-emerald-600 font-semibold flex items-center gap-1 text-[11px]">
-                            <Check className="w-3 h-3" /> Copied
-                          </span>
+                      <button
+                        onClick={() => handleCopyEmail(member.email)}
+                        aria-label={`Copy ${member.name} email`}
+                        className="p-1 rounded text-gray-400 hover:text-[#001e62] hover:bg-white transition-colors shrink-0 ml-1.5 cursor-pointer"
+                        title="Copy email address"
+                      >
+                        {isCopied ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-600" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
                         )}
-                      </div>
-
-                      <div className="flex items-center justify-between bg-gray-50 hover:bg-gray-100/80 rounded-md p-2 transition-colors border border-gray-100">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="flex items-center gap-2 text-xs font-mono text-[#001e62] hover:text-[#0066ff] truncate transition-colors"
-                          title={`Email ${member.name}`}
-                        >
-                          <Mail className="w-3.5 h-3.5 text-[#001e62] shrink-0" />
-                          <span className="truncate">{member.email}</span>
-                        </a>
-
-                        <button
-                          onClick={() => handleCopyEmail(member.email)}
-                          aria-label={`Copy ${member.name} email`}
-                          className="p-1 rounded text-gray-400 hover:text-[#001e62] hover:bg-white transition-colors shrink-0 ml-1.5 cursor-pointer"
-                          title="Copy email address"
-                        >
-                          {isCopied ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-600" />
-                          ) : (
-                            <Copy className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -832,8 +827,8 @@ export default function AboutPage() {
       </section>
 
       {/* 6. Section: Our businesses (#our-businesses) */}
-      <section id="our-businesses" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
-        <div className="max-w-[1540px] mx-auto">
+      <section id="our-businesses" className="w-full max-w-full overflow-hidden bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <div className="max-w-[1540px] mx-auto w-full">
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] mb-3 sm:mb-6">
               Our businesses
@@ -843,7 +838,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 w-full">
             {businessCards.map((bCard, idx) => (
               <motion.div
                 key={bCard.title}
@@ -851,7 +846,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative aspect-[16/10] sm:aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950 cursor-pointer"
+                className="relative aspect-[16/10] sm:aspect-[16/11] rounded-sm overflow-hidden group shadow-md block bg-gray-950 cursor-pointer w-full"
               >
                 <Link href={bCard.href} className="block w-full h-full relative">
                   <img
@@ -874,14 +869,14 @@ export default function AboutPage() {
       </section>
 
       {/* 7. Section: Our strategic framework (#our-strategic-framework) */}
-      <section id="our-strategic-framework" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
-        <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+      <section id="our-strategic-framework" className="w-full max-w-full overflow-hidden bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center w-full">
           {/* Left Column: Framework Narrative & Button */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px] leading-tight mb-4 sm:mb-8">
@@ -905,13 +900,13 @@ export default function AboutPage() {
 
           {/* Right Column: Female Technician Photo */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="lg:col-span-6"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-6 w-full"
           >
-            <div className="aspect-[16/10] rounded-sm overflow-hidden shadow-lg bg-gray-100">
+            <div className="aspect-[16/10] rounded-sm overflow-hidden shadow-lg bg-gray-100 w-full">
               <img
                 src="/assets/images/framework-tech.jpg"
                 alt="Rolls Royces engineer working on aerospace propulsion systems"
@@ -923,8 +918,8 @@ export default function AboutPage() {
       </section>
 
       {/* 8. Section: Inside Rolls Royces (#inside-rolls-royce) */}
-      <section id="inside-rolls-royce" className="w-full bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
-        <div className="max-w-[1540px] mx-auto">
+      <section id="inside-rolls-royce" className="w-full max-w-full overflow-hidden bg-white py-14 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-100">
+        <div className="max-w-[1540px] mx-auto w-full">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#001438] tracking-[-0.5px]">
               Inside Rolls Royces
@@ -932,13 +927,13 @@ export default function AboutPage() {
           </div>
 
           {/* 4 Feature Cards (2x2 Grid) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 w-full">
             {/* Card 1: Leadership */}
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
               onClick={() => scrollToSection("our-leadership")}
-              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer w-full"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
@@ -961,7 +956,7 @@ export default function AboutPage() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
-              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer w-full"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto p-4 flex items-center justify-center bg-gray-50/50 group-hover:bg-white transition-colors duration-300">
                 <img
@@ -985,7 +980,7 @@ export default function AboutPage() {
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
               onClick={() => handleOpenStory(aboutStories.research)}
-              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer w-full"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-900">
                 <img
@@ -1009,7 +1004,7 @@ export default function AboutPage() {
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
               onClick={() => handleOpenStory(aboutStories.history)}
-              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer"
+              className="bg-white border border-gray-200/90 hover:border-[#0284c7] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row group cursor-pointer w-full"
             >
               <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden bg-gray-100">
                 <img
@@ -1032,16 +1027,16 @@ export default function AboutPage() {
       </section>
 
       {/* 9. The Rolls Royces Heritage Trust Banner */}
-      <section className="w-full bg-white py-10 sm:py-12 px-4 sm:px-6 md:px-12">
-        <div className="max-w-[1540px] mx-auto">
+      <section className="w-full max-w-full overflow-hidden bg-white py-10 sm:py-12 px-4 sm:px-6 md:px-12">
+        <div className="max-w-[1540px] mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full bg-[#0808a3] text-white rounded-sm py-10 sm:py-14 px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 shadow-xl"
+            className="w-full bg-[#0808a3] text-white rounded-sm py-10 sm:py-14 px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 shadow-xl overflow-hidden"
           >
-            <div className="max-w-2xl">
+            <div className="max-w-2xl min-w-0">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white tracking-tight mb-2 sm:mb-3">
                 The Rolls Royces Heritage Trust
               </h2>
@@ -1065,7 +1060,7 @@ export default function AboutPage() {
       </section>
 
       {/* 10. Clean White Buffer before Footer */}
-      <section className="w-full bg-white py-10 sm:py-16 md:py-20" />
+      <section className="w-full max-w-full overflow-hidden bg-white py-10 sm:py-16 md:py-20" />
 
       {/* 11. Official Rolls Royces Footer */}
       <Footer />

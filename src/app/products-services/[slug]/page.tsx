@@ -70,6 +70,7 @@ export default function DivisionDetailPage({ params }: DivisionPageProps) {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/products-services"
       />
 
       {/* 2. Breadcrumbs Bar */}

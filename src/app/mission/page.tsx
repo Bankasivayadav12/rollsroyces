@@ -264,6 +264,7 @@ export default function MissionPage() {
       <Navbar
         onOpenSearch={() => setIsSearchOpen((prev) => !prev)}
         isSearchOpen={isSearchOpen}
+        activePath="/mission"
       />
 
       {/* 2. Breadcrumbs Bar */}
