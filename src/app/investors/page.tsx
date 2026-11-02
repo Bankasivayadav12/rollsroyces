@@ -281,7 +281,7 @@ export default function InvestorsPage() {
     },
     {
       id: 12,
-      image: "/assets/images/vertiport-terminal.jpg",
+      image: "/assets/images/news-turbine.jpg",
       title: "Rolls Royces electrical propulsion unit achieves successful first flight on eVTOL testbed",
       type: "PRESS RELEASE",
       date: "19 JUNE 2026",

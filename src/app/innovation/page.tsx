@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
 import StoryDrawer, { StoryData } from "@/components/StoryDrawer";
 import AccessibilityModal from "@/components/AccessibilityModal";
-import { ChevronRight, Play, X, ArrowRight } from "lucide-react";
+import { ChevronRight, Play, Pause, Volume2, VolumeX, Maximize2, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const metricsData = [
@@ -40,6 +40,29 @@ export default function InnovationPage() {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isAccModalOpen, setIsAccModalOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay policy prevented playback, ready on first interaction
+      });
+    }
+  }, []);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white flex flex-col selection:bg-[#001e62] selection:text-white">
@@ -81,23 +104,6 @@ export default function InnovationPage() {
             As the world’s population grows, and urban populations increase, a new approaches to building and powering cities and developing more sustainable transportation is urgently needed.
           </motion.p>
         </div>
-      </section>
-
-      {/* Panoramic Vertiport Terminal Banner */}
-      <section className="w-full bg-gray-900 overflow-hidden relative">
-        <motion.div
-          initial={{ opacity: 0, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative w-full h-[260px] sm:h-[380px] lg:h-[520px]"
-        >
-          <img
-            src="/assets/images/vertiport-terminal.jpg"
-            alt="Futuristic sustainable airport terminal and vertiport infrastructure"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
-        </motion.div>
       </section>
 
       {/* 4. Section 2: Key Sustainability Metrics */}
@@ -167,30 +173,78 @@ export default function InnovationPage() {
 
           {/* Pathway to Net Zero Feature */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left: Video Player Card with Transit Pod */}
+            {/* Left: Autoplaying Video Player Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              onClick={() => setIsVideoModalOpen(true)}
-              className="lg:col-span-6 relative aspect-[16/10] rounded-sm overflow-hidden shadow-lg bg-gray-900 group cursor-pointer"
+              className="lg:col-span-6 relative aspect-[16/10] rounded-sm overflow-hidden shadow-xl bg-gray-950 group"
             >
-              <img
-                src="/assets/images/netzero-pod.jpg"
-                alt="Electric transit pod and zero-carbon innovation"
+              <video
+                ref={videoRef}
+                autoPlay
+                muted={isMuted}
+                loop
+                playsInline
+                poster="/assets/images/netzero-pod.jpg"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors" />
+              >
+                <source src="/assets/videos/netzero-pod.mp4" type="video/mp4" />
+                <source src="/assets/videos/netzero-stream.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-[#0066ff] text-[#0066ff] ml-1" />
+              {/* Autoplay Live Indicator Badge */}
+              <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#001438]/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-xs font-medium tracking-wide pointer-events-none shadow-md">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>AUTOPLAYING</span>
+              </div>
+
+              {/* Video Controls Bar */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white z-10">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      togglePlay();
+                    }}
+                    className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/30 flex items-center justify-center transition-colors shadow-lg cursor-pointer"
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                  >
+                    {isPlaying ? (
+                      <Pause className="w-4 h-4 fill-white text-white" />
+                    ) : (
+                      <Play className="w-4 h-4 fill-white text-white ml-0.5" />
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsMuted(!isMuted);
+                    }}
+                    className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/30 flex items-center justify-center transition-colors shadow-lg cursor-pointer"
+                    aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+                  >
+                    {isMuted ? (
+                      <VolumeX className="w-4 h-4 text-white" />
+                    ) : (
+                      <Volume2 className="w-4 h-4 text-white" />
+                    )}
+                  </button>
                 </div>
-                <span className="text-xs sm:text-sm font-semibold tracking-wider text-white mt-2.5 sm:mt-3 drop-shadow-md">
-                  Play
-                </span>
+
+                <button
+                  type="button"
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/30 text-xs font-semibold uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Full View</span>
+                </button>
               </div>
             </motion.div>
 
@@ -341,7 +395,7 @@ export default function InnovationPage() {
       {/* Video Modal Player */}
       <AnimatePresence>
         {isVideoModalOpen && (
-          <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -349,30 +403,28 @@ export default function InnovationPage() {
               className="relative w-full max-w-4xl bg-black rounded-lg overflow-hidden shadow-2xl border border-white/20"
             >
               <div className="flex items-center justify-between p-4 bg-[#001438] text-white">
-                <span className="font-semibold text-sm">
-                  Rolls Royces – Pathway to Net Zero Carbon
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-semibold text-sm">
+                    Rolls Royces – Pathway to Net Zero Carbon
+                  </span>
+                </div>
                 <button
                   onClick={() => setIsVideoModalOpen(false)}
-                  className="p-1 rounded-full text-white/70 hover:text-white"
+                  className="p-1 rounded-full text-white/70 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
               <div className="aspect-video w-full bg-black flex items-center justify-center relative">
-                <img
-                  src="/assets/images/netzero-pod.jpg"
-                  alt="Video display"
-                  className="w-full h-full object-cover opacity-70"
+                <video
+                  src="/assets/videos/netzero-pod.mp4"
+                  autoPlay
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                  <div className="w-16 h-16 rounded-full bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center mb-3">
-                    <Play className="w-6 h-6 fill-white ml-0.5" />
-                  </div>
-                  <span className="text-sm font-semibold tracking-wider uppercase">
-                    Sustainable Propulsion &amp; Energy Transition
-                  </span>
-                </div>
               </div>
             </motion.div>
           </div>
