@@ -259,14 +259,13 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] h-full h-[100dvh] max-h-[100dvh] bg-white shadow-2xl p-5 sm:p-6 flex flex-col justify-between overflow-y-auto no-scrollbar"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] h-full h-[100dvh] max-h-[100dvh] bg-white shadow-2xl p-5 sm:p-6 flex flex-col overflow-y-auto no-scrollbar"
             >
               <div>
-                <div className="flex items-center justify-between pb-3.5 border-b border-gray-100">
-                  <span className="font-bold text-lg text-[#001e62]">Navigation</span>
+                <div className="flex items-center justify-end pb-2">
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-1 rounded-full text-gray-500 hover:text-gray-900 cursor-pointer"
+                    className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors cursor-pointer"
                     aria-label="Close navigation drawer"
                   >
                     <X className="w-6 h-6" />
@@ -274,7 +273,7 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
                 </div>
 
                 {/* Quick Search Button in Mobile Drawer */}
-                <div className="mt-3 mb-2">
+                <div className="mt-1 mb-2">
                   <button
                     onClick={() => {
                       setMobileMenuOpen(false);
@@ -319,15 +318,6 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
                     );
                   })}
                 </ul>
-              </div>
-
-              <div className="p-3.5 bg-gray-50 rounded-lg text-xs text-gray-600 border border-gray-100 mt-4">
-                <span className="font-semibold block text-gray-900 mb-0.5">
-                  Rolls Royces Holdings plc
-                </span>
-                <span>
-                  1,327.40 GBX <span className="text-emerald-600 font-bold">▲ +4.80</span>
-                </span>
               </div>
             </motion.div>
           </div>
