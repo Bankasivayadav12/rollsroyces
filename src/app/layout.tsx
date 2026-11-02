@@ -12,7 +12,15 @@ export const metadata: Metadata = {
   title: "Rolls Royces – Pioneering the Power that Matters",
   description: "Rolls Royces develops and delivers complex power and propulsion solutions for safety-critical applications in the air, at sea, and on land.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.png", sizes: "64x64", type: "image/png" },
+      { url: "/rolls-royce-blue-crest.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
   },
 };
 
