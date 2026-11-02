@@ -16,7 +16,7 @@ const divisions = [
         <circle cx="11" cy="12.5" r="0.75" fill="white" />
       </svg>
     ),
-    href: "/products-services#submarines",
+    href: "/products-services/submarines",
   },
   {
     title: "Defence",
@@ -27,7 +27,7 @@ const divisions = [
         <path d="m9 12 2 2 4-4" />
       </svg>
     ),
-    href: "#defence",
+    href: "/products-services/defence",
   },
   {
     title: "Power Systems",
@@ -42,7 +42,7 @@ const divisions = [
         <circle cx="12" cy="12" r="2.5" />
       </svg>
     ),
-    href: "#power-systems",
+    href: "/products-services/power-systems",
   },
 ];
 

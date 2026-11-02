@@ -43,9 +43,9 @@ export default function Footer() {
                 PRODUCTS &amp; SERVICES
               </h4>
               <ul className="space-y-3 text-[14px] text-white/90 font-normal">
-                <li><a href="/products-services#submarines" className="hover:text-white hover:underline transition-colors">Submarines</a></li>
-                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Defence</a></li>
-                <li><a href="/products-services" className="hover:text-white hover:underline transition-colors">Power Systems</a></li>
+                <li><a href="/products-services/submarines" className="hover:text-white hover:underline transition-colors">Submarines</a></li>
+                <li><a href="/products-services/defence" className="hover:text-white hover:underline transition-colors">Defence</a></li>
+                <li><a href="/products-services/power-systems" className="hover:text-white hover:underline transition-colors">Power Systems</a></li>
               </ul>
             </div>
           </div>

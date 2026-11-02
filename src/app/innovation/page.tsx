@@ -19,7 +19,7 @@ const metricsData = [
     number: "75%",
     unit: "CO₂ reduction",
     linkText: "ACARE Flightpath 2050 goals",
-    linkHref: "#flightpath-goals",
+    storyKey: "acare",
   },
   {
     number: "1",
@@ -30,9 +30,68 @@ const metricsData = [
     number: "90%",
     unit: "NOx reduction",
     linkText: "ACARE Flightpath 2050 goals",
-    linkHref: "#flightpath-goals",
+    storyKey: "acare",
   },
 ];
+
+const innovationStories: Record<string, StoryData> = {
+  netZero: {
+    title: "Our Pathway to Net Zero Carbon",
+    category: "Sustainability & Net Zero",
+    image: "/assets/images/netzero-pod.jpg",
+    description:
+      "Rolls Royces is placing the transition to net zero at the heart of everything we do. We are pioneering clean power solutions across commercial aerospace, defense, and power systems—enabling 100% Sustainable Aviation Fuel (SAF) operation, developing microgrid battery energy storage, and investing in hydrogen combustion research.",
+    highlight: "Targeting net zero operational greenhouse gas emissions by 2030 and net zero product lifecycle emissions by 2050.",
+    specs: [
+      { label: "Operational Net Zero Target", value: "2030" },
+      { label: "Lifecycle Net Zero Target", value: "2050" },
+      { label: "SAF Compatibility Across Fleet", value: "100%" },
+      { label: "Renewable Power Sourced", value: "100% UK Sites" },
+    ],
+  },
+  smr: {
+    title: "Rolls Royces Small Modular Reactors (SMR)",
+    category: "Nuclear Clean Energy",
+    image: "/assets/images/smr-building.svg",
+    description:
+      "Our Small Modular Reactor (SMR) design provides affordable, low-carbon nuclear power at scale. Using standardized factory manufacturing, Rolls Royces SMR delivers dependable, clean baseload electricity to decarbonize national grids and heavy industry worldwide.",
+    highlight: "Standardized factory modular construction reducing delivery risk, timeline, and capital cost.",
+    specs: [
+      { label: "Clean Baseload Output", value: "470 MW per Unit" },
+      { label: "Homes Powered per SMR", value: "1,000,000 Homes" },
+      { label: "Operating Lifetime", value: "60+ Years" },
+      { label: "Site Footprint", value: "1/10th of Traditional" },
+    ],
+  },
+  testbed: {
+    title: "Testbed 80 – World's Smartest Test Facility",
+    category: "Aerospace Testing",
+    image: "/assets/images/testbed-80.jpg",
+    description:
+      "Testbed 80 in Derby, UK, is the world's largest and smartest indoor aerospace test facility. Built with a £90 million investment, it tests civil and defense engines up to 155,000 lbs of thrust, running with 100% Sustainable Aviation Fuel (SAF) and capturing 10,000 engine parameters at 200,000 samples per second.",
+    highlight: "World's largest indoor testbed, instrumented for 100% SAF and next-gen UltraFan demonstrator testing.",
+    specs: [
+      { label: "Internal Floor Area", value: "7,500 m²" },
+      { label: "Max Engine Thrust Capacity", value: "155,000 lbf" },
+      { label: "Sampling Speed", value: "200,000 data/sec" },
+      { label: "SAF Readiness", value: "100% Verified" },
+    ],
+  },
+  acare: {
+    title: "ACARE Flightpath 2050 Environmental Goals",
+    category: "Aviation Decarbonisation",
+    image: "/assets/images/ultrafan-blue.jpg",
+    description:
+      "Under the Advisory Council for Aviation Research and Innovation in Europe (ACARE) Flightpath 2050 framework, Rolls Royces is delivering revolutionary thermal and propulsive efficiency improvements to achieve a 75% CO2 reduction and 90% NOx reduction per passenger kilometre.",
+    highlight: "UltraFan® architecture delivering 25% efficiency jump over first-generation Trent engines.",
+    specs: [
+      { label: "CO2 Reduction Target", value: "75% Reduction" },
+      { label: "NOx Emissions Reduction", value: "90% Reduction" },
+      { label: "Perceived Noise Reduction", value: "65% Quieter" },
+      { label: "Target Horizon", value: "Flightpath 2050" },
+    ],
+  },
+};
 
 export default function InnovationPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -62,6 +121,11 @@ export default function InnovationPage() {
         setIsPlaying(false);
       }
     }
+  };
+
+  const handleOpenStory = (story: StoryData) => {
+    setActiveStory(story);
+    setIsStoryOpen(true);
   };
 
   return (
@@ -133,12 +197,13 @@ export default function InnovationPage() {
               )}
 
               {item.linkText && (
-                <a
-                  href={item.linkHref}
-                  className="text-xs sm:text-sm md:text-[15px] text-[#001e62] hover:text-[#0066ff] underline underline-offset-4 font-medium transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleOpenStory(innovationStories[item.storyKey || "acare"])}
+                  className="text-xs sm:text-sm md:text-[15px] text-[#001e62] hover:text-[#0066ff] underline underline-offset-4 font-medium transition-colors cursor-pointer"
                 >
                   {item.linkText}
-                </a>
+                </button>
               )}
             </motion.div>
           ))}
@@ -269,12 +334,13 @@ export default function InnovationPage() {
               </p>
 
               <div>
-                <a
-                  href="#pathway-net-zero"
-                  className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0066ff] border-b-2 border-[#001e62] pb-1 transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleOpenStory(innovationStories.netZero)}
+                  className="inline-block text-[#001e62] font-bold text-xs sm:text-[14px] uppercase tracking-[1.5px] hover:text-[#0066ff] border-b-2 border-[#001e62] pb-1 transition-colors cursor-pointer"
                 >
                   FIND OUT MORE
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>

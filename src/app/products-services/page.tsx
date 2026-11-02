@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
@@ -138,29 +139,34 @@ export default function ProductsServicesPage() {
             return (
               <motion.div
                 key={prod.id}
+                id={prod.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 whileHover={{ y: -6 }}
-                onClick={() => handleOpenDetail(prod)}
-                className="rounded-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer border border-gray-100 group"
+                className="scroll-mt-28 rounded-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col border border-gray-100 group bg-white"
               >
                 {/* Card Top Image */}
-                <div className="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+                <Link
+                  href={`/products-services/${prod.id}`}
+                  className="aspect-[16/10] overflow-hidden bg-gray-100 relative block cursor-pointer"
+                >
                   <img
                     src={prod.image}
                     alt={prod.cardTitle}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-                </div>
+                </Link>
 
                 {/* Card Content Block: Default Navy Blue, Electric Blue ONLY after hover */}
                 <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between transition-colors duration-300 bg-[#0808a3] group-hover:bg-[#0066ff] text-white">
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-                      {prod.cardTitle}
-                    </h2>
+                    <Link href={`/products-services/${prod.id}`} className="block">
+                      <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3 hover:underline">
+                        {prod.cardTitle}
+                      </h2>
+                    </Link>
 
                     <h3 className="text-base sm:text-lg font-medium leading-snug mb-4 opacity-95">
                       {prod.cardSubtitle}
@@ -172,8 +178,21 @@ export default function ProductsServicesPage() {
                   </div>
 
                   <div className="pt-8 mt-6 border-t border-white/20 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
-                    <span>Explore Division</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <Link
+                      href={`/products-services/${prod.id}`}
+                      className="flex items-center gap-1.5 hover:underline"
+                    >
+                      <span>Explore Division</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => handleOpenDetail(prod)}
+                      className="px-3 py-1 rounded bg-white/15 hover:bg-white/30 backdrop-blur-sm text-[11px] font-semibold tracking-wider transition-colors"
+                    >
+                      Quick Specs
+                    </button>
                   </div>
                 </div>
               </motion.div>
