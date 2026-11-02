@@ -298,21 +298,15 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
                         <Link
                           href={link.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-[15px] sm:text-base transition-all ${
+                          className={`flex items-center px-3.5 py-2.5 rounded-lg text-[15px] sm:text-base transition-all ${
                             active
-                              ? "bg-rose-50 text-[#e11d48] border-l-4 border-[#e11d48] font-bold shadow-xs pl-3.5"
+                              ? "bg-blue-50 text-[#0052cc] border-l-4 border-[#0052cc] font-bold shadow-xs pl-3.5"
                               : "text-slate-600 hover:bg-slate-50 hover:text-[#001e62] border-l-4 border-transparent font-medium pl-3.5"
                           }`}
                         >
-                          <span className={active ? "underline underline-offset-4 decoration-2 decoration-[#e11d48]" : ""}>
+                          <span className={active ? "underline underline-offset-4 decoration-2 decoration-[#0052cc]" : ""}>
                             {link.name}
                           </span>
-                          {active && (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#e11d48] text-white shadow-xs shrink-0">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                              <span>Active</span>
-                            </span>
-                          )}
                         </Link>
                       </li>
                     );
