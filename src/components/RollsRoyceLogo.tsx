@@ -46,12 +46,12 @@ export default function RollsRoyceLogo({
       {showName && (
         <div className="flex flex-col justify-center select-none text-left leading-none gap-0.5 sm:gap-1">
           <span
-            className={`font-serif font-bold text-[#001e62] uppercase leading-[1.08] whitespace-nowrap transition-colors group-hover:text-[#001438] ${line1Class}`}
+            className={`font-serif font-bold text-[#002682] uppercase leading-[1.08] whitespace-nowrap transition-colors group-hover:opacity-90 ${line1Class}`}
           >
             Rolls
           </span>
           <span
-            className={`font-serif font-bold text-[#001e62] uppercase leading-[1.08] whitespace-nowrap transition-colors group-hover:text-[#001438] ${line2Class}`}
+            className={`font-serif font-bold text-[#002682] uppercase leading-[1.08] whitespace-nowrap transition-colors group-hover:opacity-90 ${line2Class}`}
           >
             Royces
           </span>
