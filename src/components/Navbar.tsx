@@ -141,20 +141,20 @@ export default function Navbar({ onOpenSearch, isSearchOpen, activePath }: Navba
       >
         <div className="max-w-[1540px] mx-auto w-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 h-full relative">
           {/* Left Group: Rolls Royces Logo + Navigation Links */}
-          <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 xl:gap-11 h-full">
+          <div className="flex items-center gap-3.5 sm:gap-5 lg:gap-8 xl:gap-10 h-full min-w-0">
             <Link href="/" className="flex items-center shrink-0 h-full py-2" aria-label="Rolls Royces Home">
               <RollsRoyceLogo />
             </Link>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden md:flex items-center gap-4 lg:gap-7 xl:gap-9 h-full">
+            <ul className="hidden md:flex items-center gap-2.5 lg:gap-6 xl:gap-8 h-full">
               {navLinks.map((link) => {
                 const active = isLinkActive(link.href);
                 return (
                   <li key={link.name} className="relative flex items-center h-full">
                     <Link
                       href={link.href}
-                      className={`text-[14px] lg:text-[15.5px] xl:text-[16px] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap flex items-center ${
+                      className={`text-[13px] lg:text-[15px] xl:text-[16px] tracking-[-0.1px] transition-colors py-2 relative group whitespace-nowrap flex items-center ${
                         active
                           ? "text-[#001e62] font-bold"
                           : "text-[#001e62]/80 font-semibold hover:text-[#001e62]"

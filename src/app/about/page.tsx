@@ -210,84 +210,76 @@ export default function AboutPage() {
 
   const ukTeamMembers = [
     {
-      id: "oliver-wright",
-      name: "Sir Oliver Wright",
-      initials: "OW",
-      role: "VP OF UK & GLOBAL ORBITAL ENGINEERING",
+      id: "tufan-erginbilgic",
+      name: "Tufan Erginbilgic",
+      initials: "TE",
+      role: "Chief Executive Officer (CEO)",
+      location: "LONDON, UNITED KINGDOM",
+      gradient: "from-[#001438] via-[#001e62] to-[#0a2f8c]",
+    },
+    {
+      id: "helen-mccabe",
+      name: "Helen McCabe",
+      initials: "HM",
+      role: "Chief Financial Officer (CFO)",
+      location: "LONDON, UNITED KINGDOM",
+      gradient: "from-[#064e3b] via-[#001e62] to-[#047857]",
+    },
+    {
+      id: "sarah-armstrong",
+      name: "Sarah Armstrong",
+      initials: "SA",
+      role: "Chief People Officer",
       location: "DERBY / LONDON, UNITED KINGDOM",
-      gradient: "from-[#2e1065] via-[#1e1b4b] to-[#1e3a8a]",
+      gradient: "from-[#831843] via-[#001e62] to-[#500724]",
     },
     {
-      id: "james-macleod",
-      name: "James MacLeod",
-      initials: "JM",
-      role: "SENIOR DIRECTOR OF MICROGRAVITY REFINERIES",
-      location: "EDINBURGH, SCOTLAND (UK)",
-      gradient: "from-[#064e3b] via-[#047857] to-[#022c22]",
-    },
-    {
-      id: "alistair-crawford",
-      name: "Alistair Crawford",
-      initials: "AC",
-      role: "HEAD OF ADVANCED THERMAL & PROPULSION SYSTEMS",
-      location: "BRISTOL / FILTON, UNITED KINGDOM",
+      id: "simon-burr",
+      name: "Simon Burr MBE",
+      initials: "SB",
+      role: "Group Director of Engineering, Technology and Safety",
+      location: "DERBY, UNITED KINGDOM",
       gradient: "from-[#082f49] via-[#0369a1] to-[#0c4a6e]",
     },
     {
-      id: "george-campbell",
-      name: "Dr. George Campbell",
-      initials: "GC",
-      role: "LEAD QUANTUM MATERIALS & SUPERALLOYS SCIENTIST",
-      location: "OXFORD / CAMBRIDGE, UNITED KINGDOM",
-      gradient: "from-[#581c87] via-[#7e22ce] to-[#3b0764]",
-    },
-    {
-      id: "edward-harrison",
-      name: "Edward Harrison",
-      initials: "EH",
-      role: "DIRECTOR OF SOVEREIGN MISSION ACCORDS",
-      location: "LONDON / DERBY, UNITED KINGDOM",
-      gradient: "from-[#7c2d12] via-[#9a3412] to-[#431407]",
-    },
-    {
-      id: "arthur-davies",
-      name: "Arthur Davies",
-      initials: "AD",
-      role: "ADVANCED AUTOMATION & ROBOTICS ENGINEER",
-      location: "BIRMINGHAM / MIDLANDS, UNITED KINGDOM",
-      gradient: "from-[#831843] via-[#9d174d] to-[#500724]",
-    },
-    {
-      id: "william-sterling",
-      name: "William Sterling",
-      initials: "WS",
-      role: "LEAD AEROSPACE & SPACECRAFT SYSTEMS ARCHITECT",
-      location: "FARNBOROUGH / LONDON, UNITED KINGDOM",
+      id: "chris-cholerton",
+      name: "Chris Cholerton",
+      initials: "CC",
+      role: "Group President",
+      location: "LONDON, UNITED KINGDOM",
       gradient: "from-[#172554] via-[#1e40af] to-[#1e1b4b]",
     },
     {
-      id: "charles-montgomery",
-      name: "Charles Montgomery",
-      initials: "CM",
-      role: "DIRECTOR OF CRYOGENIC & HYDROGEN FUEL SYSTEMS",
-      location: "DERBY, UNITED KINGDOM",
-      gradient: "from-[#064e3b] via-[#059669] to-[#022c22]",
+      id: "nicola-grady-smith",
+      name: "Nicola Grady-Smith",
+      initials: "NG",
+      role: "Chief Transformation Officer",
+      location: "LONDON, UNITED KINGDOM",
+      gradient: "from-[#581c87] via-[#7e22ce] to-[#3b0764]",
     },
     {
-      id: "henry-bradley",
-      name: "Henry Bradley",
-      initials: "HB",
-      role: "SENIOR FLIGHT PAYLOAD & PROPULSION SPECIALIST",
-      location: "BRISTOL / BATH, UNITED KINGDOM",
+      id: "adam-riddle",
+      name: "Adam Riddle",
+      initials: "AR",
+      role: "Defence Chairman",
+      location: "BRISTOL, UK / WASHINGTON D.C.",
+      gradient: "from-[#7c2d12] via-[#9a3412] to-[#431407]",
+    },
+    {
+      id: "jorg-stratmann",
+      name: "Dr. Jörg Stratmann",
+      initials: "JS",
+      role: "CEO, Power Systems",
+      location: "FRIEDRICHSHAFEN / DERBY",
       gradient: "from-[#134e4a] via-[#0f766e] to-[#042f2e]",
     },
     {
-      id: "thomas-evans",
-      name: "Thomas Evans",
-      initials: "TE",
-      role: "UK & GLOBAL LOGISTICS & INFRASTRUCTURE LEAD",
-      location: "GLASGOW / LONDON, UNITED KINGDOM",
-      gradient: "from-[#4c1d95] via-[#6d28d9] to-[#2e1065]",
+      id: "rob-watson",
+      name: "Dr. Rob Watson",
+      initials: "RW",
+      role: "Civil Aerospace President",
+      location: "DERBY / BRISTOL, UNITED KINGDOM",
+      gradient: "from-[#2e1065] via-[#1e1b4b] to-[#1e3a8a]",
     },
   ];
 
@@ -605,17 +597,21 @@ export default function AboutPage() {
         id="our-leadership"
         className="w-full max-w-full overflow-hidden bg-[#f8fafc] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-12 border-b border-gray-200/80 scroll-mt-20"
       >
+      
         <div className="max-w-[1540px] mx-auto w-full">
-          {/* Top Part: UK Engineering & Global Operations Team */}
+          {/* Top Part: UK & Global Executive Leadership Team */}
           <div className="mb-14 sm:mb-20 w-full">
-            <div className="mb-8 sm:mb-10">
+            <div className="mb-8 sm:mb-10 text-left">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-[1.4px] bg-[#001e62]/10 text-[#001e62] mb-3">
+                Global Executive Leadership
+              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#001438] tracking-tight mb-3">
-                UK Engineering &amp; Global Operations Team
+                UK &amp; Global Executive Leadership Team
               </h2>
               <div className="w-16 h-1 bg-[#001e62] rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full">
               {ukTeamMembers.map((member, idx) => (
                 <motion.div
                   key={member.id}
@@ -624,15 +620,15 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: idx * 0.05 }}
                   whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl border border-gray-200/90 shadow-xs hover:shadow-xl p-5 flex flex-col items-center text-center transition-all duration-300 group w-full min-w-0"
+                  className="bg-white rounded-xl border border-gray-200/90 shadow-xs hover:shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 group w-full min-w-0"
                 >
                   {/* Circular Avatar */}
                   <div className="relative mb-4">
-                    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full p-1 bg-gradient-to-tr from-[#001e62] via-[#0052cc] to-cyan-400 shadow-md group-hover:scale-105 group-hover:shadow-lg transition-transform duration-300">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 bg-gradient-to-tr from-[#001e62] via-[#0052cc] to-cyan-400 shadow-md group-hover:scale-105 group-hover:shadow-lg transition-transform duration-300">
                       <div
                         className={`w-full h-full rounded-full flex items-center justify-center bg-gradient-to-br ${member.gradient} text-white border-2 border-white shadow-inner`}
                       >
-                        <span className="font-bold text-lg sm:text-xl font-sans tracking-wider drop-shadow-xs">
+                        <span className="font-bold text-xl sm:text-2xl font-sans tracking-wider drop-shadow-xs">
                           {member.initials}
                         </span>
                       </div>
@@ -640,14 +636,14 @@ export default function AboutPage() {
                   </div>
 
                   {/* Member Name, Role & Location */}
-                  <h5 className="text-[15px] sm:text-base font-bold text-gray-900 leading-snug group-hover:text-[#001e62] transition-colors mb-1 truncate max-w-full">
+                  <h5 className="text-[17px] sm:text-lg font-bold text-gray-900 leading-snug group-hover:text-[#001e62] transition-colors mb-1.5 truncate max-w-full">
                     {member.name}
                   </h5>
-                  <p className="text-[10.5px] sm:text-[11px] font-semibold text-[#0066ff] uppercase tracking-wider leading-snug mb-3 line-clamp-2">
+                  <p className="text-[11.5px] sm:text-[12px] font-semibold text-[#0066ff] uppercase tracking-wider leading-snug mb-4 line-clamp-2">
                     {member.role}
                   </p>
-                  <div className="flex items-center justify-center gap-1 text-[11px] font-medium text-gray-500 mt-auto pt-2 border-t border-gray-100 w-full">
-                    <MapPin className="w-3 h-3 text-[#001e62] shrink-0" />
+                  <div className="flex items-center justify-center gap-1.5 text-[11.5px] font-medium text-gray-500 mt-auto pt-3 border-t border-gray-100 w-full">
+                    <MapPin className="w-3.5 h-3.5 text-[#001e62] shrink-0" />
                     <span className="truncate">{member.location}</span>
                   </div>
                 </motion.div>
